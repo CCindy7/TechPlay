@@ -19,37 +19,42 @@ router.get("/loggedin", (req, res) => {
 });
 
 router.post("/signup", isLoggedOut, (req, res) => {
-  const { username, password } = req.body;
+  const { username, email, password, confirmation } = req.body;
 
   if (!username) {
     return res
-      .status(400)
-      .json({ errorMessage: "Please provide your username." });
+      .status(401)
+      .json({ errorMessage: "Veuillez entrer votre prénom." });
   }
 
-  if (password.length < 8) {
-    return res.status(400).json({
-      errorMessage: "Your password needs to be at least 8 characters long.",
-    });
-  }
+  // if (password.length < 8) {
+  //   return res.status(400).json({
+  //     errorMessage: "Your password needs to be at least 8 characters long.",
+  //   });
+  // }
 
   //   ! This use case is using a regular expression to control for special characters and min length
-  /*
+
   const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
 
   if (!regex.test(password)) {
     return res.status(400).json( {
       errorMessage:
-        "Password needs to have at least 8 chars and must contain at least one number, one lowercase and one uppercase letter.",
+        "Votre mot de passe doit contenir au moins 8 charactères, un nombre, une minuscule et une majuscule.",
     });
   }
-  */
+  
+  if (password !== confirmation) {
+    return res
+      .status(401)
+      .json({ errorMessage: "Les mots de passe ne sont pas identiques." });
+  }
 
   // Search the database for a user with the username submitted in the form
   User.findOne({ username }).then((found) => {
     // If the user is found, send the message username is taken
     if (found) {
-      return res.status(400).json({ errorMessage: "Username already taken." });
+      return res.status(400).json({ errorMessage: "Ce nom d'utilisateur n'est pas disponible." });
     }
 
     // if user is not found, create a new user - start with hashing the password
@@ -75,7 +80,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
         if (error.code === 11000) {
           return res.status(400).json({
             errorMessage:
-              "Username need to be unique. The username you chose is already in use.",
+              "Ce nom d'utilisateur n'existe pas.",
           });
         }
         return res.status(500).json({ errorMessage: error.message });
@@ -84,34 +89,36 @@ router.post("/signup", isLoggedOut, (req, res) => {
 });
 
 router.post("/login", isLoggedOut, (req, res, next) => {
-  const { username, password } = req.body;
+  const { email, password } = req.body;
 
-  if (!username) {
+  if (!email) {
     return res
       .status(400)
-      .json({ errorMessage: "Please provide your username." });
+      .json({ errorMessage: "Veuillez entrer votre email." });
   }
 
   // Here we use the same logic as above
-  // - either length based parameters or we check the strength of a password
-  if (password.length < 8) {
+  // we check the strength of a password
+  const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
+
+  if (!regex.test(password)) {
     return res.status(400).json({
-      errorMessage: "Your password needs to be at least 8 characters long.",
+      errorMessage: "Votre mot de passe doit contenir au moins 8 charactères, un nombre, une minuscule et une majuscule.",
     });
   }
 
-  // Search the database for a user with the username submitted in the form
-  User.findOne({ username })
+  // Search the database for a user with the email submitted in the form
+  User.findOne({ email })
     .then((user) => {
       // If the user isn't found, send the message that user provided wrong credentials
       if (!user) {
-        return res.status(400).json({ errorMessage: "Wrong credentials." });
+        return res.status(400).json({ errorMessage: "L'email est incorrect." });
       }
 
-      // If user is found based on the username, check if the in putted password matches the one saved in the database
+      // If user is found based on the email, check if the in putted password matches the one saved in the database
       bcrypt.compare(password, user.password).then((isSamePassword) => {
         if (!isSamePassword) {
-          return res.status(400).json({ errorMessage: "Wrong credentials." });
+          return res.status(400).json({ errorMessage: "Le mot de passe est incorrect." });
         }
         req.session.user = user;
         // req.session.user = user._id; // ! better and safer but in this case we saving the entire user object
@@ -122,8 +129,8 @@ router.post("/login", isLoggedOut, (req, res, next) => {
     .catch((err) => {
       // in this case we are sending the error handling to the error handling middleware that is defined in the error handling file
       // you can just as easily run the res.status that is commented out below
-      next(err);
-      // return res.status(500).render("login", { errorMessage: err.message });
+      // next(err);
+      return res.status(500).render("login", { errorMessage: err.message });
     });
 });
 
