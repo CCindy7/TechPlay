@@ -5,7 +5,7 @@ const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
 
 router.get("/user", isLoggedIn, (req, res) => {
-    User.findById(res.session.user._id)
+    User.findById(req.session.user._id)
       .then(function (userFromDb) {
           res.status(200).json(userFromDb);
       })
@@ -13,7 +13,7 @@ router.get("/user", isLoggedIn, (req, res) => {
 })
 
 router.put("/user", isLoggedIn, (req, res) => {
-    User.findByIdAndUpdate(res.session.user._id)
+    User.findByIdAndUpdate(req.session.user._id, req.body, {new:true})
       .then(function (userFromDb) {
           res.status(200).json(userFromDb);
       })
