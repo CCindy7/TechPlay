@@ -1,20 +1,27 @@
 const router = require("express").Router();
 const mongoose = require("mongoose");
 const Question = require("../models/Question.model");
+const isLoggedOut = require("../middleware/isLoggedOut");
+const isLoggedIn = require("../middleware/isLoggedIn");
 
-router.get("/question", isLoggedIn, (req, res) => {
-    const query = {}
-    if (req.query.category) {
-        query.category = req.query.qcategory
-    }
-    if (req.query.difficulty) {
-        query.difficulty = req.query.qdifficulty
-    }
-
-    Question.find(questionFromDb)
+router.get("/question/category&difficulty", isLoggedIn, (req, res) => {
+    
+    Question.find({category:req.query.category})
       .then(function (questionFromDb) {
-          res.status(200).json(questionFromDb);
+        Question.find({difficulty:req.query.difficulty})
+        .then(function (qualifiedQuestionFromDb) {
+            res.status(200).json(qualifiedQuestionFromDb);
+        })
+        .catch(error => {res.json(error)})
       })
       .catch(error => {res.json(error)})
+
 })
+
+router.post("/solution/:question_id", isLoggedIn, (req, res) => {
+    if(req.body.propositions === req.body.solution) {
+        
+    }
+})
+
 module.exports = router;
