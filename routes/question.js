@@ -4,24 +4,35 @@ const Question = require("../models/Question.model");
 const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
 
-router.get("/question/category&difficulty", isLoggedIn, (req, res) => {
+router.get("/question", isLoggedIn, (req, res) => {
+
+    const cat = req.query.category || 'JS'
+    const dif = req.query.difficulty || 1 //valeur par défaut
     
-    Question.find({category:req.query.category})
+    Question.find({category: cat, difficulty: dif})
       .then(function (questionFromDb) {
-        Question.find({difficulty:req.query.difficulty})
-        .then(function (qualifiedQuestionFromDb) {
-            res.status(200).json(qualifiedQuestionFromDb);
+        res.status(200).json(questionFromDb);
         })
         .catch(error => {res.json(error)})
-      })
-      .catch(error => {res.json(error)})
-
 })
 
 router.post("/solution/:question_id", isLoggedIn, (req, res) => {
-    if(req.body.propositions === req.body.solution) {
-        
-    }
+
+    //const {response} = req.body
+
+    Question.findById(req.params.question_id)
+        .then(questionFromDb => {
+           if(questionFromDb.solution === req.body.response) {
+            res.status(200).json(questionFromDb); //passer correct_answer dans modèle Answer ?
+           } else {
+               return res.status(400).json(questionFromDb)
+           }
+           res.status(200).json(questionFromDb);
+        })
+        .catch(error => {res.json(error)})
+    // retrouver la question depuis la BDD qui porte l'id question_id transmis en route.params
+    // comparer que la solution retrouvée depuis la bdd = celle du req.body.response
+    
 })
 
 module.exports = router;

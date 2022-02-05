@@ -13,7 +13,7 @@ router.get("/user", isLoggedIn, (req, res) => {
 })
 
 router.put("/user", isLoggedIn, (req, res) => {
-    User.findByIdAndUpdate(req.session.user._id, req.body, {new:true})
+    User.findByIdAndUpdate(req.session.user._id, {username: req.body.username}, {new:true})
       .then(function (userFromDb) {
           res.status(200).json(userFromDb);
       })
