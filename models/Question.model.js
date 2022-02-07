@@ -2,7 +2,6 @@ const { Schema, model } = require("mongoose");
 
 const questionSchema = new Schema(
   {
-    user_id: "",
     title: {
         type: String, 
         required: true,
@@ -12,8 +11,8 @@ const questionSchema = new Schema(
         type: [String], 
         required: true
     },
-    solution : {
-        type: Number,
+    solution : { 
+        type: Number, //index parmi array de strings de propositions
         required: true
     }, 
     category: {
@@ -27,7 +26,7 @@ const questionSchema = new Schema(
     }
   },
     {
-        // this second object adds extra properties: `createdAt` and `updatedAt`
+        // `createdAt` et `updatedAt`
         timestamps: true,
     }
 );

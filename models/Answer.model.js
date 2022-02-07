@@ -2,22 +2,19 @@ const { Schema, model } = require("mongoose");
 
 const answerSchema = new Schema(
   {
-    user_id: "",
-    question_id: {
-        type: String,
-        required: true, 
-        unique: true
-    },
-    correct_answer : {
-        type: Boolean,
-        required: true,
-        unique: true
+    user_id: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+    question_id: { type: Schema.Types.ObjectId, ref: 'Question', required: true },
+    correct_answer: {
+      type: Boolean,
+      default: false,
+      required: true,
+      unique: true
     }
   },
-    {
-        // this second object adds extra properties: `createdAt` and `updatedAt`
-        timestamps: true,
-    }
+  {
+    // `createdAt` et `updatedAt`
+    timestamps: true,
+  }
 );
     
 const Answer = model("Answer", answerSchema);

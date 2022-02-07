@@ -5,7 +5,7 @@ module.exports = (req, res, next) => {
     return res
       .status(401)
       .json({
-        errorMessage: "You should not be logged in to make this request",
+        errorMessage: "Vous êtes déjà connecté.",
       });
   }
   next();

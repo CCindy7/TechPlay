@@ -14,27 +14,30 @@ const User = require("../models/User.model");
 const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
 
-router.get("/loggedin", (req, res) => {
-  res.json(req.user);
-});
+
+// ######  ####  ######   ##    ## ##     ## ########  
+// ##    ##  ##  ##    ##  ###   ## ##     ## ##     ## 
+// ##        ##  ##        ####  ## ##     ## ##     ## 
+//  ######   ##  ##   #### ## ## ## ##     ## ########  
+//       ##  ##  ##    ##  ##  #### ##     ## ##        
+// ##    ##  ##  ##    ##  ##   ### ##     ## ##        
+//  ######  ####  ######   ##    ##  #######  ##        
 
 router.post("/signup", isLoggedOut, (req, res) => {
   const { username, email, password, confirmation } = req.body;
 
-  if (!username) {
+  // Validation de tous les champs
+  if (!username || ! email) {
     return res
-      .status(401)
-      .json({ errorMessage: "Veuillez entrer votre prénom." });
+      .status(400)
+      .json({ errorMessage: "Merci de compléter tous les champs" });
+  } else if (!password || ! confirmation) {
+    return res
+      .status(400)
+      .json({ errorMessage: "Merci de compléter tous les champs" });
   }
 
-  // if (password.length < 8) {
-  //   return res.status(400).json({
-  //     errorMessage: "Your password needs to be at least 8 characters long.",
-  //   });
-  // }
-
-  //   ! This use case is using a regular expression to control for special characters and min length
-
+  // Validation mot de passe fort (expression régulière)
   const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
 
   if (!regex.test(password)) {
@@ -46,15 +49,15 @@ router.post("/signup", isLoggedOut, (req, res) => {
   
   if (password !== confirmation) {
     return res
-      .status(401)
+      .status(400)
       .json({ errorMessage: "Les mots de passe ne sont pas identiques." });
   }
 
-  // Search the database for a user with the username submitted in the form
-  User.findOne({ username }).then((found) => {
-    // If the user is found, send the message username is taken
+  // Search the database for a user with the email submitted in the form
+  User.findOne({ email }).then((found) => {
+    // If the user is found, send the message email is taken
     if (found) {
-      return res.status(400).json({ errorMessage: "Ce nom d'utilisateur n'est pas disponible." });
+      return res.status(400).json({ errorMessage: "Il y a déjà un compte associé à cet email." });
     }
 
     // if user is not found, create a new user - start with hashing the password
@@ -81,7 +84,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
         if (error.code === 11000) {
           return res.status(400).json({
             errorMessage:
-              "Ce nom d'utilisateur n'existe pas.",
+              "Aucun compte n'est associé à cet email.",
           });
         }
         return res.status(500).json({ errorMessage: error.message });
@@ -89,17 +92,25 @@ router.post("/signup", isLoggedOut, (req, res) => {
   });
 });
 
+// ##        #######   ######   #### ##    ## 
+// ##       ##     ## ##    ##   ##  ###   ## 
+// ##       ##     ## ##         ##  ####  ## 
+// ##       ##     ## ##   ####  ##  ## ## ## 
+// ##       ##     ## ##    ##   ##  ##  #### 
+// ##       ##     ## ##    ##   ##  ##   ### 
+// ########  #######   ######   #### ##    ## 
+
 router.post("/login", isLoggedOut, (req, res, next) => {
   const { email, password } = req.body;
 
-  if (!email) {
+  // Validation de tous les champs
+  if (!email || !password) {
     return res
       .status(400)
-      .json({ errorMessage: "Veuillez entrer votre email." });
+      .json({ errorMessage: "Merci de compléter tous les champs." });
   }
 
-  // Here we use the same logic as above
-  // we check the strength of a password
+  // Validation mot de passe fort (expression régulière)
   const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
 
   if (!regex.test(password)) {
@@ -113,35 +124,52 @@ router.post("/login", isLoggedOut, (req, res, next) => {
     .then((user) => {
       // If the user isn't found, send the message that user provided wrong credentials
       if (!user) {
-        return res.status(400).json({ errorMessage: "L'email est incorrect." });
+        return res.status(403).json({ errorMessage: "L'email est incorrect." });
       }
 
       // If user is found based on the email, check if the in putted password matches the one saved in the database
       bcrypt.compare(password, user.password).then((isSamePassword) => {
         if (!isSamePassword) {
-          return res.status(400).json({ errorMessage: "Le mot de passe est incorrect." });
+          return res.status(403).json({ errorMessage: "Le mot de passe est incorrect." });
         }
         req.session.user = user;
         // req.session.user = user._id; // ! better and safer but in this case we saving the entire user object
-        return res.json(user);
+        return res.status(201).json(user);
       });
     })
 
     .catch((err) => {
-      // in this case we are sending the error handling to the error handling middleware that is defined in the error handling file
-      // you can just as easily run the res.status that is commented out below
-      // next(err);
       return res.status(500).render("login", { errorMessage: err.message });
     });
 });
+
+// ##        #######   ######    #######  ##     ## ######## 
+// ##       ##     ## ##    ##  ##     ## ##     ##    ##    
+// ##       ##     ## ##        ##     ## ##     ##    ##    
+// ##       ##     ## ##   #### ##     ## ##     ##    ##    
+// ##       ##     ## ##    ##  ##     ## ##     ##    ##    
+// ##       ##     ## ##    ##  ##     ## ##     ##    ##    
+// ########  #######   ######    #######   #######     ##    
 
 router.get("/logout", isLoggedIn, (req, res) => {
   req.session.destroy((err) => {
     if (err) {
       return res.status(500).json({ errorMessage: err.message });
     }
-    res.json({ message: "Done" });
+    res.status(200).json({ message: "Vous êtes déconnecté." });
   });
+});
+
+// ##        #######   ######    ######   ######## ########  #### ##    ## 
+// ##       ##     ## ##    ##  ##    ##  ##       ##     ##  ##  ###   ## 
+// ##       ##     ## ##        ##        ##       ##     ##  ##  ####  ## 
+// ##       ##     ## ##   #### ##   #### ######   ##     ##  ##  ## ## ## 
+// ##       ##     ## ##    ##  ##    ##  ##       ##     ##  ##  ##  #### 
+// ##       ##     ## ##    ##  ##    ##  ##       ##     ##  ##  ##   ### 
+// ########  #######   ######    ######   ######## ########  #### ##    ## 
+
+router.get("/loggedin", (req, res) => {
+  res.status(200).json(req.user);
 });
 
 module.exports = router;

@@ -9,14 +9,14 @@ const userSchema = new Schema(
     password: String,
     email: {
       type: String,
-      match:  [/^\S+@\S+\.\S+$/, 'Please enter a valid email.'], // Validation
+      match:  [/^\S+@\S+\.\S+$/, 'Merci de rentrer un email valide'], // Validation
       unique: true,
       lowercase: true,
       trim: true,
     },
   },
   {
-    // this second object adds extra properties: `createdAt` and `updatedAt`
+    // `createdAt` et `updatedAt`
     timestamps: true,
   }
 );
