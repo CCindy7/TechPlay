@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-
 const service = axios.create({
 baseURL: `http://localhost:5000/api`,
 withCredentials: true
@@ -35,11 +34,3 @@ return service.get('/logout', {})
     .then(response => response.data)
 }
 export {logout}
-
-function edit(username) {
-return service.put('/user', {
-    username,
-})
-    .then(response => response.data)
-}
-export {edit}
