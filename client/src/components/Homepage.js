@@ -9,9 +9,9 @@ class Homepage extends Component {
               <h1>&lt; TECH PLAY /&gt;</h1>
               <h3>Réussir vos entretiens techniques n'a jamais été aussi simple !</h3>
               <p>Créez votre compte et commencez à vous entraîner.</p>
-              <Link to="/signup">S'enregistrer</Link>
-              <Link to="/login">Se connecter</Link>
-              <Link to="/example">Voir un exemple</Link>
+              <Link className="btn" to="/signup">S'enregistrer</Link>
+              <Link className="btn" to="/login">Se connecter</Link>
+              <Link className="btn" to="/example">Voir un exemple</Link>
             </div>
         )
     }

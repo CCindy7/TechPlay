@@ -1,0 +1,26 @@
+body {
+    background-color: #F4DC2C;
+}
+
+h1 {
+    color: #FF7040;
+    font-weight: bold;
+}
+
+h3, p {
+    color: #3248DA;
+    margin-left: 10%;
+    margin-right: 10%
+}
+
+.btn {
+    display:inline-block;
+    background:#3248DA;
+    color: white;
+    padding:.85em 4em;
+    border-radius:30px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 5%;
+  }
