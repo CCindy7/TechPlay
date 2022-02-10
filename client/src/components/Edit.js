@@ -20,13 +20,13 @@ class Edit extends Component {
     event.preventDefault(); // empêche soumission du formulaire et rafraichissement de la page
     edit(this.props.user._id,this.state.username) 
     .then((response)=> {
-        this.setState({ // remet à zéro le formulaire
-          username:""
-        })
-        this.props.getUser(response);
-        this.props.history.push('/profile');
+      this.setState({ // remet à zéro le formulaire
+        username:""
       })
-      .catch(err => console.log(err))
+      this.props.getUser(response);
+      this.props.history.push('/profile');
+    })
+    .catch(err => console.log(err))
       
   }
 
@@ -44,7 +44,7 @@ class Edit extends Component {
 
   
         <form onSubmit={this.handleSubmit}>
-          <label>Modifier mon nom d'utilisateur</label>
+          <label>Modifier mon nom d'utilisateur :</label>
           <input type="text" name="username" value={this.state.username} onChange={event => this.handleChange(event)} />
 
           <button>Mettre à jour</button>

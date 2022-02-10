@@ -169,7 +169,13 @@ router.get("/logout", isLoggedIn, (req, res) => {
 // ########  #######   ######    ######   ######## ########  #### ##    ## 
 
 router.get("/loggedin", (req, res) => {
-  res.status(200).json(req.user);
+  User.findOne({user: req.session.user})
+    .then(newUser => {
+      res.status(200).json(newUser);
+    })
+    .catch((err) => {
+      return res.status(500).json({ errorMessage: err.message })
+    })
 });
 
 module.exports = router;
