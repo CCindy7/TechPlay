@@ -34,3 +34,8 @@ return service.get('/logout', {})
     .then(response => response.data)
 }
 export {logout}
+
+function edit(id, username) {
+    return service.put(`/edit/${id}`, {username}).then(response => response.data)
+}
+export {edit}
