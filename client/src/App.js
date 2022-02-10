@@ -7,6 +7,7 @@ import Login from './components/auth/Login';
 import Profile from './components/Profile';
 import {loggedin} from './components/auth/auth-service';
 import Edit from './components/Edit';
+import Navbar from './components/Navbar';
 
 class App extends Component {
   state = {
@@ -37,10 +38,13 @@ class App extends Component {
         <div className="App">
           <Switch>
             <Route exact path="/" render={()=>(<Homepage user={this.state.user}/>)} />
-            <Route path="/signup" render={(props)=>(<Signup getUser={this.getUser} history={props.history}/>)} />
-            <Route path="/login" render={(props)=>(<Login getUser={this.getUser} history={props.history}/>)} />
-            <Route path="/profile" render={(props)=>(<Profile user={this.state.user} getUser={this.getUser} history={props.history}/>)} />
-            <Route path="/edit/:id" render={(props)=>(<Edit user={this.state.user} getUser={this.getUser} history={props.history}/>)} />
+            <>
+              <Route path="/signup" render={(props)=>(<Signup getUser={this.getUser} history={props.history}/>)} />
+              <Route path="/login" render={(props)=>(<Login getUser={this.getUser} history={props.history}/>)} />
+              <Route path="/profile" render={(props)=>(<Profile user={this.state.user} getUser={this.getUser} history={props.history}/>)} />
+              <Route path="/edit/:id" render={(props)=>(<Edit user={this.state.user} getUser={this.getUser} history={props.history}/>)} />
+              <Navbar user={this.state.user} />
+            </>
           </Switch> 
         </div>
       )}/>

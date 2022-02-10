@@ -1,23 +1,33 @@
 import React, { Component }  from 'react';
-import axios from 'axios';
+import {edit, logout} from './auth/auth-service';
+import {Redirect} from 'react-router-dom';
 import './style/Edit.css';
 
 class Edit extends Component {
   state = {
-    username: this.props.user.username
+    username: this.props.user.username,
+  }
+
+  logout = (event) => {
+    logout()
+      .then(response => {
+        this.props.getUser(false);
+      })
+    ;
   }
 
   handleSubmit = (event) => {
     event.preventDefault(); // empêche soumission du formulaire et rafraichissement de la page
-    axios.put(`http://localhost:5000/api/edit/${this.props.user._id}`, {username: this.state.username}, {withCredentials:true})
-      .then((response)=> {
+    edit(this.props.user._id,this.state.username) 
+    .then((response)=> {
         this.setState({ // remet à zéro le formulaire
           username:""
         })
-        this.props.getUser(response.data);
+        this.props.getUser(response);
         this.props.history.push('/profile');
       })
       .catch(err => console.log(err))
+      
   }
 
   handleChange = (event) => {
@@ -26,15 +36,21 @@ class Edit extends Component {
   }
 
   render() {
+    if(this.props.user === false) return <Redirect to="/"/>
+
     return(
       <div> 
-        <h1>Mes informations</h1>
+        <h1>Mon compte</h1>
+
+  
         <form onSubmit={this.handleSubmit}>
-          <label>Nom d'utilisateur</label>
+          <label>Modifier mon nom d'utilisateur</label>
           <input type="text" name="username" value={this.state.username} onChange={event => this.handleChange(event)} />
 
           <button>Mettre à jour</button>
         </form>
+        <br/>
+        <button onClick={this.logout}>Logout</button>
       </div>
     )
   }

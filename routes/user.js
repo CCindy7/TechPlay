@@ -27,10 +27,14 @@ router.get("/user", isLoggedIn, (req, res) => {
 // ##     ## ##        ##     ## ##     ##    ##    ##          ##     ## ##    ## ##       ##    ##  ##   ### ##     ## ##     ## ##       
 //  #######  ##        ########  ##     ##    ##    ########     #######   ######  ######## ##     ## ##    ## ##     ## ##     ## ######## 
 
-router.put("/user", isLoggedIn, (req, res) => {
-    User.findByIdAndUpdate(req.session.user._id, {username: req.body.username}, {new:true})
-      .then(userFromDb => {
-        res.status(200).json(userFromDb);
+router.put("/edit/:id", isLoggedIn, (req, res) => {
+  if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+    res.status(400).json({ message: 'Specified id is not valid' });
+    return;
+  }
+    User.findByIdAndUpdate(req.params.id, {username: req.body.username}, {new:true})
+      .then(user => {
+        res.status(200).json(user);
       })
       .catch(error => {res.json(error)})
 })
