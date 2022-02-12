@@ -1,7 +1,7 @@
 import React, { Component }  from 'react';
-import '../style/Signup.css';
 import {signup} from './auth-service';
 import {Link} from 'react-router-dom';
+import '../style/Signup.css';
 
 class Signup extends Component {
   state = {

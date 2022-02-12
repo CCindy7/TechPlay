@@ -6,8 +6,13 @@ const service = axios.create({
     })
 export default service;
 
-function question(category, difficulty) {
-    return service.get(`/question?${category}&${difficulty}`, {category, difficulty})
+function question(category, number, difficulty) {
+    return service.get(`/question`, {params: {category, number, difficulty}})
         .then(response => response.data)
     }
 export {question}
+
+function solution(questionId){
+    return service.post(`/solution/${questionId}`)
+}
+export {solution}

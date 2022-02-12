@@ -50,7 +50,7 @@ class Edit extends Component {
           <button>Mettre à jour</button>
         </form>
         <br/>
-        <button onClick={this.logout}>Logout</button>
+        <button onClick={this.logout}>Me déconnecter</button>
       </div>
     )
   }
