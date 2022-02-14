@@ -1,16 +1,33 @@
-body {
+.homepage {
     background-color: #F4DC2C;
+    min-height: 100vh;
+    display:flex; align-items:center; justify-content:center;
+    flex-direction: column;
+    text-align: center;
+    font-family: 'Balsamiq Sans', cursive;
+    font-family: 'Nunito Sans', sans-serif;
 }
 
-h1 {
+.homepage > h1 {
     color: #FF7040;
     font-weight: bold;
+    font-size: 2.5rem;
+    margin-bottom: 2%;
 }
 
-h3, p {
+.homepage > h3 {
     color: #3248DA;
     margin-left: 10%;
-    margin-right: 10%
+    margin-right: 10%;
+    font-size: 1.4rem;
+    margin-bottom: 1%;
+}
+.homepage > p {
+    color: #3248DA;
+    margin-left: 10%;
+    margin-right: 10%;
+    font-size: 1.1rem;
+    margin-bottom: 1%;
 }
 
 .btn {
@@ -22,5 +39,5 @@ h3, p {
     font-weight: bold;
     text-align: center;
     text-decoration: none;
-    margin-top: 5%;
+    margin-top: 2%;
   }

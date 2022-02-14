@@ -32,14 +32,6 @@ class Question extends Component {
         )   
     }
 
-    handleCorrectAnswer = () => {
-        if(this.state.response === this.state.solution) {
-            this.setState({correct_answer:true}, () => {
-            console.log("correct_answer1",this.state.correct_answer)
-            })
-        }
-    }
-
     handleNext= ()=>{ 
         if(this.state.currentQuestionIndex === this.state.questions.lenght - 1) {
             <Redirect to="/result" />;
