@@ -2,6 +2,7 @@ import React, { Component }  from 'react';
 import {signup} from './auth-service';
 import {Link} from 'react-router-dom';
 import '../style/Signup.css';
+import 'bulma/css/bulma.css';
 
 class Signup extends Component {
   state = {
@@ -34,24 +35,60 @@ class Signup extends Component {
 
   render() {
     return(
-      <div> 
+      <div className="signup"> 
         <h1>S'enregistrer</h1>
         <form onSubmit={this.handleSubmit}>
-          <label>Nom d'utilisateur</label>
-          <input type="text" name="username" value={this.state.username} onChange={event => this.handleChange(event)} />
+          <div className="field">
+            <label className="label">Nom d'utilisateur</label>
+            <div className="control has-icons-left has-icons-right">
+              <input className="input" type="text" placeholder="Cindy C." name="username" value={this.state.username} onChange={event => this.handleChange(event)}/>
+              <span className="icon is-medium is-left">
+                <i className="fas user"></i>
+              </span>
+            </div>
+          </div>
 
-          <label>Email</label>
-          <input type="text" name="email" value={this.state.email} onChange={event => this.handleChange(event)} />
+          <div className="field">
+            <label className="label">Email</label>
+            <div className="control has-icons-left has-icons-right">
+              <input className="input" type="email" placeholder="cindy@gmail.com" name="email" value={this.state.email} onChange={event => this.handleChange(event)}/>
+              <span className="icon is-medium is-left">
+                <i className="fas envelope"></i>
+              </span>
+            </div>
+          </div>
 
-          <label>Mot de passe</label>
-          <input type="password" name="password" value={this.state.password} onChange={event => this.handleChange(event)} />
+          <div className="field">
+            <label className="label">Mot de passe</label>
+            <div className="control has-icons-left has-icons-right">
+              <input className="input" type="password" placeholder="************" name="password" value={this.state.password} onChange={event => this.handleChange(event)} />
+              <span className="icon is-medium is-left">
+                <i className="fas lock"></i>
+              </span>
+            </div>
+          </div>
 
-          <label>Confirmez votre mot de passe</label>
-          <input type="password" name="confirmation" value={this.state.confirmation} onChange={event => this.handleChange(event)} />
-          
-          <button>Créer mon compte</button>
+          <div className="field">
+            <label className="label">Confirmez votre mot de passe</label>
+            <div className="control has-icons-left has-icons-right">
+              <input className="input" type="password" placeholder="************" name="confirmation" value={this.state.confirmation} onChange={event => this.handleChange(event)} />
+              <span className="icon is-medium is-left">
+                <i className="fas lock"></i>
+              </span>
+            </div>
+          </div>
+
+          <div className="field is-grouped">
+            <div className="control">
+              <button className="button is-link">Créer mon compte</button>
+            </div>
+            <div className="control">
+              <button className="button is-link is-light">Cancel</button>
+            </div>
+          </div>
+        
         </form>
-
+        
         <p>En m'enregistrant, je reconnais avoir pris connaissance des <Link to="/termsandconditions">termes et conditions</Link>  de TechPlay</p>
         
         <Link to="/login">J'ai déjà un compte</Link>
