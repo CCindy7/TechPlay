@@ -4,15 +4,21 @@ const userSchema = new Schema(
   {
     username: {
       type: String,
-      unique: true
+      unique: true,
+      required: [true, 'Merci de compléter tous les champs.']
     },
-    password: String,
-    email: {
+    password: {
+      type: String,
+      match:[/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/, 'Votre mot de passe doit contenir au moins 8 charactères, un nombre, une minuscule et une majuscule.'],
+      required:[true, 'Merci de compléter tous les champs.']
+    },
+      email: {
       type: String,
       match:  [/^\S+@\S+\.\S+$/, 'Merci de rentrer un email valide'], // Validation
       unique: true,
       lowercase: true,
       trim: true,
+      required:[true, 'Merci de compléter tous les champs.']
     },
   },
   {

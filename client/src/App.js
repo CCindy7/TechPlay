@@ -10,14 +10,12 @@ import Navbar from './components/Navbar';
 import Edit from './components/Edit';
 import Choices from './components/questions/Choices';
 import Question from './components/questions/Question';
-import { question } from './components/questions/question-service';
 import Result from './components/questions/Result';
 
 class App extends Component {
   // state loggedInUser sans valeur au départ
   state = { 
-    user: {},
-    questions:[] 
+    user: {}, 
   } 
 
   // retrouver user connecté dès que composant App est monté
@@ -31,24 +29,12 @@ class App extends Component {
     }
   }
 
-  fetchQuestions() {
-    question()
-      .then(data => this.setState({questions: data}))
-      .catch(err =>this.setState({questions: null}))
-  }
-
   getUser =(data) => {
     this.setState({user:data})
   }
 
-  getQuestion = (data) => {
-    this.setState({questions:data})
-    console.log('question.data', data)
-  }
-
   componentDidMount() {
     this.fetchUser();
-    this.fetchQuestions();
   }
 
   render() {
@@ -76,16 +62,16 @@ class App extends Component {
                 <Edit user={this.state.user} getUser={this.getUser} history={props.history}/>
               )} />
 
-              <Route path="/questions" render={(props)=>(
-                <Choices user={this.state.user} getUser={this.getUser} getQuestion={this.getQuestion} history={props.history} />
+              <Route exact path="/questions" render={(props)=>(
+                <Choices user={this.state.user} getUser={this.getUser} history={props.history} />
               )} />
 
-              <Route exact path="/question&:category?&:number?&:difficulty?" render={(props)=>(
-                <Question user={this.state.user} getUser={this.getUser} questions={this.state.questions} getQuestion={this.getQuestion} history={props.history}/>
+              <Route path="/question" render={(props)=>(
+                <Question user={this.state.user} getUser={this.getUser} history={props.history} />
               )} />
 
               <Route path="/result" render={(props)=>(
-                <Result user={this.state.user} getUser={this.getUser} questions={this.state.questions} getQuestion={this.getQuestion} history={props.history}/>
+                <Result user={this.state.user} getUser={this.getUser} history={props.history}/>
               )} />
 
               <Navbar user={this.state.user} />

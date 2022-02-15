@@ -6,9 +6,7 @@ const answerSchema = new Schema(
     question_id: { type: Schema.Types.ObjectId, ref: 'Question', required: true },
     correct_answer: {
       type: Boolean,
-      default: false,
       required: true,
-      unique: true
     }
   },
   {

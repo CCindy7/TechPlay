@@ -16,12 +16,13 @@ const questionSchema = new Schema(
         required: true
     }, 
     category: {
-        type: [String], 
+        type: [String],
         required: true, 
     }, 
     difficulty : {
         type: Number,
         enum :[1, 2, 3], 
+        default: 1,
         required: true
     }
   },

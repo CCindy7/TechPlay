@@ -15,35 +15,19 @@ const categories = [
   'React'
 ];
 
-const numbers = [
-  'Question aléatoire',
-  'Toutes les questions'
-];
-
-const difficulties = [
-  1,
-  2,
-  3
-]
+//vérifier enum ?
+const difficulties = [1, 2, 3]
 
 class Choices extends Component {
   state={
     category : 'HTML', // Valeur par défaut si user ne fait pas de choix
-    number:'Toutes les questions',
-    difficulty:'1', 
+    difficulty:1, 
+    question: {}
   }
-    
+
   chooseCat = (event) => {
     this.setState(
       {category: [event.target.name]}, () => {
-        console.log(this.state)
-      }
-    );
-  }
-    
-  chooseNb = (event) => {
-    this.setState(
-      {number: [event.target.name]}, () => {
         console.log(this.state)
       }
     );
@@ -59,18 +43,20 @@ class Choices extends Component {
 
   handleSubmit = () => {
     const category= this.state.category;
-    const number= this.state.number;
     const difficulty= this.state.difficulty;
-    question(category, number, difficulty)
+    question(category, difficulty)
       .then(response => {
         this.setState({
           question: response
         })
-        this.props.getQuestion(response)
-        this.props.history.push(`/question&category=${category}&number=${number}&difficulty=${difficulty}`)
+        this.props.history.push({
+          pathname: '/question',
+          search: `?category=${category}&difficulty=${difficulty}`,
+          state: {question: response}
+        })
       })
   }
-   
+
   render() {
     return(
       <div>  
@@ -85,15 +71,6 @@ class Choices extends Component {
           )
         })}
 
-        <h3>Je choisis mon nombre de question(s) :</h3>
-        {numbers.map((nb, index) => {
-          return(
-            <label key={index}>
-            <input type="text" value={nb} name={nb} onClick={event => this.chooseNb(event)} readOnly/>
-            </label>
-          )
-        })}
-
         <h3>Je choisis le niveau de difficulté :</h3>
         {difficulties.map((dif, index) => {
           return(
@@ -103,7 +80,7 @@ class Choices extends Component {
           )
         })}
 
-        <button onClick={this.handleSubmit}>C'est parti</button>
+        <button onClick={()=> this.handleSubmit()}>C'est parti</button>
 
       </div>
     )

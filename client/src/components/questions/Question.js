@@ -1,113 +1,106 @@
 import React, { Component }  from 'react';
-import { solution } from './question-service';
-import {Redirect} from 'react-router-dom';
+import { question, solution } from './question-service';
+// import {Redirect} from 'react-router-dom';
 import '../style/Question.css';
 
 class Question extends Component {
     state={
-        currentQuestionIndex:0,
-        questions : this.props.questions,
-        response:null,
-        solution:null,
+        question:this.props.history.location.state.question, // récupère la question de Choices (composant précédent)
+        userResponse: '',
+        solution: '',
         correct_answer: false,
-        isClicked: false,
-    }
-    
-    componentDidMount(){
-        this.fetchAnswer();
-    }
-
-    fetchAnswer= () => {
-        solution(this.props.questions[this.state.currentQuestionIndex]._id)
-          .then(data => this.setState({solution: data.data.solution, correct_answer:data.data.correct_answer}, console.log('data', data)))
-          .catch(err => this.setState({solution: null}))
-       
     }
 
     handleClick= (index) => {
+        // réponse de 'user'
         this.setState(
-            {response: index, isClicked: true}, () => {
-               console.log('reponse', index) 
-            }
-        )   
+            {userResponse: index},() => {
+                console.log('userResponse:', this.state.userResponse);
+                console.log('this.state.question:', this.state.question)
+                //compare réponse et solution et crée Answer en DB
+                // PB à résoudre : crée Answer en DB 1 seule fois pour true and false
+                solution(this.state.question._id, this.state.userResponse, this.state)
+                .then(data => {this.setState({
+                    correct_answer: data.correct_answer,
+                    solution: data.solution
+                }
+                )})  
+            }) 
     }
 
-    handleCorrectAnswer = () => {
-        if(this.state.response === this.state.solution) {
-            this.setState({correct_answer:true}, () => {
-            console.log("correct_answer1",this.state.correct_answer)
-            })
+    // background color 
+    handleColors = (index) => {
+        // si réponse user n'est pas correcte => background color = wrong = red
+        if (this.state.userResponse === index && this.state.userResponse !== this.state.solution) {
+            return "wrong"
+        
+        // sinon afficher la bonne réponse en vert 
+        } else if (index === this.state.solution) {
+            return "right"
         }
     }
 
-    handleNext= ()=>{ 
-        if(this.state.currentQuestionIndex === this.state.questions.lenght - 1) {
-            <Redirect to="/result" />;
-            return;
-        }
-        this.setState({
-            currentQuestionIndex : this.state.currentQuestionIndex +1
-        })  
+    // passage à la question suivante
+    // TODO A vérifier + empêcher répétition
+    handleNext = () => {
+        //récupérer category et difficulty choisies au composant précédent (Choices)
+        const category = this.props.history.location.state.question.category;
+        const difficulty = this.props.history.location.state.question.difficulty;
+        // rechercher une nouvelle question en fonction de la même catégorie et de la même difficulté
+        question(category, difficulty)
+            .then(data => {this.setState({
+                question: data, 
+                // réinitialiser userResponse à vide pour update le disabled
+                userResponse: '', 
+                }, () => {
+                console.log('data', data)
+            })})
     }
-    
-     //TODO
+            
+    // // TODO
     // handleQuit = () => {
     //     return <Redirect to="/result" />
     // }
 
     render(){
-        const {questions, currentQuestionIndex} = this.state
-        // console.log('this.state.questions', this.state.questions)
-        
-        if(this.props.questions[currentQuestionIndex] === undefined) {
-            return <Redirect to="/result" />
-        }
-        
-        const {category, difficulty, title, propositions, solution} = questions[currentQuestionIndex]
-        
+        const {question} = this.state
+        // console.log('this.state.question', question)
+        const {category, difficulty, title, propositions} = question
         
         return(
+            
             <div>
-                <h1>Question N°{currentQuestionIndex +1}</h1>
+                <h1>Question N° ?</h1>
 
                 <div>
-                <h2>Mes choix</h2>
-                <input type="image" src="" alt={category} name={category} />
-                <input type="image" src="" alt={difficulty} name={difficulty}/>
+                    <h2>Mes choix :</h2>
+                    <input type="image" src="" alt={category} name={category} />
+                    <input type="image" src="" alt={difficulty} name={difficulty}/>
                 </div>
 
-                 <div>
-                <h3>{title}</h3>
-                
-                {propositions.map((proposition, index) => {
-                    let btn = this.state.correct_answer ? "right" :"wrong"
-                    console.log('correct_answer2', this.state.correct_answer)
-                    return (
-                        <div key={index}>
-                        
-                         <button 
-                          onClick={() => this.handleClick(index)}
-                        //   style={{
-                        //     // backgroundColor: this.state.correct_answer ? "red" : "blue"
+                <div>
+                    <h3>{title}</h3>
+                    <div>
+                        {propositions.map((proposition, index) => (
+                            <button 
+                            className={`${this.state.userResponse !=='' && this.handleColors(index)}`} // style backgroundColor si userResponse n'est pas vide
+                            key={index}
+                            onClick={() => this.handleClick(index)}
+                            //désactiver boutons des propositions si réponse n'est pas vide // 1 seule réponse possible
+                            disabled={this.state.userResponse !== ''}
+                            >
+                            {proposition} 
+                            </button>    
                             
-                        //   }}
-                        className={btn}
-                         >
-                          {proposition} 
-                         </button>
-                        
-                        </div>
-                    )   
-                })}
-
-                <button onClick={()=> this.handleNext()}>Je valide</button>
+                        ))}
+                    </div>  
                 </div>
-                <button onClick={()=> this.handleQuit()}>J'arrête</button>
+                <button onClick={(event)=> this.handleNext(event)}>Question suivante</button>
+                <button onClick={(event)=> this.handleQuit(event)}>J'arrête</button>
             </div>
         )
             
     }
 }
-
 
 export default Question;

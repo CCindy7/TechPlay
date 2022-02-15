@@ -13,7 +13,6 @@ class Edit extends Component {
       .then(response => {
         this.props.getUser(false);
       })
-    ;
   }
 
   handleSubmit = (event) => {
