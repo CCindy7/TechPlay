@@ -1,3 +1,8 @@
 img {
     width: 20px;
 }
+
+.navbar {
+    display: flex;
+    justify-content: space-evenly;
+}

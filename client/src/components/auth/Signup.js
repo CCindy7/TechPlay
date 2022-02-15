@@ -43,7 +43,7 @@ class Signup extends Component {
             <div className="control has-icons-left has-icons-right">
               <input className="input" type="text" placeholder="Cindy C." name="username" value={this.state.username} onChange={event => this.handleChange(event)}/>
               <span className="icon is-medium is-left">
-                <i className="fas user"></i>
+                <i className="fa-solid fa-user"></i>
               </span>
             </div>
           </div>
@@ -51,9 +51,9 @@ class Signup extends Component {
           <div className="field">
             <label className="label">Email</label>
             <div className="control has-icons-left has-icons-right">
-              <input className="input" type="email" placeholder="cindy@gmail.com" name="email" value={this.state.email} onChange={event => this.handleChange(event)}/>
+              <input className="input" type="text" placeholder="cindy@gmail.com" name="email" value={this.state.email} onChange={event => this.handleChange(event)}/>
               <span className="icon is-medium is-left">
-                <i className="fas envelope"></i>
+                <i className="fa-solid fa-envelope"></i>
               </span>
             </div>
           </div>
@@ -63,7 +63,7 @@ class Signup extends Component {
             <div className="control has-icons-left has-icons-right">
               <input className="input" type="password" placeholder="************" name="password" value={this.state.password} onChange={event => this.handleChange(event)} />
               <span className="icon is-medium is-left">
-                <i className="fas lock"></i>
+                <i className="fa-solid fa-lock"></i>
               </span>
             </div>
           </div>
@@ -73,7 +73,7 @@ class Signup extends Component {
             <div className="control has-icons-left has-icons-right">
               <input className="input" type="password" placeholder="************" name="confirmation" value={this.state.confirmation} onChange={event => this.handleChange(event)} />
               <span className="icon is-medium is-left">
-                <i className="fas lock"></i>
+                <i className="fa-solid fa-lock"></i>
               </span>
             </div>
           </div>

@@ -1,19 +1,8 @@
 html {
   --yellow: #F4DC2C;
-  --orange: #FF7040;
+  --orange: #ff7142;
   --darkblue: #3248DA;
   --green: #47CC49;
   --lightblue: #00CAF2;
 }
-
-/*.App {
-  min-height:100vh;
-  display:flex; align-items:center; justify-content:center;
-}
-
-body {
-  font-family: 'Balsamiq Sans', cursive;
-  font-family: 'Nunito Sans', sans-serif;
-  font: 14 px
-}*/
 

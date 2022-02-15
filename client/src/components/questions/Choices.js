@@ -1,6 +1,7 @@
 import React, { Component }  from 'react';
 import { question } from './question-service';
 import '../style/Choices.css'
+import 'bulma/css/bulma.css';
 
 //OK //changement de state sur du onclick / pas de formulaire
 //OK //button  = appel à axios qui passe infos sous forme de data au composant qui est la page suivante / qui recupéra les infos
@@ -59,27 +60,31 @@ class Choices extends Component {
 
   render() {
     return(
-      <div>  
-        <h1>Mes choix</h1>
+      <div className="choices">
 
-        <h3>Je choisis ma catégorie de question(s) :</h3>
-        {categories.map((cat, index) => {
-          return(
-            <label key={index}>
-            <input type="image" src="" alt={cat} name={cat} onClick={event => this.chooseCat(event)}/>
-            </label>
-          )
-        })}
+          <h1>Mes choix</h1>
 
-        <h3>Je choisis le niveau de difficulté :</h3>
-        {difficulties.map((dif, index) => {
-          return(
-            <label key={index}>
-            <input type="image" src="" alt={dif} name={dif} onClick={event => this.chooseDif(event)}/>
-            </label>
-          )
-        })}
+        <div className="box">
+          <h3>Je choisis ma catégorie de question(s) :</h3>
+          {categories.map((cat, index) => {
+            return(
+              <label key={index}>
+              <input type="image" src="" alt={cat} name={cat} onClick={event => this.chooseCat(event)}/>
+              </label>
+            )
+          })}
+        </div>
 
+        <div className="box">
+          <h3>Je choisis le niveau de difficulté :</h3>
+          {difficulties.map((dif, index) => {
+            return(
+              <label key={index}>
+              <input type="image" src="" alt={dif} name={dif} onClick={event => this.chooseDif(event)}/>
+              </label>
+            )
+          })}
+        </div>
         <button onClick={()=> this.handleSubmit()}>C'est parti</button>
 
       </div>

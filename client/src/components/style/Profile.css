@@ -1,0 +1,15 @@
+.profile {
+    min-height: 100vh;
+    display:flex; align-items:center; justify-content:center;
+    flex-direction: column;
+    font-family: 'Balsamiq Sans', cursive;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.profile > h1 {
+    color: #FF7040;
+    font-weight: bold;
+    font-size: 2.5rem;
+    margin-bottom: 2%;
+}
+

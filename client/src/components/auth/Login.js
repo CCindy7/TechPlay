@@ -2,6 +2,7 @@ import React, { Component }  from 'react';
 import {login} from './auth-service';
 import {Link} from 'react-router-dom';
 import '../style/Login.css';
+import 'bulma/css/bulma.css';
 
 class Login extends Component {
   state = {
@@ -30,16 +31,37 @@ class Login extends Component {
 
   render() {
     return(
-      <div> 
+      <div className="login"> 
         <h1>Se connecter</h1>
         <form onSubmit={this.handleSubmit}>
-          <label>Email</label>
-          <input type="text" name="email" value={this.state.email} onChange={event => this.handleChange(event)} />
+          <div className="field">
+            <label className="label">Email</label>
+            <div className="control has-icons-left has-icons-right">
+              <input className="input" type="text" name="email" value={this.state.email} onChange={event => this.handleChange(event)} />
+              <span className="icon is-medium is-left">
+                <i className="fa-solid fa-envelope"></i>
+              </span>
+            </div>
+          </div>
 
-          <label>Mot de passe</label>
-          <input type="password" name="password" value={this.state.password} onChange={event => this.handleChange(event)} />
+          <div className="field">
+            <label className="label">Mot de passe</label>
+            <div className="control has-icons-left has-icons-right">
+              <input className="input" type="password" name="password" value={this.state.password} onChange={event => this.handleChange(event)} />
+              <span className="icon is-medium is-left">
+                <i className="fa-solid fa-lock"></i>
+              </span>
+            </div>
+          </div>
 
-          <button>Me connecter</button>
+          <div className="field is-grouped">
+            <div className="control">
+              <button className="button is-link">Me connecter</button>
+            </div>
+            <div className="control">
+              <button className="button is-link is-light">Cancel</button>
+            </div>
+          </div>
         </form>
 
         <Link to="/signup">Pas encore de compte ?</Link>

@@ -5,10 +5,15 @@ import '../style/Question.css';
 
 class Question extends Component {
     state={
-        question:this.props.history.location.state.question, // récupère la question de Choices (composant précédent)
+        question:{}, // state va être la question en cours. Vide par défaut, le serveur va lui donner sa valeur
         userResponse: '',
         solution: '',
         correct_answer: false,
+    }
+
+    componentDidMount= () => {
+        //demander au serveur quelle question afficher (data/objet)
+        //màj state question
     }
 
     handleClick= (index) => {

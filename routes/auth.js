@@ -43,7 +43,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
   if (!regex.test(password)) {
     return res.status(400).json( {
       errorMessage:
-        "Votre mot de passe doit contenir au moins 8 charactères, un nombre, une minuscule et une majuscule.",
+        "Votre mot de passe doit contenir au moins 8 caractères, un nombre, une minuscule et une majuscule.",
     });
   }
   
