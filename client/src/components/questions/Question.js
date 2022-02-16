@@ -12,8 +12,23 @@ class Question extends Component {
     }
 
     componentDidMount= () => {
+        this.getQuestion();
+    }
+
+    getQuestion = () => {
+        //categorie et difficulté récupérés de Choices (composant précédent)
+        console.log(this.props.history.location.state.question.category);
+        console.log(this.props.history.location.state.question.difficulty);
         //demander au serveur quelle question afficher (data/objet)
-        //màj state question
+        question(`${this.props.history.location.state.question.category}`, `${this.props.history.location.state.question.difficulty}`)
+        .then(data => {
+            //màj state question
+            this.setState({
+            question: data
+            }, ()=> {
+                console.log('question:', this.state.question)
+            })
+        })
     }
 
     handleClick= (index) => {
@@ -24,7 +39,7 @@ class Question extends Component {
                 console.log('this.state.question:', this.state.question)
                 //compare réponse et solution et crée Answer en DB
                 // PB à résoudre : crée Answer en DB 1 seule fois pour true and false
-                solution(this.state.question._id, this.state.userResponse, this.state)
+                solution(this.state.question._id, this.state.userResponse)
                 .then(data => {this.setState({
                     correct_answer: data.correct_answer,
                     solution: data.solution
@@ -48,18 +63,11 @@ class Question extends Component {
     // passage à la question suivante
     // TODO A vérifier + empêcher répétition
     handleNext = () => {
-        //récupérer category et difficulty choisies au composant précédent (Choices)
-        const category = this.props.history.location.state.question.category;
-        const difficulty = this.props.history.location.state.question.difficulty;
-        // rechercher une nouvelle question en fonction de la même catégorie et de la même difficulté
-        question(category, difficulty)
-            .then(data => {this.setState({
-                question: data, 
-                // réinitialiser userResponse à vide pour update le disabled
-                userResponse: '', 
-                }, () => {
-                console.log('data', data)
-            })})
+        this.getQuestion()
+        // réinitialiser userResponse à vide pour update le disabled
+        this.setState({
+            userResponse:''
+        })
     }
             
     // // TODO
@@ -68,9 +76,10 @@ class Question extends Component {
     // }
 
     render(){
-        const {question} = this.state
-        // console.log('this.state.question', question)
+        const question = this.state.question
+        console.log('this.state.question', question)
         const {category, difficulty, title, propositions} = question
+        console.log('propositions:', propositions)
         
         return(
             
@@ -86,18 +95,20 @@ class Question extends Component {
                 <div>
                     <h3>{title}</h3>
                     <div>
-                        {propositions.map((proposition, index) => (
-                            <button 
-                            className={`${this.state.userResponse !=='' && this.handleColors(index)}`} // style backgroundColor si userResponse n'est pas vide
-                            key={index}
-                            onClick={() => this.handleClick(index)}
-                            //désactiver boutons des propositions si réponse n'est pas vide // 1 seule réponse possible
-                            disabled={this.state.userResponse !== ''}
-                            >
-                            {proposition} 
-                            </button>    
-                            
-                        ))}
+                        {propositions && propositions.map((proposition, index) => {
+                            return (
+                                <button 
+                                className={`${this.state.userResponse !=='' && this.handleColors(index)}`} // style backgroundColor si userResponse n'est pas vide
+                                key={index}
+                                onClick={() => this.handleClick(index)}
+                                //désactiver boutons des propositions si réponse n'est pas vide // 1 seule réponse possible
+                                disabled={this.state.userResponse !== ''}
+                                >
+                                {proposition} 
+                                </button> 
+                            )
+                        })}
+                    
                     </div>  
                 </div>
                 <button onClick={(event)=> this.handleNext(event)}>Question suivante</button>
