@@ -56,6 +56,7 @@ class Choices extends Component {
           state: {question: response}
         })
       })
+      .catch(err => this.setState({question: null}))
   }
 
   render() {

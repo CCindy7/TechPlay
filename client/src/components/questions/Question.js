@@ -1,6 +1,6 @@
 import React, { Component }  from 'react';
 import { question, solution } from './question-service';
-// import {Redirect} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 import '../style/Question.css';
 
 class Question extends Component {
@@ -19,6 +19,7 @@ class Question extends Component {
         //categorie et difficulté récupérés de Choices (composant précédent)
         console.log(this.props.history.location.state.question.category);
         console.log(this.props.history.location.state.question.difficulty);
+
         //demander au serveur quelle question afficher (data/objet)
         question(`${this.props.history.location.state.question.category}`, `${this.props.history.location.state.question.difficulty}`)
         .then(data => {
@@ -29,6 +30,7 @@ class Question extends Component {
                 console.log('question:', this.state.question)
             })
         })
+        .catch(err => this.setState({question: {}}))
     }
 
     handleClick= (index) => {
@@ -38,19 +40,17 @@ class Question extends Component {
                 console.log('userResponse:', this.state.userResponse);
                 console.log('this.state.question:', this.state.question)
                 //compare réponse et solution et crée Answer en DB
-                // PB à résoudre : crée Answer en DB 1 seule fois pour true and false
                 solution(this.state.question._id, this.state.userResponse)
                 .then(data => {this.setState({
                     correct_answer: data.correct_answer,
                     solution: data.solution
-                }
-                )})  
+                })}) 
+                .catch(err => this.setState({correct_answer: false, solution: ''})) 
             }) 
     }
 
     // background color 
     handleColors = (index) => {
-        // si réponse user n'est pas correcte => background color = wrong = red
         if (this.state.userResponse === index && this.state.userResponse !== this.state.solution) {
             return "wrong"
         
@@ -61,7 +61,7 @@ class Question extends Component {
     }
 
     // passage à la question suivante
-    // TODO A vérifier + empêcher répétition
+    // TODO empêcher répétition
     handleNext = () => {
         this.getQuestion()
         // réinitialiser userResponse à vide pour update le disabled
@@ -70,16 +70,15 @@ class Question extends Component {
         })
     }
             
-    // // TODO
-    // handleQuit = () => {
-    //     return <Redirect to="/result" />
-    // }
+    // arrête l'entraînement
+    handleQuit = () => {
+        this.props.history.push('/result')
+    }
 
     render(){
         const question = this.state.question
         console.log('this.state.question', question)
         const {category, difficulty, title, propositions} = question
-        console.log('propositions:', propositions)
         
         return(
             

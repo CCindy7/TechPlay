@@ -14,15 +14,15 @@ class Profile extends Component {
         return(
             <div className="profile">
                 <h1>Bienvenue {this.props.user.username} !</h1>
-                <figure class="image is-128x128">
+                <figure className="image is-128x128">
                     <img src="/images/Q&A.png" alt="questionspic"/>
                 </figure>
                 <Link to='/questions'>Je commence</Link>
-                <figure class="image is-128x128">
+                <figure className="image is-128x128">
                     <img src="/images/target.png" alt="historypic"/>
                 </figure>
                 <Link to='/history'>Mon historique</Link>
-                <figure class="image is-128x128">
+                <figure className="image is-128x128">
                     <img src="/images/account.png" alt="editpic"/>
                 </figure>
                 <Link to={`/edit/${this.props.user._id}`}>Mes infos</Link>

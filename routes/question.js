@@ -19,7 +19,7 @@ router.get("/question", isLoggedIn, (req, res) => {
   Question.find({category: cat, difficulty: dif}, {solution:0})
     .then(questionFromDb => {
       const rand = Math.floor(Math.random() * questionFromDb.length)
-      res.status(200).json(questionFromDb[rand]);
+      return res.status(200).json(questionFromDb[rand]);
     })
     .catch(error => {res.json(error)})
 })
@@ -41,16 +41,17 @@ router.post("/solution/:question_id", isLoggedIn, (req, res) => {
       // console.log('solution: ', questionFromDb.solution)
       // console.log('userResponse : ', userResponse)
       // compare la solution de la question de la DB et celle de l'utilisateur
+      
       if (questionFromDb.solution === userResponse) {
         correct_answer = true;
-        Answer.create({user_id: req.session.user._id, question_id: req.params.question_id, correct_answer : correct_answer})
-          .then(res.status(200).json({correct_answer : correct_answer, solution : questionFromDb.solution}))
-          .catch(error => {res.json(error)})
+        Answer.create({user_id: req.session.user._id, question_id: req.params.question_id, correct_answer : correct_answer, solution: questionFromDb.solution})
+          .then(answer => res.status(201).json({answer, solution:questionFromDb.solution}))
+          .catch(error => {res.status(500).json({message: error.message})})
       } else {
         correct_answer = false;
-        Answer.create({user_id: req.session.user._id, question_id: req.params.question_id, correct_answer : correct_answer})
-          .then(res.status(200).json({correct_answer : correct_answer, solution : questionFromDb.solution}))
-          .catch(error => {res.json(error)})
+        Answer.create({user_id: req.session.user._id, question_id: req.params.question_id, correct_answer : correct_answer, solution:questionFromDb.solution})
+          .then(answer =>res.status(201).json({answer, solution:questionFromDb.solution}))
+          .catch(error => {res.json({message: error.message})})
       }        
     }).catch(error => {res.json(error)})  
 })
