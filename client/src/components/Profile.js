@@ -13,7 +13,10 @@ class Profile extends Component {
 
         return(
             <div className="profile">
-                <h1>Bienvenue {this.props.user.username} !</h1>
+                <div className="block-title-profile">
+                    <h1>Bienvenue {this.props.user.username} !</h1>
+                </div>
+                
                 <figure className="image is-128x128">
                     <img src="/images/Q&A.png" alt="questionspic"/>
                 </figure>

@@ -2,6 +2,7 @@ import React, { Component }  from 'react';
 import {edit, logout} from './auth/auth-service';
 import {Redirect} from 'react-router-dom';
 import './style/Edit.css';
+import 'bulma/css/bulma.css';
 
 class Edit extends Component {
   state = {
@@ -38,18 +39,33 @@ class Edit extends Component {
     if(this.props.user === false) return <Redirect to="/"/>
 
     return(
-      <div> 
-        <h1>Mon compte</h1>
+      <div className="edit-profile">
+        <div className="block-title-profile">
+          <h1>Mon compte</h1>
+        </div>
 
-  
-        <form onSubmit={this.handleSubmit}>
-          <label>Modifier mon nom d'utilisateur :</label>
-          <input type="text" name="username" value={this.state.username} onChange={event => this.handleChange(event)} />
+        <div className="block-form">
+          <form onSubmit={this.handleSubmit}>
+            <div className="field">
+              <label className="label">Modifier mon nom d'utilisateur :</label>
+              <div className="control has-icons-left has-icons-right">
+                <input className="input" type="text" name="username" value={this.state.username} onChange={event => this.handleChange(event)} />
+                <span className="icon is-medium is-left">
+                  <i className="fa-solid fa-user"></i>
+                </span>
+              </div>
+            </div>
 
-          <button>Mettre à jour</button>
-        </form>
-        <br/>
-        <button onClick={this.logout}>Me déconnecter</button>
+            <div className="field">
+              <div className="control">
+                <button className="button is-link">Mettre à jour</button>
+              </div>
+              <div className="control">
+                <button className="button is-link is-warning" onClick={this.logout}>Me déconnecter</button>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     )
   }
