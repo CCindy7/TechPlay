@@ -28,6 +28,16 @@ app.use('/api', userRoutes);
 const questionRoutes = require('./routes/question');
 app.use('/api', questionRoutes);
 
+// Serve static files from client/build folder
+app.use(express.static('client/build'));
+
+// For any other routes: serve client/build/index.html SPA
+app.use((req, res, next) => {
+  res.sendFile(`${__dirname}/client/build/index.html`, err => {
+    if (err) next(err)
+  })
+});
+
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
 
