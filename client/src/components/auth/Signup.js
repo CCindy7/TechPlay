@@ -35,58 +35,63 @@ class Signup extends Component {
 
   render() {
     return(
-      <div className="signup"> 
-        <h1>S'enregistrer</h1>
-        <form onSubmit={this.handleSubmit}>
-          <div className="field">
-            <label className="label">Nom d'utilisateur</label>
-            <div className="control has-icons-left has-icons-right">
-              <input className="input" type="text" name="username" value={this.state.username} onChange={event => this.handleChange(event)}/>
-              <span className="icon is-medium is-left">
-                <i className="fa-solid fa-user"></i>
-              </span>
-            </div>
-          </div>
+      <div className="signup">
+        <div className="block-title-auth">
+          <h1>S'enregistrer</h1>
+        </div>
 
-          <div className="field">
-            <label className="label">Email</label>
-            <div className="control has-icons-left has-icons-right">
-              <input className="input" type="text" name="email" value={this.state.email} onChange={event => this.handleChange(event)}/>
-              <span className="icon is-medium is-left">
-                <i className="fa-solid fa-envelope"></i>
-              </span>
+        <div className="block-form">
+          <form onSubmit={this.handleSubmit}>
+            <div className="field">
+              <label className="label">Nom d'utilisateur</label>
+              <div className="control has-icons-left has-icons-right">
+                <input className="input" type="text" name="username" value={this.state.username} onChange={event => this.handleChange(event)}/>
+                <span className="icon is-medium is-left">
+                  <i className="fa-solid fa-user"></i>
+                </span>
+              </div>
             </div>
-          </div>
 
-          <div className="field">
-            <label className="label">Mot de passe</label>
-            <div className="control has-icons-left has-icons-right">
-              <input className="input" type="password" name="password" value={this.state.password} onChange={event => this.handleChange(event)} />
-              <span className="icon is-medium is-left">
-                <i className="fa-solid fa-lock"></i>
-              </span>
+            <div className="field">
+              <label className="label">Email</label>
+              <div className="control has-icons-left has-icons-right">
+                <input className="input" type="text" name="email" value={this.state.email} onChange={event => this.handleChange(event)}/>
+                <span className="icon is-medium is-left">
+                  <i className="fa-solid fa-envelope"></i>
+                </span>
+              </div>
             </div>
-          </div>
 
-          <div className="field">
-            <label className="label">Confirmez votre mot de passe</label>
-            <div className="control has-icons-left has-icons-right">
-              <input className="input" type="password" name="confirmation" value={this.state.confirmation} onChange={event => this.handleChange(event)} />
-              <span className="icon is-medium is-left">
-                <i className="fa-solid fa-lock"></i>
-              </span>
+            <div className="field">
+              <label className="label">Mot de passe</label>
+              <div className="control has-icons-left has-icons-right">
+                <input className="input" type="password" name="password" value={this.state.password} onChange={event => this.handleChange(event)} />
+                <span className="icon is-medium is-left">
+                  <i className="fa-solid fa-lock"></i>
+                </span>
+              </div>
             </div>
-          </div>
 
-          <div className="field is-grouped">
-            <div className="control">
-              <button className="button is-link">Créer mon compte</button>
+            <div className="field">
+              <label className="label">Confirmez votre mot de passe</label>
+              <div className="control has-icons-left has-icons-right">
+                <input className="input" type="password" name="confirmation" value={this.state.confirmation} onChange={event => this.handleChange(event)} />
+                <span className="icon is-medium is-left">
+                  <i className="fa-solid fa-lock"></i>
+                </span>
+              </div>
             </div>
-            <div className="control">
-              <button className="button is-link is-light">Cancel</button>
+
+            <div className="field is-grouped">
+              <div className="control">
+                <button className="button is-link">Créer mon compte</button>
+              </div>
+              <div className="control">
+                <button className="button is-link is-light">Cancel</button>
+              </div>
             </div>
-          </div>
-      </form> 
+        </form> 
+      </div>
         <Link to="/login">J'ai déjà un compte</Link>
       </div>
     )

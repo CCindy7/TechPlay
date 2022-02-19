@@ -28,3 +28,20 @@
 .choices > div {
     display: flex;
 }
+
+.icon-category {
+    display: none;
+    position: absolute;
+    opacity:0;
+    width:0;
+    height:0;
+}
+
+.icon-category:checked + img {
+    background-color: green
+}
+
+img {
+    height: 100px;
+    width: 100px
+}

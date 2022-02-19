@@ -83,13 +83,27 @@ class Choices extends Component {
 
         <div className="box">
           <h3>Je choisis ma catégorie de question(s) :</h3>
-          {categories.map((cat, index) => {
-            return(
-              <label key={index}>
-              <input type="image" src="" alt={cat} name={cat} onClick={event => this.chooseCat(event)}/>
-              </label>
-            )
-          })}
+          <div>
+            <label>
+              <input className="icon-category" type="radio" value="HTML" name="HTML" onClick={event => this.chooseCat(event)} selected/>
+              <img src="/images/html icon.png" alt="HTML" />
+            </label>
+
+            <label>
+              <input className="icon-category" type="radio" value="JS" name="JS" onClick={event => this.chooseCat(event)} />
+              <img src="/images/javascript.png" alt="JS" />
+            </label>
+
+            <label>
+              <input className="icon-category" type="radio" value="CSS" name="CSS" onClick={event => this.chooseCat(event)} />
+              <img src="/images/css icon.png" alt="CSS" />
+            </label>
+
+            <label>
+              <input className="icon-category" type="radio" value="React" name="React" onClick={event => this.chooseCat(event)} />
+              <img src="/images/react icon.png" alt="React" />
+            </label>
+          </div>
         </div>
 
         <h3>Je choisis mon nombre de question(s) :</h3>
