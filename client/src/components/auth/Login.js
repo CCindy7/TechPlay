@@ -31,38 +31,43 @@ class Login extends Component {
 
   render() {
     return(
-      <div className="login"> 
-        <h1>Se connecter</h1>
-        <form onSubmit={this.handleSubmit}>
-          <div className="field">
-            <label className="label">Email</label>
-            <div className="control has-icons-left has-icons-right">
-              <input className="input" type="text" name="email" value={this.state.email} onChange={event => this.handleChange(event)} />
-              <span className="icon is-medium is-left">
-                <i className="fa-solid fa-envelope"></i>
-              </span>
-            </div>
-          </div>
+      <div className="login">
+        <div className="block-title-auth">
+          <h1>Se connecter</h1>
+        </div>
 
-          <div className="field">
-            <label className="label">Mot de passe</label>
-            <div className="control has-icons-left has-icons-right">
-              <input className="input" type="password" name="password" value={this.state.password} onChange={event => this.handleChange(event)} />
-              <span className="icon is-medium is-left">
-                <i className="fa-solid fa-lock"></i>
-              </span>
+        <div className="block-form">
+          <form onSubmit={this.handleSubmit}>
+            <div className="field">
+              <label className="label">Email</label>
+              <div className="control has-icons-left has-icons-right">
+                <input className="input" type="text" name="email" value={this.state.email} onChange={event => this.handleChange(event)} />
+                <span className="icon is-medium is-left">
+                  <i className="fa-solid fa-envelope"></i>
+                </span>
+              </div>
             </div>
-          </div>
 
-          <div className="field is-grouped">
-            <div className="control">
-              <button className="button is-link">Me connecter</button>
+            <div className="field">
+              <label className="label">Mot de passe</label>
+              <div className="control has-icons-left has-icons-right">
+                <input className="input" type="password" name="password" value={this.state.password} onChange={event => this.handleChange(event)} />
+                <span className="icon is-medium is-left">
+                  <i className="fa-solid fa-lock"></i>
+                </span>
+              </div>
             </div>
-            <div className="control">
-              <button className="button is-link is-light">Cancel</button>
+
+            <div className="field is-grouped">
+              <div className="control">
+                <button className="button is-link">Me connecter</button>
+              </div>
+              <div className="control">
+                <button className="button is-link is-light">Cancel</button>
+              </div>
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
 
         <Link to="/signup">Pas encore de compte ?</Link>
       </div>

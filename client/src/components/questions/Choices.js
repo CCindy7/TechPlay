@@ -76,8 +76,10 @@ class Choices extends Component {
   render() {
     return(
       <div className="choices">
-
+        
+        <div className="block-title-question">
           <h1>Mes choix</h1>
+        </div>
 
         <div className="box">
           <h3>Je choisis ma catégorie de question(s) :</h3>
