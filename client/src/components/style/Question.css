@@ -5,3 +5,10 @@
 .wrong{
     background-color: red;
 }
+
+.questionInput{
+    position: absolute;
+    opacity:0;
+    width:0;
+    height:0;
+}

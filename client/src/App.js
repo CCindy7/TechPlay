@@ -11,6 +11,7 @@ import Edit from './components/Edit';
 import Choices from './components/questions/Choices';
 import Question from './components/questions/Question';
 import Result from './components/questions/Result';
+import History from './components/History';
 
 class App extends Component {
   // state loggedInUser sans valeur au départ
@@ -72,6 +73,10 @@ class App extends Component {
 
               <Route path="/result" render={(props)=>(
                 <Result user={this.state.user} getUser={this.getUser} history={props.history}/>
+              )} />
+
+              <Route path="/history" render={(props)=>(
+                <History user={this.state.user} getUser={this.getUser} history={props.history}/>
               )} />
 
               <Navbar user={this.state.user} />

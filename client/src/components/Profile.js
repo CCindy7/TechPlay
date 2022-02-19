@@ -25,7 +25,7 @@ class Profile extends Component {
                 <figure className="image is-128x128">
                     <img src="/images/account.png" alt="editpic"/>
                 </figure>
-                <Link to={`/edit/${this.props.user._id}`}>Mes infos</Link>
+                <Link to={`/edit/${this.props.user._id}`}>Mon compte</Link>
             </div>
         )
     }

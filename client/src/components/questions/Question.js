@@ -1,14 +1,16 @@
 import React, { Component }  from 'react';
-import { question, solution } from './question-service';
-import {Redirect} from 'react-router-dom';
+import { question, solution} from './question-service';
 import '../style/Question.css';
 
 class Question extends Component {
     state={
-        question:{}, // state va être la question en cours. Vide par défaut, le serveur va lui donner sa valeur
+        question:{},
         userResponse: '',
         solution: '',
         correct_answer: false,
+        number: this.props.history.location.state.number,
+        isClicked: false,
+        nb_questions: 0,
     }
 
     componentDidMount= () => {
@@ -16,21 +18,16 @@ class Question extends Component {
     }
 
     getQuestion = () => {
-        //categorie et difficulté récupérés de Choices (composant précédent)
-        console.log(this.props.history.location.state.question.category);
-        console.log(this.props.history.location.state.question.difficulty);
-
-        //demander au serveur quelle question afficher (data/objet)
-        question(`${this.props.history.location.state.question.category}`, `${this.props.history.location.state.question.difficulty}`)
-        .then(data => {
-            //màj state question
-            this.setState({
-            question: data
-            }, ()=> {
-                console.log('question:', this.state.question)
+        //categorie et difficulté récupérées de Choices (composant précédent)
+        question(`${this.props.history.location.state.question.newQuestion.category}`, `${this.props.history.location.state.question.newQuestion.difficulty}`)
+            .then(data => {
+                this.setState({
+                question: data.newQuestion
+                }, ()=> {
+                    console.log('question:', this.state.question)
+                })
             })
-        })
-        .catch(err => this.setState({question: {}}))
+            .catch(err => this.setState({question: {}})) 
     }
 
     handleClick= (index) => {
@@ -43,52 +40,76 @@ class Question extends Component {
                 solution(this.state.question._id, this.state.userResponse)
                 .then(data => {this.setState({
                     correct_answer: data.correct_answer,
-                    solution: data.solution
+                    solution: data.solution,
+                    isClicked:true,
+                    nb_questions: this.state.nb_questions +1
                 })}) 
-                .catch(err => this.setState({correct_answer: false, solution: ''})) 
+                .catch(err => this.setState({correct_answer: false, solution:''})) 
             }) 
     }
 
-    // background color 
+    // gestion du background color en fonction de la réponse de 'user'
     handleColors = (index) => {
+        //si la réponse de 'user' est incorrect : wrong : background color red
         if (this.state.userResponse === index && this.state.userResponse !== this.state.solution) {
             return "wrong"
         
-        // sinon afficher la bonne réponse en vert 
+        // bonne réponse : right : background color green
         } else if (index === this.state.solution) {
             return "right"
         }
     }
 
     // passage à la question suivante
-    // TODO empêcher répétition
-    handleNext = () => {
-        this.getQuestion()
-        // réinitialiser userResponse à vide pour update le disabled
-        this.setState({
-            userResponse:''
-        })
+    handleNext = () => {    
+        //gestion de la dernière question : si n° Q° = nb total Q° et après la réponse => résultats
+        if(this.state.nb_questions === this.props.history.location.state.question.total && this.state.isClicked) {
+            return this.props.history.push("/result")
+        }
+
+        // Q° suivante
+        if (this.state.number === 'Toutes les questions') {
+            this.getQuestion()
+            // réinitialiser userResponse à vide pour update le disabled, et isClicked pour que les boutons apparaissent après le click
+            this.setState({
+                userResponse:'',
+                isClicked:false
+            })
+        } else {
+            // si Q° unique, pas de Q° suivante, mais retour aux choix
+            this.props.history.push('/questions')
+        }
     }
             
-    // arrête l'entraînement
+    // arrête l'entraînement => résultats
     handleQuit = () => {
         this.props.history.push('/result')
     }
 
     render(){
-        const question = this.state.question
-        console.log('this.state.question', question)
-        const {category, difficulty, title, propositions} = question
-        
+        const question = this.state.question;
+        const number = this.state.number;
+        const {category, difficulty, title, propositions} = question;
+        const {isClicked} = this.state;
+    
         return(
             
             <div>
-                <h1>Question N° ?</h1>
+                <h1>{number}</h1>
 
                 <div>
                     <h2>Mes choix :</h2>
-                    <input type="image" src="" alt={category} name={category} />
-                    <input type="image" src="" alt={difficulty} name={difficulty}/>
+                    <label>
+                        <input type="radio" name={category} className="questionInput"/>
+                        <img src="" alt={category}/>
+                    </label>
+
+                    <label>
+                        <input type="radio" name={difficulty} className="questionInput" />
+                        <img src="" alt={difficulty}/>
+                    </label>
+
+                    
                 </div>
 
                 <div>
@@ -102,6 +123,7 @@ class Question extends Component {
                                 onClick={() => this.handleClick(index)}
                                 //désactiver boutons des propositions si réponse n'est pas vide // 1 seule réponse possible
                                 disabled={this.state.userResponse !== ''}
+                                
                                 >
                                 {proposition} 
                                 </button> 
@@ -110,8 +132,10 @@ class Question extends Component {
                     
                     </div>  
                 </div>
-                <button onClick={(event)=> this.handleNext(event)}>Question suivante</button>
-                <button onClick={(event)=> this.handleQuit(event)}>J'arrête</button>
+                {(number === 'Question unique' && isClicked) ? <button onClick={(event)=> this.handleNext(event)}>Répondre à plus de questions</button>: ''}
+                {(number === 'Toutes les questions' && isClicked) ? <button onClick={(event)=> this.handleNext(event)}>Voir la suite</button>: ''}
+                {(number === 'Toutes les questions'&& isClicked) ? <button onClick={(event)=> this.handleQuit(event)}>J'arrête</button> : ''}
+                
             </div>
         )
             

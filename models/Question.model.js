@@ -16,7 +16,8 @@ const questionSchema = new Schema(
         required: true
     }, 
     category: {
-        type: [String],
+        type: String,
+        enum:['HTML', 'JS', 'CSS', 'React'],
         required: true, 
     }, 
     difficulty : {
@@ -24,6 +25,10 @@ const questionSchema = new Schema(
         enum :[1, 2, 3], 
         default: 1,
         required: true
+    },
+    number: {
+        type: String,
+        enum: ['Toutes les questions', 'Question unique']
     }
   },
     {

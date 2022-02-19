@@ -17,3 +17,9 @@ function solution(questionId, userResponse, correct_answer){
         .then(response => response.data)
 }
 export {solution}
+
+function history(){
+    return service.get(`/history`)
+      .then(response => response.data)
+}
+export {history}

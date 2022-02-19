@@ -41,7 +41,7 @@ class Signup extends Component {
           <div className="field">
             <label className="label">Nom d'utilisateur</label>
             <div className="control has-icons-left has-icons-right">
-              <input className="input" type="text" placeholder="Cindy C." name="username" value={this.state.username} onChange={event => this.handleChange(event)}/>
+              <input className="input" type="text" name="username" value={this.state.username} onChange={event => this.handleChange(event)}/>
               <span className="icon is-medium is-left">
                 <i className="fa-solid fa-user"></i>
               </span>
@@ -51,7 +51,7 @@ class Signup extends Component {
           <div className="field">
             <label className="label">Email</label>
             <div className="control has-icons-left has-icons-right">
-              <input className="input" type="text" placeholder="cindy@gmail.com" name="email" value={this.state.email} onChange={event => this.handleChange(event)}/>
+              <input className="input" type="text" name="email" value={this.state.email} onChange={event => this.handleChange(event)}/>
               <span className="icon is-medium is-left">
                 <i className="fa-solid fa-envelope"></i>
               </span>
@@ -61,7 +61,7 @@ class Signup extends Component {
           <div className="field">
             <label className="label">Mot de passe</label>
             <div className="control has-icons-left has-icons-right">
-              <input className="input" type="password" placeholder="************" name="password" value={this.state.password} onChange={event => this.handleChange(event)} />
+              <input className="input" type="password" name="password" value={this.state.password} onChange={event => this.handleChange(event)} />
               <span className="icon is-medium is-left">
                 <i className="fa-solid fa-lock"></i>
               </span>
@@ -71,7 +71,7 @@ class Signup extends Component {
           <div className="field">
             <label className="label">Confirmez votre mot de passe</label>
             <div className="control has-icons-left has-icons-right">
-              <input className="input" type="password" placeholder="************" name="confirmation" value={this.state.confirmation} onChange={event => this.handleChange(event)} />
+              <input className="input" type="password" name="confirmation" value={this.state.confirmation} onChange={event => this.handleChange(event)} />
               <span className="icon is-medium is-left">
                 <i className="fa-solid fa-lock"></i>
               </span>
@@ -88,8 +88,6 @@ class Signup extends Component {
           </div>
         
         </form>
-        
-        <p>En m'enregistrant, je reconnais avoir pris connaissance des <Link to="/termsandconditions">termes et conditions</Link>  de TechPlay</p>
         
         <Link to="/login">J'ai déjà un compte</Link>
       </div>

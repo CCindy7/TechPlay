@@ -1,5 +1,5 @@
 import React, { Component }  from 'react';
-import { question } from './question-service';
+import { question} from './question-service';
 import '../style/Choices.css'
 import 'bulma/css/bulma.css';
 
@@ -16,19 +16,24 @@ const categories = [
   'React'
 ];
 
-//vérifier enum ?
 const difficulties = [1, 2, 3]
+
+const numbers = [
+  'Question unique',
+  'Toutes les questions'
+];
 
 class Choices extends Component {
   state={
     category : 'HTML', // Valeur par défaut si user ne fait pas de choix
     difficulty:1, 
-    question: {}
+    number: 'Toutes les questions', 
+    question:{}
   }
 
   chooseCat = (event) => {
     this.setState(
-      {category: [event.target.name]}, () => {
+      {category: event.target.name}, () => {
         console.log(this.state)
       }
     );
@@ -36,7 +41,15 @@ class Choices extends Component {
 
   chooseDif = (event) => {
     this.setState(
-      {difficulty: [event.target.name]},  () => {
+      {difficulty: event.target.name},  () => {
+        console.log(this.state)
+      }
+    );
+  }
+
+  chooseNb = (event) => {
+    this.setState(
+      {number: event.target.name}, () => {
         console.log(this.state)
       }
     );
@@ -45,18 +58,19 @@ class Choices extends Component {
   handleSubmit = () => {
     const category= this.state.category;
     const difficulty= this.state.difficulty;
+    const number = this.state.number;
     question(category, difficulty)
-      .then(response => {
-        this.setState({
-          question: response
-        })
-        this.props.history.push({
-          pathname: '/question',
-          search: `?category=${category}&difficulty=${difficulty}`,
-          state: {question: response}
-        })
+    .then(response => {
+      this.setState({
+        question: response
       })
-      .catch(err => this.setState({question: null}))
+      this.props.history.push({
+        pathname: '/question',
+        search: `?category=${category}&difficulty=${difficulty}`,
+        state: {question: response, number: number}
+      })
+    })
+    .catch(err => this.setState({question: null}))
   }
 
   render() {
@@ -76,6 +90,15 @@ class Choices extends Component {
           })}
         </div>
 
+        <h3>Je choisis mon nombre de question(s) :</h3>
+        {numbers.map((nb, index) => {
+          return(
+            <label key={index}>
+            <input type="text" value={nb} name={nb} onClick={event => this.chooseNb(event)} readOnly/>
+            </label>
+          )
+        })}
+
         <div className="box">
           <h3>Je choisis le niveau de difficulté :</h3>
           {difficulties.map((dif, index) => {
@@ -86,7 +109,7 @@ class Choices extends Component {
             )
           })}
         </div>
-        <button onClick={()=> this.handleSubmit()}>C'est parti</button>
+        <button onClick={()=> this.handleSubmit()}>C'est parti !</button>
 
       </div>
     )
