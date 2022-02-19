@@ -94,10 +94,12 @@ class Question extends Component {
     
         return(
             
-            <div>
-                <h1>{number}</h1>
+            <div className="question">
+                <div className="block-title-question">
+                    <h1>{number}</h1>
+                </div>
 
-                <div>
+                <div className="choicesRemind">
                     <h2>Mes choix :</h2>
                     <label>
                         <input type="radio" name={category} className="questionInput"/>
@@ -108,11 +110,9 @@ class Question extends Component {
                         <input type="radio" name={difficulty} className="questionInput" />
                         <img src="" alt={difficulty}/>
                     </label>
-
-                    
                 </div>
 
-                <div>
+                <div className="questionModel">
                     <h3>{title}</h3>
                     <div>
                         {propositions && propositions.map((proposition, index) => {
@@ -129,7 +129,6 @@ class Question extends Component {
                                 </button> 
                             )
                         })}
-                    
                     </div>  
                 </div>
                 {(number === 'Question unique' && isClicked) ? <button onClick={(event)=> this.handleNext(event)}>Répondre à plus de questions</button>: ''}

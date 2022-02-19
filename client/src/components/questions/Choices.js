@@ -2,6 +2,11 @@ import React, { Component }  from 'react';
 import { question} from './question-service';
 import '../style/Choices.css'
 import 'bulma/css/bulma.css';
+import { SiHtml5 } from 'react-icons/si';
+import { SiJavascript } from 'react-icons/si';
+import { SiCsswizardry } from 'react-icons/si';
+import { SiReact } from 'react-icons/si';
+import { GiStrongMan } from 'react-icons/gi';
 
 //OK //changement de state sur du onclick / pas de formulaire
 //OK //button  = appel à axios qui passe infos sous forme de data au composant qui est la page suivante / qui recupéra les infos
@@ -33,9 +38,7 @@ class Choices extends Component {
 
   chooseCat = (event) => {
     this.setState(
-      {category: event.target.name}, () => {
-        console.log(this.state)
-      }
+      {category: event.target.name}
     );
   }
 
@@ -81,28 +84,33 @@ class Choices extends Component {
           <h1>Mes choix</h1>
         </div>
 
-        <div className="box">
-          <h3>Je choisis ma catégorie de question(s) :</h3>
-          <div>
-            <label>
-              <input className="icon-category" type="radio" value="HTML" name="HTML" onClick={event => this.chooseCat(event)} selected/>
-              <img src="/images/html icon.png" alt="HTML" />
-            </label>
+        <div className="category-box">
+          
+            <h3>Je choisis ma catégorie de question(s) :</h3>
+          
 
+          <div className="grid-box">
+            
+            <label>
+              <input className="icon-category" type="radio" value="HTML" name="HTML" onClick={event => this.chooseCat(event)}/>
+              <SiHtml5 className="outline-icon"/>
+            </label>
+            
             <label>
               <input className="icon-category" type="radio" value="JS" name="JS" onClick={event => this.chooseCat(event)} />
-              <img src="/images/javascript.png" alt="JS" />
+              <SiJavascript className="outline-icon"/>
             </label>
-
+                        
             <label>
               <input className="icon-category" type="radio" value="CSS" name="CSS" onClick={event => this.chooseCat(event)} />
-              <img src="/images/css icon.png" alt="CSS" />
+              <SiCsswizardry className="outline-icon"/>
             </label>
-
+            
             <label>
               <input className="icon-category" type="radio" value="React" name="React" onClick={event => this.chooseCat(event)} />
-              <img src="/images/react icon.png" alt="React" />
+              <SiReact className="outline-icon"/>
             </label>
+
           </div>
         </div>
 
@@ -115,16 +123,30 @@ class Choices extends Component {
           )
         })}
 
-        <div className="box">
+        <div>
           <h3>Je choisis le niveau de difficulté :</h3>
-          {difficulties.map((dif, index) => {
-            return(
-              <label key={index}>
-              <input type="image" src="" alt={dif} name={dif} onClick={event => this.chooseDif(event)}/>
-              </label>
-            )
-          })}
+          <div className="difficulty-box">
+            <label>
+              <input className="icon-difficulty" type="radio" value="1" name="1" onClick={event => this.chooseDif(event)} />
+              
+            </label>
+          </div>
+
+          <div className="difficulty-box">
+            <label>
+              <input className="icon-difficulty" type="radio" value="2" name="2" onClick={event => this.chooseDif(event)} />
+              
+            </label>
+          </div>
+
+          <div className="difficulty-box">
+            <label>
+              <input className="icon-difficulty" type="radio" value="3" name="3" onClick={event => this.chooseDif(event)} />
+              <GiStrongMan />
+            </label>
+          </div>          
         </div>
+
         <button onClick={()=> this.handleSubmit()}>C'est parti !</button>
 
       </div>

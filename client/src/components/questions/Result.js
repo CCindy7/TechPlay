@@ -34,13 +34,19 @@ class Result extends Component {
 
     render(){
       return(
-          <>
-              <h1>Nombre de questions</h1>
+          <div className="result">
+            <div className="block-title-question">
+                <h1>Mon résultat</h1>
+            </div>
+
+            <div>
+              <h3>Nombre de questions</h3>
               <p>{this.state.nb_questions}</p>
 
-              <h1>Nombre de bonnes réponses</h1>
+              <h3>Nombre de bonnes réponses</h3>
               <p>{this.state.nb_RightAnswers}</p>
-          </>
+            </div>
+          </div>
       )
     }
 }

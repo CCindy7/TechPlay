@@ -31,17 +31,33 @@
 
 .icon-category {
     display: none;
+}
+
+.category-box {
+    height: 200px;
+    margin-top: 5%;
+    flex-direction: column;
+    flex-wrap: wrap;
+    display: flex;
+    position: relative;
+}
+
+.category-box > h3 {
+    margin-top: 5%;
+}
+
+.grid-box {
+    width: 400px;
+    display: flex;
+    float:right;
+    margin-top: 25%;
     position: absolute;
-    opacity:0;
-    width:0;
-    height:0;
+    margin-left: 0; 
 }
 
-.icon-category:checked + img {
-    background-color: green
-}
-
-img {
-    height: 100px;
-    width: 100px
+.outline-icon {
+    width: 8vmin;
+    height: 6vmin;
+    margin-right: 10px;
+    margin-top: 10%;
 }
