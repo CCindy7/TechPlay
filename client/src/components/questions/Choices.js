@@ -6,7 +6,12 @@ import { SiHtml5 } from 'react-icons/si';
 import { SiJavascript } from 'react-icons/si';
 import { SiCsswizardry } from 'react-icons/si';
 import { SiReact } from 'react-icons/si';
-import { GiStrongMan } from 'react-icons/gi';
+import { FcLowBattery } from 'react-icons/fc';
+import { FcMiddleBattery } from 'react-icons/fc';
+import { FcHighBattery } from 'react-icons/fc';
+import { FcLowPriority } from 'react-icons/fc';
+import { FcMediumPriority } from 'react-icons/fc';
+import { FcHighPriority } from 'react-icons/fc';
 
 //OK //changement de state sur du onclick / pas de formulaire
 //OK //button  = appel à axios qui passe infos sous forme de data au composant qui est la page suivante / qui recupéra les infos
@@ -86,13 +91,12 @@ class Choices extends Component {
 
         <div className="category-box">
           
-            <h3>Je choisis ma catégorie de question(s) :</h3>
+          <h3>Je choisis ma catégorie de question(s) :</h3>
           
-
-          <div className="grid-box">
+          <div>
             
             <label>
-              <input className="icon-category" type="radio" value="HTML" name="HTML" onClick={event => this.chooseCat(event)}/>
+              <input className="icon-category" type="radio" value="HTML" name="HTML" onClick={event => this.chooseCat(event)} defaultChecked={true}/>
               <SiHtml5 className="outline-icon"/>
             </label>
             
@@ -114,40 +118,55 @@ class Choices extends Component {
           </div>
         </div>
 
-        <h3>Je choisis mon nombre de question(s) :</h3>
-        {numbers.map((nb, index) => {
-          return(
-            <label key={index}>
-            <input type="text" value={nb} name={nb} onClick={event => this.chooseNb(event)} readOnly/>
-            </label>
-          )
-        })}
 
-        <div>
-          <h3>Je choisis le niveau de difficulté :</h3>
-          <div className="difficulty-box">
+        <div className="number-box">
+
+          <h3>Je choisis mon nombre de question(s) :</h3>
+
+          <div className="control">
             <label>
-              <input className="icon-difficulty" type="radio" value="1" name="1" onClick={event => this.chooseDif(event)} />
-              
+              <input className="input is-info" type="text" value="Question unique" name="Question unique" onClick={event => this.chooseNb(event)} readOnly />
+            </label>
+          </div>
+          <div className="control">
+            <label>
+              <input className="input is-primary" type="text" value="Toutes les questions" name="Toutes les questions" onClick={event => this.chooseNb(event)} defaultChecked={true} readOnly />
             </label>
           </div>
 
-          <div className="difficulty-box">
-            <label>
-              <input className="icon-difficulty" type="radio" value="2" name="2" onClick={event => this.chooseDif(event)} />
-              
-            </label>
-          </div>
-
-          <div className="difficulty-box">
-            <label>
-              <input className="icon-difficulty" type="radio" value="3" name="3" onClick={event => this.chooseDif(event)} />
-              <GiStrongMan />
-            </label>
-          </div>          
         </div>
 
-        <button onClick={()=> this.handleSubmit()}>C'est parti !</button>
+
+        <div className="difficulty-box">
+          
+          <h3>Je choisis le niveau de difficulté :</h3>
+          
+          <div>
+
+            <label>
+              <input className="icon-difficulty" type="radio" value="1" name="1" onClick={event => this.chooseDif(event)} defaultChecked={true}/>
+              {/*<FcLowPriority className="outline-icon" />*/}
+              <FcLowBattery className="outline-icon" />
+            </label>
+            
+
+            <label>
+              <input className="icon-difficulty" type="radio" value="2" name="2" onClick={event => this.chooseDif(event)} />
+              {/*<FcMediumPriority className="outline-icon" />*/}
+              <FcMiddleBattery className="outline-icon" />
+            </label>
+            
+            <label>
+              <input className="icon-difficulty" type="radio" value="3" name="3" onClick={event => this.chooseDif(event)} />
+              {/*<FcHighPriority className="outline-icon" />*/}
+              <FcHighBattery className="outline-icon" />
+            </label>
+
+          </div>
+                
+        </div>
+
+        <button className="button is-link" onClick={()=> this.handleSubmit()}>C'est parti !</button>
 
       </div>
     )

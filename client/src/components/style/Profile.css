@@ -29,3 +29,10 @@
     display: flex;
 }
 
+.outline-icon-profile {
+    width: 10vmin;
+    height: 8vmin;
+    margin-right: 10px;
+    margin-top: 5%;
+}
+
