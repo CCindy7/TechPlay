@@ -1,6 +1,10 @@
 import React, { Component }  from 'react';
 import { question, solution} from './question-service';
 import '../style/Question.css';
+import { SiHtml5 } from 'react-icons/si';
+import { SiJavascript } from 'react-icons/si';
+import { SiCsswizardry } from 'react-icons/si';
+import { SiReact } from 'react-icons/si';
 
 class Question extends Component {
     state={
@@ -95,31 +99,32 @@ class Question extends Component {
                     <h1>{number}</h1>
                 </div>
 
-                <div className="choicesRemind">
-                    <h2>Mes choix :</h2>
-                    <label>
-                        <input type="radio" name={category} className="questionInput"/>
-                        <img src="" alt={category}/>
-                    </label>
+                <div className="question-container">
+                    <div className="choicesRemind">
+                        <h2>Mes choix :</h2>
+                        <label>
+                            <input type="radio" name={category} className="questionInput"/>
+                            <img src="" alt={category}/>
+                        </label>
 
-                    <label>
-                        <input type="radio" name={difficulty} className="questionInput" />
-                        <img src="" alt={difficulty}/>
-                    </label>
+                        <label>
+                            <input type="radio" name={difficulty} className="questionInput" />
+                            <img src="" alt={difficulty}/>
+                        </label>
+                    </div>
                 </div>
 
-                <div className="questionModel">
+                <div className="propositions-container">
                     <h3>{title}</h3>
-                    <div>
+                    <div className="proposition">
                         {propositions && propositions.map((proposition, index) => {
                             return (
-                                <button 
+                                <button id="btn-prop"
                                 className={`${this.state.userResponse !=='' && this.handleColors(index)}`} // style backgroundColor si userResponse n'est pas vide
                                 key={index}
                                 onClick={() => this.handleClick(index)}
                                 //désactiver boutons des propositions si réponse n'est pas vide // 1 seule réponse possible
                                 disabled={this.state.userResponse !== ''}
-                                
                                 >
                                 {proposition} 
                                 </button> 
@@ -127,10 +132,11 @@ class Question extends Component {
                         })}
                     </div>  
                 </div>
-                {(number === 'Question unique' && isClicked) ? <button onClick={(event)=> this.handleNext(event)}>Répondre à plus de questions</button>: ''}
-                {(number === 'Toutes les questions' && isClicked) ? <button onClick={(event)=> this.handleNext(event)}>Suivant</button>: ''}
-                {(number === 'Toutes les questions'&& isClicked) ? <button onClick={(event)=> this.handleQuit(event)}>Stop</button> : ''}
-                
+                <div className="button-box">
+                    {(number === 'Question unique' && isClicked) ? <button className="button is-link" onClick={(event)=> this.handleNext(event)}>Répondre à plus de questions</button>: ''}
+                    {(number === 'Toutes les questions' && isClicked) ? <button className="button is-link" onClick={(event)=> this.handleNext(event)}>Suivant</button>: ''}
+                    {(number === 'Toutes les questions'&& isClicked) ? <button className="button is-danger" onClick={(event)=> this.handleQuit(event)}>Stop</button> : ''}
+                </div>
             </div>
         )
             
