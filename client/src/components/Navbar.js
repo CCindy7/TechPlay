@@ -2,23 +2,27 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './style/Navbar.css';
 import 'bulma/css/bulma.css';
+import { RiAccountCircleFill } from 'react-icons/ri';
+import { RiQuestionAnswerFill } from 'react-icons/ri';
+import { IoHome } from 'react-icons/io5';
+
 
 const Navbar = (props) => {
   return (
-    <nav className="navbar is-expanded is-light is-fixed-bottom" role="navigation" aria-label="main navigation">
+    <nav className="navbar is-light is-fixed-bottom" role="navigation" aria-label="main navigation">
       {props.user ? (
         <div className="navbar-item">
           <a className="navbar-item" href="/questions">
-            <span className="icon is-small"><i className="fa-solid fa-circle-question"></i></span>
+            <RiQuestionAnswerFill />
           </a>
           <a className="navbar-item" href="/profile">
-            <span className="icon is-small"><i className="fa-solid fa-user"></i></span>
+            <RiAccountCircleFill />
           </a>
         </div>
       ) : (
         <div className="navbar-item">
           <a className="navbar-item" href="/">
-            <span className="icon is-small"><i className="fa-solid fa-home"></i></span>
+            <IoHome />
           </a>
         </div>
       )}

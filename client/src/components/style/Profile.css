@@ -4,6 +4,7 @@
     flex-direction: column;
     font-family: 'Balsamiq Sans', cursive;
     font-family: 'Nunito Sans', sans-serif;
+    gap: 6rem;
 }
 
 .block-title-profile {
@@ -29,10 +30,32 @@
     display: flex;
 }
 
-.outline-icon-profile {
-    width: 10vmin;
-    height: 8vmin;
-    margin-right: 10px;
-    margin-top: 5%;
+.profile-box {
+    flex-direction: column;
 }
 
+.outline-icon-profile {
+    width: 8vmin;
+    height: 6vmin;
+    margin-right: auto; margin-left: auto;
+    margin-top: 5%;
+    text-align: center;
+    margin-bottom: 7%;
+}
+
+@media (max-width: 400px) {
+    .block-title-profile > h1 {
+        width: 330px;
+        text-align: center;
+        white-space: normal;
+    }
+
+    .outline-icon-profile {
+        width: 16vmin;
+        height: 11vmin;
+    }
+
+    .profile {
+        gap: 3rem;
+    }
+}

@@ -38,7 +38,7 @@ class Choices extends Component {
     category : 'HTML', // Valeur par défaut si user ne fait pas de choix
     difficulty:1, 
     number: 'Toutes les questions', 
-    question:{}
+    question:{},
   }
 
   chooseCat = (event) => {
@@ -166,8 +166,9 @@ class Choices extends Component {
                 
         </div>
 
+        <div className="button-box">
         <button className="button is-link" onClick={()=> this.handleSubmit()}>C'est parti !</button>
-
+        </div>
       </div>
     )
   }

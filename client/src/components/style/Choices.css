@@ -4,6 +4,8 @@
     flex-direction: column;
     font-family: 'Balsamiq Sans', cursive;
     font-family: 'Nunito Sans', sans-serif;
+    gap: 1rem;
+    text-align: center;
 }
 
 .block-title-question {
@@ -32,17 +34,13 @@
 .icon-category,
 .icon-difficulty {
     display: none;
-
-    &:checked {
-    background-color: green;
-    }
 }
 
 .category-box,
 .difficulty-box,
 .number-box {
-    height: 150px;
-    margin-top: 2%;
+    height: 140px;
+    margin-top: 1.5%;
     flex-direction: column;
     flex-wrap: wrap;
     display: flex;
@@ -51,12 +49,17 @@
 }
 
 .category-box > h3 {
-    margin-top: 5%;
+    margin-top: 2%;
     text-align: center;
 }
 
+.category-box > div,
+.difficulty-box > div {
+    margin-top: auto; margin-bottom: auto;
+}
+
 .number-box > h3 {
-    margin-bottom: 5%
+    margin-bottom: 6%
 }
 
 .input {
@@ -67,6 +70,23 @@
     width: 8vmin;
     height: 6vmin;
     margin-right: 10px;
-    margin-top: 10%;
+    margin-top: auto; margin-bottom: auto;
     color: var(--lightblue);
+}
+
+.button-box {
+    height: 140px;
+    margin-top: auto; margin-bottom: auto;
+}
+
+@media (max-width: 400px) {
+    .outline-icon {
+        width: 16vmin;
+        height: 11vmin;
+    }
+
+    .category-box,
+    .difficulty-box {
+        height: 120px;
+    }
 }
