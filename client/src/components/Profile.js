@@ -27,27 +27,31 @@ class Profile extends Component {
                 <div className="block-title-profile">
                     <h1>Bienvenue {this.props.user.username} !</h1>
                 </div>
+
+                <div className="container-profile">
                 
-                <div className="profile-box">
-                {/*<RiQuestionAnswerFill className="outline-icon-profile" />*/}
-                <RiQuestionAnswerLine className="outline-icon-profile" />
-                {/*<FcFaq className="outline-icon-profile" />*/}
-                <Link to='/questions'>Je commence</Link>
-                </div>
-                
-                <div className="profile-box">
-                {/*<FaHistory className="outline-icon-profile" />*/}
-                <RiHistoryLine className="outline-icon-profile" />
-                {/*<FcPositiveDynamic className="outline-icon-profile" />*/}
-                {/*<FcRatings className="outline-icon-profile" />*/}
-                <Link to='/history'>Mon historique</Link>
-                </div>
-                
-                <div className="profile-box">
-                {/*<FaUserCog className="outline-icon-profile"/>*/}
-                <RiUserSettingsLine className="outline-icon-profile" />
-                {/*<FcServices className="outline-icon-profile"/>*/}
-                <Link to={`/edit/${this.props.user._id}`}>Mon compte</Link>
+                    <div className="profile-box">
+                        {/*<RiQuestionAnswerFill className="outline-icon-profile" />*/}
+                        <RiQuestionAnswerLine className="outline-icon-profile" />
+                        {/*<FcFaq className="outline-icon-profile" />*/}
+                        <Link to='/questions'>Je commence</Link>
+                    </div>
+                    
+                    <div className="profile-box">
+                        {/*<FaHistory className="outline-icon-profile" />*/}
+                        <RiHistoryLine className="outline-icon-profile" />
+                        {/*<FcPositiveDynamic className="outline-icon-profile" />*/}
+                        {/*<FcRatings className="outline-icon-profile" />*/}
+                        <Link to='/history'>Mon historique</Link>
+                    </div>
+                    
+                    <div className="profile-box">
+                        {/*<FaUserCog className="outline-icon-profile"/>*/}
+                        <RiUserSettingsLine className="outline-icon-profile" />
+                        {/*<FcServices className="outline-icon-profile"/>*/}
+                        <Link to={`/edit/${this.props.user._id}`}>Mon compte</Link>
+                    </div>
+
                 </div>
 
             </div>

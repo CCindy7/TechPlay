@@ -4,7 +4,7 @@
     flex-direction: column;
     font-family: 'Balsamiq Sans', cursive;
     font-family: 'Nunito Sans', sans-serif;
-    gap: 1rem;
+    gap: 2rem;
     text-align: center;
 }
 
@@ -36,16 +36,22 @@
     display: none;
 }
 
+.container-choices {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    height: 600px;
+}
+
 .category-box,
 .difficulty-box,
-.number-box {
-    height: 140px;
-    margin-top: 1.5%;
+.number-box,
+.button-box {
     flex-direction: column;
-    flex-wrap: wrap;
     display: flex;
-    position: relative;
-    margin-bottom: 0;
+    flex-grow: 1;
+    flex-wrap: wrap;
+    flex-basis: 33,33%;
 }
 
 .category-box > h3 {
@@ -62,6 +68,10 @@
     margin-bottom: 6%
 }
 
+.control {
+    display: block;
+}
+
 .input {
     margin-bottom: 5px;
 }
@@ -70,23 +80,78 @@
     width: 8vmin;
     height: 6vmin;
     margin-right: 10px;
-    margin-top: auto; margin-bottom: auto;
     color: var(--lightblue);
 }
 
 .button-box {
-    height: 140px;
+    display: block;
     margin-top: auto; margin-bottom: auto;
 }
 
 @media (max-width: 400px) {
-    .outline-icon {
-        width: 16vmin;
-        height: 11vmin;
+    .container-choices {
+        display: flex;
+        flex-direction: column;
+        height: 450px;
     }
 
-    .category-box,
-    .difficulty-box {
+    .outline-icon {
+        width: 14vmin;
+        height: 9vmin;
+    }
+
+    .category-box > div,
+    .difficulty-box > div {
+        margin-top: 7%; margin-bottom: 7%;
+    }
+
+    .choices {
+        gap: 0.5rem;
+    }
+}
+
+@media (min-height: 800px) {
+    .container-choices {
+        height: 620px;
+    }
+
+    .outline-icon {
+        width: 12vmin;
+        height: 7vmin;
+    }
+
+    .category-box > div,
+    .difficulty-box > div {
+        margin-top: 7%; margin-bottom: 5%;
+    }
+
+    .number-box {
         height: 120px;
+    }
+}
+
+@media (min-height: 1100px) {
+    .container-choices {
+        height: 900px;
+    }
+
+    .outline-icon {
+        width: 11vmin;
+        height: 7vmin;
+    }
+}
+
+@media (min-height: 1300px) {
+    .choices {
+        gap: 8rem;
+    }
+
+    .container-choices {
+        height: 1000px;
+    }
+
+    .outline-icon {
+        width: 11vmin;
+        height: 7vmin;
     }
 }

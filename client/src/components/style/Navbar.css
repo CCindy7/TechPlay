@@ -1,8 +1,18 @@
-img {
-    width: 20px;
+.navbar-icons {
+    color: rgb(82, 80, 80);
+    width: 3vmin;
+    height: 3vmin;
+    flex: 1 1 auto;
+}
+
+.navbar-item {
+    display: flex;
 }
 
 .navbar {
-    display: flex;
-    justify-content: space-evenly;
+    display: block;
+    text-align: center;
+    background-color: lightgray;
+    width: 100vw;
+    height: auto;
 }

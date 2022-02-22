@@ -9,19 +9,19 @@ import { IoHome } from 'react-icons/io5';
 
 const Navbar = (props) => {
   return (
-    <nav className="navbar is-light is-fixed-bottom" role="navigation" aria-label="main navigation">
+    <nav className="navbar is-fixed-bottom" role="navigation" aria-label="main navigation">
       {props.user ? (
         <div className="navbar-item">
-          <a className="navbar-item" href="/questions">
+          <a className="navbar-icons" href="/questions">
             <RiQuestionAnswerFill />
           </a>
-          <a className="navbar-item" href="/profile">
+          <a className="navbar-icons" href="/profile">
             <RiAccountCircleFill />
           </a>
         </div>
       ) : (
         <div className="navbar-item">
-          <a className="navbar-item" href="/">
+          <a className="navbar-icons" href="/">
             <IoHome />
           </a>
         </div>

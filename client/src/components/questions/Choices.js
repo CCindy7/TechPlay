@@ -89,86 +89,79 @@ class Choices extends Component {
           <h1>Mes choix</h1>
         </div>
 
-        <div className="category-box">
-          
-          <h3>Je choisis ma catégorie de question(s) :</h3>
-          
-          <div>
-            
-            <label>
-              <input className="icon-category" type="radio" value="HTML" name="HTML" onClick={event => this.chooseCat(event)} defaultChecked={true}/>
-              <SiHtml5 className="outline-icon"/>
-            </label>
-            
-            <label>
-              <input className="icon-category" type="radio" value="JS" name="JS" onClick={event => this.chooseCat(event)} />
-              <SiJavascript className="outline-icon"/>
-            </label>
-                        
-            <label>
-              <input className="icon-category" type="radio" value="CSS" name="CSS" onClick={event => this.chooseCat(event)} />
-              <SiCsswizardry className="outline-icon"/>
-            </label>
-            
-            <label>
-              <input className="icon-category" type="radio" value="React" name="React" onClick={event => this.chooseCat(event)} />
-              <SiReact className="outline-icon"/>
-            </label>
+        <div className="container-choices">
 
-          </div>
-        </div>
-
-
-        <div className="number-box">
-
-          <h3>Je choisis mon nombre de question(s) :</h3>
-
-          <div className="control">
-            <label>
-              <input className="input is-info" type="text" value="Question unique" name="Question unique" onClick={event => this.chooseNb(event)} readOnly />
-            </label>
-          </div>
-          <div className="control">
-            <label>
-              <input className="input is-primary" type="text" value="Toutes les questions" name="Toutes les questions" onClick={event => this.chooseNb(event)} defaultChecked={true} readOnly />
-            </label>
+          <div className="category-box">
+            <h3>Je choisis ma catégorie de question(s) :</h3>
+            <div>
+              <label>
+                <input className="icon-category" type="radio" value="HTML" name="HTML" onClick={event => this.chooseCat(event)} defaultChecked={true}/>
+                <SiHtml5 className="outline-icon"/>
+              </label>
+              
+              <label>
+                <input className="icon-category" type="radio" value="JS" name="JS" onClick={event => this.chooseCat(event)} />
+                <SiJavascript className="outline-icon"/>
+              </label>
+                          
+              <label>
+                <input className="icon-category" type="radio" value="CSS" name="CSS" onClick={event => this.chooseCat(event)} />
+                <SiCsswizardry className="outline-icon"/>
+              </label>
+              
+              <label>
+                <input className="icon-category" type="radio" value="React" name="React" onClick={event => this.chooseCat(event)} />
+                <SiReact className="outline-icon"/>
+              </label>
+            </div>
           </div>
 
-        </div>
 
-
-        <div className="difficulty-box">
-          
-          <h3>Je choisis le niveau de difficulté :</h3>
-          
-          <div>
-
-            <label>
-              <input className="icon-difficulty" type="radio" value="1" name="1" onClick={event => this.chooseDif(event)} defaultChecked={true}/>
-              {/*<FcLowPriority className="outline-icon" />*/}
-              <FcLowBattery className="outline-icon" />
-            </label>
-            
-
-            <label>
-              <input className="icon-difficulty" type="radio" value="2" name="2" onClick={event => this.chooseDif(event)} />
-              {/*<FcMediumPriority className="outline-icon" />*/}
-              <FcMiddleBattery className="outline-icon" />
-            </label>
-            
-            <label>
-              <input className="icon-difficulty" type="radio" value="3" name="3" onClick={event => this.chooseDif(event)} />
-              {/*<FcHighPriority className="outline-icon" />*/}
-              <FcHighBattery className="outline-icon" />
-            </label>
-
+          <div className="number-box">
+            <h3>Je choisis mon nombre de question(s) :</h3>
+            <div className="control">
+              <label>
+                <input className="input is-info" type="text" value="Question unique" name="Question unique" onClick={event => this.chooseNb(event)} readOnly />
+              </label>
+            </div>
+            <div className="control">
+              <label>
+                <input className="input is-primary" type="text" value="Toutes les questions" name="Toutes les questions" onClick={event => this.chooseNb(event)} defaultChecked={true} readOnly />
+              </label>
+            </div>
           </div>
-                
+
+
+          <div className="difficulty-box">            
+            <h3>Je choisis le niveau de difficulté :</h3>            
+            <div>
+              <label>
+                <input className="icon-difficulty" type="radio" value="1" name="1" onClick={event => this.chooseDif(event)} defaultChecked={true}/>
+                {/*<FcLowPriority className="outline-icon" />*/}
+                <FcLowBattery className="outline-icon" />
+              </label>
+              
+
+              <label>
+                <input className="icon-difficulty" type="radio" value="2" name="2" onClick={event => this.chooseDif(event)} />
+                {/*<FcMediumPriority className="outline-icon" />*/}
+                <FcMiddleBattery className="outline-icon" />
+              </label>
+              
+              <label>
+                <input className="icon-difficulty" type="radio" value="3" name="3" onClick={event => this.chooseDif(event)} />
+                {/*<FcHighPriority className="outline-icon" />*/}
+                <FcHighBattery className="outline-icon" />
+              </label>
+            </div>                  
+          </div>
+
+          <div className="button-box">
+            <button className="button is-link" onClick={()=> this.handleSubmit()}>C'est parti !</button>
+          </div>
+
         </div>
 
-        <div className="button-box">
-        <button className="button is-link" onClick={()=> this.handleSubmit()}>C'est parti !</button>
-        </div>
       </div>
     )
   }
