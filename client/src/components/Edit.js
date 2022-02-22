@@ -1,5 +1,5 @@
 import React, { Component }  from 'react';
-import {edit, logout} from './auth/auth-service';
+import {edit, logout, deleteProfile} from './auth/auth-service';
 import {Redirect} from 'react-router-dom';
 import './style/Edit.css';
 import 'bulma/css/bulma.css';
@@ -13,7 +13,16 @@ class Edit extends Component {
     logout()
       .then(response => {
         this.props.getUser(false);
+        this.props.history.push("/");
       })
+  }
+
+  deleteProfile= () => {
+    deleteProfile(this.props.user._id)
+    .then(response => {
+      this.props.getUser(null);
+      this.props.history.push("/")
+    })
   }
 
   handleSubmit = (event) => {
@@ -63,6 +72,7 @@ class Edit extends Component {
               <div className="control">
                 <button className="button is-link is-warning" onClick={this.logout}>Me déconnecter</button>
               </div>
+              <button onClick={this.deleteProfile}>Supprimer mon compte</button>
             </div>
           </form>
         </div>

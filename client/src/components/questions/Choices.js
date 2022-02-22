@@ -9,29 +9,15 @@ import { SiReact } from 'react-icons/si';
 import { FcLowBattery } from 'react-icons/fc';
 import { FcMiddleBattery } from 'react-icons/fc';
 import { FcHighBattery } from 'react-icons/fc';
-import { FcLowPriority } from 'react-icons/fc';
-import { FcMediumPriority } from 'react-icons/fc';
-import { FcHighPriority } from 'react-icons/fc';
+// import { FcLowPriority } from 'react-icons/fc';
+// import { FcMediumPriority } from 'react-icons/fc';
+// import { FcHighPriority } from 'react-icons/fc';
 
 //OK //changement de state sur du onclick / pas de formulaire
 //OK //button  = appel à axios qui passe infos sous forme de data au composant qui est la page suivante / qui recupéra les infos
 //OK valeur par défaut //si 3 states ne sont pas remplis, empêcher de passer à la suivante (alternative:choix par défaut)
 //OK //3 fonctions différentes de onclick
 // TODO CSS // highlighter les options sélectionnées
-
-const categories = [
-  'HTML',
-  'JS',
-  'CSS',
-  'React'
-];
-
-const difficulties = [1, 2, 3]
-
-const numbers = [
-  'Question unique',
-  'Toutes les questions'
-];
 
 class Choices extends Component {
   state={
@@ -49,17 +35,13 @@ class Choices extends Component {
 
   chooseDif = (event) => {
     this.setState(
-      {difficulty: event.target.name},  () => {
-        console.log(this.state)
-      }
+      {difficulty: event.target.name}
     );
   }
 
   chooseNb = (event) => {
     this.setState(
-      {number: event.target.name}, () => {
-        console.log(this.state)
-      }
+      {number: event.target.name}
     );
   }
 

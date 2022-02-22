@@ -23,8 +23,6 @@ class Question extends Component {
             .then(data => {
                 this.setState({
                 question: data.newQuestion
-                }, ()=> {
-                    console.log('question:', this.state.question)
                 })
             })
             .catch(err => this.setState({question: {}})) 
@@ -34,8 +32,6 @@ class Question extends Component {
         // réponse de 'user'
         this.setState(
             {userResponse: index},() => {
-                console.log('userResponse:', this.state.userResponse);
-                console.log('this.state.question:', this.state.question)
                 //compare réponse et solution et crée Answer en DB
                 solution(this.state.question._id, this.state.userResponse)
                 .then(data => {this.setState({
@@ -132,8 +128,8 @@ class Question extends Component {
                     </div>  
                 </div>
                 {(number === 'Question unique' && isClicked) ? <button onClick={(event)=> this.handleNext(event)}>Répondre à plus de questions</button>: ''}
-                {(number === 'Toutes les questions' && isClicked) ? <button onClick={(event)=> this.handleNext(event)}>Voir la suite</button>: ''}
-                {(number === 'Toutes les questions'&& isClicked) ? <button onClick={(event)=> this.handleQuit(event)}>J'arrête</button> : ''}
+                {(number === 'Toutes les questions' && isClicked) ? <button onClick={(event)=> this.handleNext(event)}>Suivant</button>: ''}
+                {(number === 'Toutes les questions'&& isClicked) ? <button onClick={(event)=> this.handleQuit(event)}>Stop</button> : ''}
                 
             </div>
         )

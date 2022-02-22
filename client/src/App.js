@@ -3,6 +3,7 @@ import React, { Component} from 'react';
 import { Switch, Route} from 'react-router-dom';
 import Homepage from "./components/Homepage";
 import Signup from './components/auth/Signup';
+import Example from "./components/questions/Example";
 import Login from './components/auth/Login';
 import {loggedin} from './components/auth/auth-service';
 import Profile from './components/Profile';
@@ -25,8 +26,6 @@ class App extends Component {
       loggedin()
         .then(data => this.setState({user: data}))
         .catch(err => this.setState({user: false}))
-    } else {
-      console.log('user already in the state')
     }
   }
 
@@ -47,6 +46,10 @@ class App extends Component {
               <Homepage user={this.state.user}/>
             )} />
             <>
+              <Route path="/example" render={(props)=>(
+                <Example history={props.history} />
+              )} />
+
               <Route path="/signup" render={(props)=>(
                 <Signup getUser={this.getUser} history={props.history}/>
               )} />

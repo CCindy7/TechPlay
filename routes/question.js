@@ -57,8 +57,6 @@ router.post("/solution/:question_id", isLoggedIn, (req, res) => {
   // retrouve la question qui correspond au :question_id
   Question.findById(req.params.question_id)
     .then(questionFromDb => {
-      // console.log('solution: ', questionFromDb.solution)
-      // console.log('userResponse : ', userResponse)
       // compare la solution de la question de la DB et celle de l'utilisateur
       
       if (questionFromDb.solution === userResponse) {

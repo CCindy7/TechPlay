@@ -8,6 +8,7 @@ class Login extends Component {
   state = {
     email:"",
     password:"",
+    errorMessage:''
   }
 
   handleSubmit = (event) => {
@@ -21,7 +22,9 @@ class Login extends Component {
         this.props.getUser(response);
         this.props.history.push('/profile');
       })
-      .catch(err => console.log(err))
+      .catch(err =>{
+        this.setState({errorMessage: err.response.data.message})
+      })
   }
 
   handleChange = (event) => {
@@ -70,6 +73,11 @@ class Login extends Component {
         </div>
 
         <Link to="/signup">Pas encore de compte ?</Link>
+        { this.state.errorMessage && (
+          <div className="error-message">
+            <p>{this.state.errorMessage}</p>
+          </div>
+          )}
       </div>
     )
   }
