@@ -1,18 +1,26 @@
 .navbar-icons {
     color: rgb(82, 80, 80);
-    width: 3vmin;
-    height: 3vmin;
-    flex: 1 1 auto;
 }
 
-.navbar-item {
+.navbar-element {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
 }
 
 .navbar {
-    display: block;
-    text-align: center;
     background-color: lightgray;
-    width: 100vw;
-    height: auto;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 50px;
+}
+
+@media (max-height: 700px) {
+    .navbar {
+        height: 30px;
+    }
 }

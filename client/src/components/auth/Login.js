@@ -60,15 +60,11 @@ class Login extends Component {
                 </span>
               </div>
             </div>
-
-            <div className="field is-grouped">
-              <div className="control">
-                <button className="button is-link">Me connecter</button>
-              </div>
-              <div className="control">
-                <button className="button is-link is-light">Cancel</button>
-              </div>
+            
+            <div className="btn-login">
+              <button className="button is-link">Me connecter</button>
             </div>
+            
           </form>
         </div>
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import './style/Navbar.css';
-import 'bulma/css/bulma.css';
 import { RiAccountCircleFill } from 'react-icons/ri';
 import { RiQuestionAnswerFill } from 'react-icons/ri';
 import { IoHome } from 'react-icons/io5';
@@ -8,9 +7,9 @@ import { IoHome } from 'react-icons/io5';
 
 const Navbar = (props) => {
   return (
-    <nav className="navbar is-fixed-bottom" role="navigation" aria-label="main navigation">
+    <nav className="navbar">
       {props.user ? (
-        <div className="navbar-item">
+        <div className="navbar-element">
           <a className="navbar-icons" href="/questions">
             <RiQuestionAnswerFill />
           </a>
@@ -19,7 +18,7 @@ const Navbar = (props) => {
           </a>
         </div>
       ) : (
-        <div className="navbar-item">
+        <div className="navbar-element">
           <a className="navbar-icons" href="/">
             <IoHome />
           </a>

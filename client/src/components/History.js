@@ -56,8 +56,10 @@ class History extends Component {
         }
     
         return(
-            <div>
-                <h1>Mon historique</h1>
+            <div className="history">
+                <div className="block-title-question">
+                    <h1>Mon historique</h1>
+                </div>
                 
                 <label> Classer par : 
                     <select value={this.state.sortBy} name="sortBy" onChange={e=> this.setState({sortBy: e.target.value})}>

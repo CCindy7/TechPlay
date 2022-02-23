@@ -1,4 +1,5 @@
 import React, { Component }  from 'react';
+import '../style/Example.css';
 
 class Example extends Component {
     state={
@@ -50,8 +51,10 @@ class Example extends Component {
        
     render(){
         return(
-            <div>
-                <h1>Exemple</h1>
+            <div className="example">
+                <div className="block-title-question">
+                    <h1>Exemple</h1>
+                </div>
 
                 <div>
                     <h2>Ici vous retrouverez la catégorie de la question et son niveau de difficulté :</h2>

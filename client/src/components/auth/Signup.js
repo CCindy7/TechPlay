@@ -85,16 +85,12 @@ class Signup extends Component {
               </div>
             </div>
 
-            <div className="field is-grouped">
-              <div className="control">
-                <button className="button is-link">Créer mon compte</button>
-              </div>
-              <div className="control">
-                <button className="button is-link is-light">Cancel</button>
-              </div>
+            <div className="btn-signup">
+              <button className="button is-link">Créer mon compte</button>
             </div>
-        </form> 
-      </div>
+
+          </form> 
+        </div>
         <Link to="/login">J'ai déjà un compte</Link>
         { this.state.errorMessage && (
           <div className="error-message">

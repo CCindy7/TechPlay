@@ -6,12 +6,16 @@ class Homepage extends Component {
     render() {
         return (
             <div className="homepage">
-              <h1 className="appName">&lt; TECH PLAY /&gt;</h1>
+                <div className="block-title-homepage">
+                    <h1 className="appName">&lt; TECH PLAY /&gt;</h1>
+                </div>
+
               <h3>Réussir vos entretiens techniques n'a jamais été aussi simple !</h3>
               <p>Créez votre compte et commencez à vous entraîner.</p>
               <Link className="btn" to="/signup">S'enregistrer</Link>
               <Link className="btn" to="/login">Se connecter</Link>
               <Link className="btn" to="/example">Tester</Link>
+              <div className="footer-homepage"></div>
             </div>
         )
     }
