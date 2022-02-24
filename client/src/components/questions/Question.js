@@ -63,7 +63,7 @@ class Question extends Component {
     // passage à la question suivante
     handleNext = () => {    
         //gestion de la dernière question : si n° Q° = nb total Q° et après la réponse => résultats
-        if(this.state.nb_questions === this.props.history.location.state.question.total && this.state.isClicked) {
+        if(this.state.number === 'Toutes les questions' && this.state.nb_questions === this.props.history.location.state.question.total && this.state.isClicked) {
             return this.props.history.push("/result")
         }
 

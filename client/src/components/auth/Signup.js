@@ -21,7 +21,8 @@ class Signup extends Component {
           username :"",
           email:"",
           password:"",
-          confirmation:""
+          confirmation:"",
+          errorMessage:''
         })
         this.props.getUser(response);
         this.props.history.push('/profile');
@@ -46,43 +47,47 @@ class Signup extends Component {
         <div className="block-form">
           <form onSubmit={this.handleSubmit}>
             <div className="field">
-              <label className="label">Nom d'utilisateur</label>
+              <label className="label">Nom d'utilisateur
               <div className="control has-icons-left has-icons-right">
                 <input className="input" type="text" name="username" value={this.state.username} onChange={event => this.handleChange(event)}/>
                 <span className="icon is-medium is-left">
                   <i className="fa-solid fa-user"></i>
                 </span>
               </div>
+              </label>
             </div>
 
             <div className="field">
-              <label className="label">Email</label>
+              <label className="label">Email
               <div className="control has-icons-left has-icons-right">
                 <input className="input" type="text" name="email" value={this.state.email} onChange={event => this.handleChange(event)}/>
                 <span className="icon is-medium is-left">
                   <i className="fa-solid fa-envelope"></i>
                 </span>
               </div>
+              </label>
             </div>
 
             <div className="field">
-              <label className="label">Mot de passe</label>
+              <label className="label">Mot de passe
               <div className="control has-icons-left has-icons-right">
                 <input className="input" type="password" name="password" value={this.state.password} onChange={event => this.handleChange(event)} />
                 <span className="icon is-medium is-left">
                   <i className="fa-solid fa-lock"></i>
                 </span>
               </div>
+              </label>
             </div>
 
             <div className="field">
-              <label className="label">Confirmez votre mot de passe</label>
+              <label className="label">Confirmez votre mot de passe
               <div className="control has-icons-left has-icons-right">
                 <input className="input" type="password" name="confirmation" value={this.state.confirmation} onChange={event => this.handleChange(event)} />
                 <span className="icon is-medium is-left">
                   <i className="fa-solid fa-lock"></i>
                 </span>
               </div>
+              </label>
             </div>
 
             <div className="btn-signup">

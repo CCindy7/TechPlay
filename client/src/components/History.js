@@ -63,7 +63,7 @@ class History extends Component {
                 
                 <label> Classer par : 
                     <select value={this.state.sortBy} name="sortBy" onChange={e=> this.setState({sortBy: e.target.value})}>
-                        <option value="">Options</option>
+                        <option value=""></option>
                         <option value="order">Plus récent</option>
                         <option value="category">Catégorie</option>
                         <option value="ThreeToOne">Difficulté décroissante</option>
@@ -73,8 +73,9 @@ class History extends Component {
                 </label>
                 
                 <form>
-                  <label>Rechercher par titre de question : </label>
+                  <label>Rechercher par titre de question : 
                   <input onChange={(event)=>{this.handleQuery(event)}} type="text" value={this.state.query}/>
+                  </label>
                 </form>
 
                 <table>
@@ -95,7 +96,7 @@ class History extends Component {
                                 <td>{question.question_id.title}</td>
                                 <td>{question.question_id.category}</td>
                                 <td>{(question.question_id.difficulty === 1) ? "Facile":''} {(question.question_id.difficulty === 2) ? "Intermédiaire":''} {(question.question_id.difficulty === 3) ? "Difficile":''}</td>
-                                <td>Le {`${question.createdAt}`.substring(8,10)}/{`${question.createdAt}`.substring(5,7)}/{`${question.createdAt}`.substring(0,4)} à {Number(`${question.createdAt}`.substring(11,13))+1}:{`${question.createdAt}`.substring(14,16)}</td>
+                                <td> Le {new Date(`${question.createdAt}`).toLocaleDateString("fr-FR")} à {('0'+ new Date(`${question.createdAt}`).getHours()).slice(-2)}:{('0' + new Date(`${question.createdAt}`).getMinutes()).slice(-2)} </td>
                                 <td>{question.correct_answer === true ? "oui" : "non"} </td>
                                 <td>{question.question_id.propositions[question.question_id.solution]}</td>
                             </tr>

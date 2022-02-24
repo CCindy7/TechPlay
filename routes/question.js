@@ -13,9 +13,8 @@ const Answer = require("../models/Answer.model");
 //  ##### ##  #######  ########  ######     ##    ####  #######  ##    ## 
 
 router.get("/question", isLoggedIn, (req, res) => {
-  const cat = req.query.category || 'HTML'
-  const dif = req.query.difficulty || 1 //valeur par défaut
-  const nb = req.query.number || 'Toutes les questions'
+  const cat = req.query.category 
+  const dif = req.query.difficulty 
   
   // Obtenir uniquement les q° auxquelles le user n'a pas encore répondu : 
     
@@ -25,7 +24,7 @@ router.get("/question", isLoggedIn, (req, res) => {
     .then(answeredQuestions => {
       var questionsIds= [];
       for (let i=0; i<answeredQuestions.length; i++) {
-        questionsIds.push(answeredQuestions[i].question_id)
+        questionsIds.push(answeredQuestions[i].question_id._id)
       }
       
       //2_finder les q° qui ne sont pas parmi cette liste
@@ -34,6 +33,10 @@ router.get("/question", isLoggedIn, (req, res) => {
           newQuestions.map((newQuestion, index) => {
             res.status(200).json({newQuestion, index, total: newQuestions.length});
           })
+
+          if (!newQuestions.length) {
+            res.status(500).json({message: "Vous avez répondu à toutes les questions."})
+          }
 
           //en tirer une au hasard
           // const rand = Math.floor(Math.random() * newQuestions.length)

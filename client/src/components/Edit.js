@@ -56,13 +56,14 @@ class Edit extends Component {
         <div className="block-form">
           <form onSubmit={this.handleSubmit}>
             <div className="field">
-              <label className="label">Modifier mon nom d'utilisateur :</label>
+              <label className="label">Modifier mon nom d'utilisateur :
               <div className="control has-icons-left has-icons-right">
                 <input className="input" type="text" name="username" value={this.state.username} onChange={event => this.handleChange(event)} />
                 <span className="icon is-medium is-left">
                   <i className="fa-solid fa-user"></i>
                 </span>
               </div>
+              </label>
             </div>
 
             <div className="field">

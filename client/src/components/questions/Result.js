@@ -8,6 +8,8 @@ class Result extends Component {
         category:'',
         difficulty:null,
         number:'Toutes les questions',
+        questions: [],
+        question: {}
     }
 
     componentDidMount=()=>{

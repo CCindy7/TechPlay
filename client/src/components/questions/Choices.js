@@ -26,6 +26,7 @@ class Choices extends Component {
     difficulty:1, 
     number: 'Toutes les questions', 
     question:{},
+    errorMessage:''
   }
 
   chooseCat = (event) => {
@@ -61,7 +62,10 @@ class Choices extends Component {
         state: {question: response, number: number}
       })
     })
-    .catch(err => this.setState({question: null}))
+    .catch(err => {
+      console.log("err", err)
+      this.setState({errorMessage: err.response.data.message})
+    })
   }
 
   render() {
@@ -155,6 +159,11 @@ class Choices extends Component {
           </div>
 
         </div>
+        { this.state.errorMessage && (
+          <div className="error-message">
+            <p>{this.state.errorMessage}</p>
+          </div>
+          )}
 
       </div>
     )
