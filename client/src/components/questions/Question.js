@@ -5,6 +5,7 @@ import { SiHtml5 } from 'react-icons/si';
 import { SiJavascript } from 'react-icons/si';
 import { SiCsswizardry } from 'react-icons/si';
 import { SiReact } from 'react-icons/si';
+import { FaUserNinja } from 'react-icons/fa';
 
 class Question extends Component {
     state={
@@ -91,6 +92,24 @@ class Question extends Component {
         const number = this.state.number;
         const {category, difficulty, title, propositions} = question;
         const {isClicked} = this.state;
+
+        //Récupération des icônes Category et Difficulty
+        let catIcon;
+        if (category === "HTML") {
+            catIcon = <SiHtml5 />
+        } else if (category === "JS") {
+            catIcon = <SiJavascript />
+        } else if (category === "CSS") {
+            catIcon = <SiCsswizardry />
+        } else { catIcon = <SiReact /> }
+
+        let diffIcon;
+        if (difficulty === 1) {
+            diffIcon = <FaUserNinja />
+        } else if (difficulty === 2) {
+            diffIcon = <FaUserNinja />
+        } else { diffIcon = <FaUserNinja />
+        };
     
         return(
             
@@ -104,12 +123,12 @@ class Question extends Component {
                         <h2>Mes choix :</h2>
                         <label>
                             <input type="radio" name={category} className="questionInput"/>
-                            <img src="" alt={category}/>
+                            {catIcon}
                         </label>
 
                         <label>
                             <input type="radio" name={difficulty} className="questionInput" />
-                            <img src="" alt={difficulty}/>
+                            {diffIcon}
                         </label>
                     </div>
                 </div>

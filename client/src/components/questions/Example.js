@@ -1,5 +1,7 @@
 import React, { Component }  from 'react';
 import '../style/Example.css';
+import { SiJavascript } from 'react-icons/si';
+import { FaUserNinja } from 'react-icons/fa';
 
 class Example extends Component {
     state={
@@ -56,24 +58,26 @@ class Example extends Component {
                     <h1>Exemple</h1>
                 </div>
 
+                <div className="container-example">
+
                 <div>
                     <h2>Ici vous retrouverez la catégorie de la question et son niveau de difficulté :</h2>
                     <label>
                         <input type="radio" name="JS" className="questionInput"/>
-                        <img src="" alt="JS"/>
+                        <SiJavascript className="outline-icon"/>
                     </label>
 
                     <label>
                         <input type="radio" name="1" className="questionInput" />
-                        <img src="" alt="1"/>
+                        <FaUserNinja className="ninja1" />
                     </label>
 
                     
                 </div>
 
-                <div>
+                <div className="propositions-container">
                     <h3>{this.state.title}</h3>
-                    <div>
+                    <div className="proposition">
                         {this.state.propositions && this.state.propositions.map((proposition, index) => {
                             return (
                                 <button 
@@ -92,6 +96,8 @@ class Example extends Component {
                 </div>
    
                 {(this.state.isClicked) ? <button onClick={(event)=> this.handleNext(event)}>Question suivante</button>: ''}
+
+                </div>
             </div>
         )     
     }

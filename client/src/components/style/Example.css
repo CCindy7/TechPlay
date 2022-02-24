@@ -5,8 +5,37 @@
     font-family: 'Balsamiq Sans', cursive;
     font-family: 'Nunito Sans', sans-serif;
     gap: 5rem;
+    font-size: 1.1rem;
 }
 
 .example > div {
     display: flex;
+}
+
+.container-example {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    height: 60em;
+    gap: 3rem;
+    text-align: center;
+}
+
+.proposition {
+    margin-top:5%;
+    gap: 1.2rem;
+}
+
+.proposition > button {
+    font-size: 1.1rem;
+    padding: 0.5em 1.6em;
+    border: 1px solid grey;
+    background: white;
+    border-radius: 10px;
+    color: #343A40;
+}
+
+.proposition > button:hover {
+    background: var(--yellow);
+    border: 0;
 }

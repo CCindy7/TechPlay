@@ -6,13 +6,9 @@ import { SiHtml5 } from 'react-icons/si';
 import { SiJavascript } from 'react-icons/si';
 import { SiCsswizardry } from 'react-icons/si';
 import { SiReact } from 'react-icons/si';
-// import { FcLowBattery } from 'react-icons/fc';
-// { FcMiddleBattery } from 'react-icons/fc';
-// { FcHighBattery } from 'react-icons/fc';
-// import { FcLowPriority } from 'react-icons/fc';
-// import { FcMediumPriority } from 'react-icons/fc';
-// import { FcHighPriority } from 'react-icons/fc';
-import { FaUserNinja } from 'react-icons/fa';
+import { BsEmojiLaughingFill } from 'react-icons/bs';
+import { BsEmojiDizzyFill } from 'react-icons/bs';
+import { BsEmojiSmileUpsideDownFill } from 'react-icons/bs';
 
 //OK //changement de state sur du onclick / pas de formulaire
 //OK //button  = appel à axios qui passe infos sous forme de data au composant qui est la page suivante / qui recupéra les infos
@@ -81,22 +77,22 @@ class Choices extends Component {
           <div className="category-box">
             <h3>Je choisis ma catégorie de question(s) :</h3>
             <div>
-              <label>
+              <label className={(this.state.category === "HTML") && "selected"}>
                 <input className="icon-category" type="radio" value="HTML" name="HTML" onClick={event => this.chooseCat(event)} defaultChecked={true}/>
                 <SiHtml5 className="outline-icon"/>
               </label>
               
-              <label>
+              <label className={(this.state.category === "JS") && "selected"}>
                 <input className="icon-category" type="radio" value="JS" name="JS" onClick={event => this.chooseCat(event)} />
                 <SiJavascript className="outline-icon"/>
               </label>
                           
-              <label>
+              <label className={(this.state.category === "CSS") && "selected"}>
                 <input className="icon-category" type="radio" value="CSS" name="CSS" onClick={event => this.chooseCat(event)} />
                 <SiCsswizardry className="outline-icon"/>
               </label>
               
-              <label>
+              <label className={(this.state.category === "React") && "selected"}>
                 <input className="icon-category" type="radio" value="React" name="React" onClick={event => this.chooseCat(event)} />
                 <SiReact className="outline-icon"/>
               </label>
@@ -122,35 +118,22 @@ class Choices extends Component {
           <div className="difficulty-box">            
             <h3>Je choisis le niveau de difficulté :</h3>            
             <div className="icon-display">
-              <div>
-              <label>
+              
+              <label className={(this.state.difficulty === 1) && "selected"}>
                 <input className="icon-difficulty" type="radio" value="1" name="1" onClick={event => this.chooseDif(event)} defaultChecked={true}/>
-                {/*<FcLowPriority className="outline-icon" />*/}
-                {/*<FcLowBattery className="outline-icon" />*/}
-                <FaUserNinja className="ninja1" />
+                <BsEmojiLaughingFill className="emoji1" />         
               </label>
-              </div>
-
-              <div>
-              <label>
-                <input className="icon-difficulty" type="radio" value="2" name="2" onClick={event => this.chooseDif(event)} />
-                {/*<FcMediumPriority className="outline-icon" />*/}
-                {/*<FcMiddleBattery className="outline-icon" />*/}
-                <FaUserNinja className="ninja2" />
-                <FaUserNinja className="ninja2" />
-              </label>
-              </div>
-
-              <div>              
-              <label>
-                <input className="icon-difficulty" type="radio" value="3" name="3" onClick={event => this.chooseDif(event)} />
-                {/*<FcHighPriority className="outline-icon" />*/}
-                {/*<FcHighBattery className="outline-icon" />*/}
-                <FaUserNinja className="ninja3" />
-                <FaUserNinja className="ninja3" />
-                <FaUserNinja className="ninja3" />
-              </label>
-              </div>
+              
+              <label className={(this.state.difficulty === 2) && "selected"}>
+                <input className="icon-difficulty" type="radio" value="2" name="2" onClick={event => this.chooseDif(event)} />              
+                <BsEmojiDizzyFill className="emoji2" />                              
+              </label>        
+           
+              <label className={(this.state.difficulty === 3) && "selected"}>
+                <input className="icon-difficulty" type="radio" value="3" name="3" onClick={event => this.chooseDif(event)} />                
+                <BsEmojiSmileUpsideDownFill className="emoji3" />                
+              </label>              
+              
             </div>                  
           </div>
 

@@ -83,19 +83,19 @@
     color: var(--lightblue);
 }
 
-.ninja1 {
+.emoji1 {
     width: 6vmin;
     height: 5vmin;
     color: var(--green);
 }
 
-.ninja2 {
+.emoji2 {
     width: 6vmin;
     height: 5vmin;
     color: var(--yellow);
 }
 
-.ninja3 {
+.emoji3 {
     width: 6vmin;
     height: 5vmin;
     color: var(--orange);
@@ -104,6 +104,13 @@
 .button-box {
     display: block;
     margin-top: auto; margin-bottom: auto;
+}
+
+.selected {
+    display:inline-block;
+    border: 1px solid #52B69A;
+    border-radius: 5px;
+    padding-top: 0.5em;
 }
 
 @media (max-width: 400px) {
