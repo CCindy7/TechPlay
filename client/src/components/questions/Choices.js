@@ -6,12 +6,13 @@ import { SiHtml5 } from 'react-icons/si';
 import { SiJavascript } from 'react-icons/si';
 import { SiCsswizardry } from 'react-icons/si';
 import { SiReact } from 'react-icons/si';
-import { FcLowBattery } from 'react-icons/fc';
-import { FcMiddleBattery } from 'react-icons/fc';
-import { FcHighBattery } from 'react-icons/fc';
+// import { FcLowBattery } from 'react-icons/fc';
+// { FcMiddleBattery } from 'react-icons/fc';
+// { FcHighBattery } from 'react-icons/fc';
 // import { FcLowPriority } from 'react-icons/fc';
 // import { FcMediumPriority } from 'react-icons/fc';
 // import { FcHighPriority } from 'react-icons/fc';
+import { FaUserNinja } from 'react-icons/fa';
 
 //OK //changement de state sur du onclick / pas de formulaire
 //OK //button  = appel à axios qui passe infos sous forme de data au composant qui est la page suivante / qui recupéra les infos
@@ -116,25 +117,36 @@ class Choices extends Component {
 
           <div className="difficulty-box">            
             <h3>Je choisis le niveau de difficulté :</h3>            
-            <div>
+            <div className="icon-display">
+              <div>
               <label>
                 <input className="icon-difficulty" type="radio" value="1" name="1" onClick={event => this.chooseDif(event)} defaultChecked={true}/>
                 {/*<FcLowPriority className="outline-icon" />*/}
-                <FcLowBattery className="outline-icon" />
+                {/*<FcLowBattery className="outline-icon" />*/}
+                <FaUserNinja className="ninja1" />
               </label>
-              
+              </div>
 
+              <div>
               <label>
                 <input className="icon-difficulty" type="radio" value="2" name="2" onClick={event => this.chooseDif(event)} />
                 {/*<FcMediumPriority className="outline-icon" />*/}
-                <FcMiddleBattery className="outline-icon" />
+                {/*<FcMiddleBattery className="outline-icon" />*/}
+                <FaUserNinja className="ninja2" />
+                <FaUserNinja className="ninja2" />
               </label>
-              
+              </div>
+
+              <div>              
               <label>
                 <input className="icon-difficulty" type="radio" value="3" name="3" onClick={event => this.chooseDif(event)} />
                 {/*<FcHighPriority className="outline-icon" />*/}
-                <FcHighBattery className="outline-icon" />
+                {/*<FcHighBattery className="outline-icon" />*/}
+                <FaUserNinja className="ninja3" />
+                <FaUserNinja className="ninja3" />
+                <FaUserNinja className="ninja3" />
               </label>
+              </div>
             </div>                  
           </div>
 

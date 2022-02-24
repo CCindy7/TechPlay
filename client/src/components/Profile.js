@@ -5,13 +5,13 @@ import 'bulma/css/bulma.css';
 // import { FaUserCog } from 'react-icons/fa';
 // import { FaHistory } from 'react-icons/fa';
 // import { RiQuestionAnswerFill } from 'react-icons/ri';
-// import { FcFaq } from 'react-icons/fc';
-// import { FcServices } from 'react-icons/fc';
-// import { FcPositiveDynamic } from 'react-icons/fc';
-// import { FcRatings } from 'react-icons/fc';
-import { RiQuestionAnswerLine } from 'react-icons/ri';
-import { RiUserSettingsLine } from 'react-icons/ri';
-import { RiHistoryLine } from 'react-icons/ri';
+import { FcFaq } from 'react-icons/fc';
+import { FcServices } from 'react-icons/fc';
+import { FcPositiveDynamic } from 'react-icons/fc';
+//import { FcRatings } from 'react-icons/fc';
+//import { RiQuestionAnswerLine } from 'react-icons/ri';
+//import { RiUserSettingsLine } from 'react-icons/ri';
+//import { RiHistoryLine } from 'react-icons/ri';
 
 
 class Profile extends Component {
@@ -29,27 +29,30 @@ class Profile extends Component {
                 </div>
 
                 <div className="container-profile">
-                
-                    <div className="profile-box">
+  
+                    <div className="profile-box1">
                         {/*<RiQuestionAnswerFill className="outline-icon-profile" />*/}
-                        <RiQuestionAnswerLine className="outline-icon-profile" />
-                        {/*<FcFaq className="outline-icon-profile" />*/}
-                        <Link to='/questions'>Je commence</Link>
+                        {/*<RiQuestionAnswerLine className="outline-icon-profile" />*/}
+                        <FcFaq className="outline-icon-profile" />
+                        <Link className="container-profile-links" to='/questions'>Je commence</Link>
                     </div>
+
+                    <div className="container-profile-row2">
                     
-                    <div className="profile-box">
+                    <div className="profile-box2">
                         {/*<FaHistory className="outline-icon-profile" />*/}
-                        <RiHistoryLine className="outline-icon-profile" />
-                        {/*<FcPositiveDynamic className="outline-icon-profile" />*/}
+                        {/*<RiHistoryLine className="outline-icon-profile" />*/}
+                        <FcPositiveDynamic className="outline-icon-profile" />
                         {/*<FcRatings className="outline-icon-profile" />*/}
-                        <Link to='/history'>Mon historique</Link>
+                        <Link className="container-profile-links" to='/history'>Mon historique</Link>
                     </div>
                     
-                    <div className="profile-box">
+                    <div className="profile-box2">
                         {/*<FaUserCog className="outline-icon-profile"/>*/}
-                        <RiUserSettingsLine className="outline-icon-profile" />
-                        {/*<FcServices className="outline-icon-profile"/>*/}
-                        <Link to={`/edit/${this.props.user._id}`}>Mon compte</Link>
+                        {/*<RiUserSettingsLine className="outline-icon-profile" />*/}
+                        <FcServices className="outline-icon-profile"/>
+                        <Link className="container-profile-links" to={`/edit/${this.props.user._id}`}>Mon compte</Link>
+                    </div>
                     </div>
 
                 </div>

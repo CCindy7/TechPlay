@@ -40,7 +40,8 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    height: 600px;
+    height: 60em;
+    gap: 3rem;
 }
 
 .category-box,
@@ -50,8 +51,6 @@
     flex-direction: column;
     display: flex;
     flex-grow: 1;
-    flex-wrap: wrap;
-    flex-basis: 33,33%;
 }
 
 .category-box > h3 {
@@ -59,13 +58,8 @@
     text-align: center;
 }
 
-.category-box > div,
-.difficulty-box > div {
-    margin-top: auto; margin-bottom: auto;
-}
-
 .number-box > h3 {
-    margin-bottom: 6%
+    margin-bottom: 3%
 }
 
 .control {
@@ -76,11 +70,35 @@
     margin-bottom: 5px;
 }
 
+.icon-display {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
 .outline-icon {
-    width: 8vmin;
-    height: 6vmin;
-    margin-right: 10px;
+    width: 6vmin;
+    height: 5vmin;
+    margin-right: 0.3em;
     color: var(--lightblue);
+}
+
+.ninja1 {
+    width: 6vmin;
+    height: 5vmin;
+    color: var(--green);
+}
+
+.ninja2 {
+    width: 6vmin;
+    height: 5vmin;
+    color: var(--yellow);
+}
+
+.ninja3 {
+    width: 6vmin;
+    height: 5vmin;
+    color: var(--orange);
 }
 
 .button-box {
@@ -92,7 +110,7 @@
     .container-choices {
         display: flex;
         flex-direction: column;
-        height: 450px;
+        height: 26.7em;
     }
 
     .outline-icon {
@@ -102,7 +120,7 @@
 
     .category-box > div,
     .difficulty-box > div {
-        margin-top: 7%; margin-bottom: 7%;
+        margin-top: auto; margin-bottom: auto;
     }
 
     .choices {
@@ -112,7 +130,7 @@
 
 @media (min-height: 800px) {
     .container-choices {
-        height: 620px;
+        height: 40em;
     }
 
     .outline-icon {
@@ -122,17 +140,17 @@
 
     .category-box > div,
     .difficulty-box > div {
-        margin-top: 7%; margin-bottom: 5%;
+        margin-top: auto; margin-bottom: auto;
     }
 
     .number-box {
-        height: 120px;
+        height: 6em;
     }
 }
 
 @media (min-height: 1100px) {
     .container-choices {
-        height: 900px;
+        height: 55em;
     }
 
     .outline-icon {
@@ -147,7 +165,7 @@
     }
 
     .container-choices {
-        height: 1000px;
+        height: 65em;
     }
 
     .outline-icon {
