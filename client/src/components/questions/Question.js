@@ -5,7 +5,9 @@ import { SiHtml5 } from 'react-icons/si';
 import { SiJavascript } from 'react-icons/si';
 import { SiCsswizardry } from 'react-icons/si';
 import { SiReact } from 'react-icons/si';
-import { FaUserNinja } from 'react-icons/fa';
+import { BsEmojiLaughingFill } from 'react-icons/bs';
+import { BsEmojiDizzyFill } from 'react-icons/bs';
+import { BsEmojiSmileUpsideDownFill } from 'react-icons/bs';
 
 class Question extends Component {
     state={
@@ -105,10 +107,10 @@ class Question extends Component {
 
         let diffIcon;
         if (difficulty === 1) {
-            diffIcon = <FaUserNinja />
+            diffIcon = <BsEmojiLaughingFill />
         } else if (difficulty === 2) {
-            diffIcon = <FaUserNinja />
-        } else { diffIcon = <FaUserNinja />
+            diffIcon = <BsEmojiDizzyFill />
+        } else { diffIcon = <BsEmojiSmileUpsideDownFill />
         };
     
         return(

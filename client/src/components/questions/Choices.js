@@ -119,19 +119,22 @@ class Choices extends Component {
             <h3>Je choisis le niveau de difficulté :</h3>            
             <div className="icon-display">
               
-              <label className={(this.state.difficulty === 1) && "selected"}>
+              <label className={(this.state.difficulty === "1") && "selected"}>
                 <input className="icon-difficulty" type="radio" value="1" name="1" onClick={event => this.chooseDif(event)} defaultChecked={true}/>
-                <BsEmojiLaughingFill className="emoji1" />         
+                <BsEmojiLaughingFill className="emoji1" />
+                Facile                    
               </label>
-              
-              <label className={(this.state.difficulty === 2) && "selected"}>
+                            
+              <label className={(this.state.difficulty === "2") && "selected"}>
                 <input className="icon-difficulty" type="radio" value="2" name="2" onClick={event => this.chooseDif(event)} />              
-                <BsEmojiDizzyFill className="emoji2" />                              
+                <BsEmojiDizzyFill className="emoji2" />
+                Intermédiaire                            
               </label>        
            
-              <label className={(this.state.difficulty === 3) && "selected"}>
+              <label className={(this.state.difficulty === "3") && "selected"}>
                 <input className="icon-difficulty" type="radio" value="3" name="3" onClick={event => this.chooseDif(event)} />                
-                <BsEmojiSmileUpsideDownFill className="emoji3" />                
+                <BsEmojiSmileUpsideDownFill className="emoji3" />
+                Difficile               
               </label>              
               
             </div>                  

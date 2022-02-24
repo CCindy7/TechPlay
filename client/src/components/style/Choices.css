@@ -74,6 +74,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    text-align: center;
 }
 
 .outline-icon {
@@ -106,11 +107,18 @@
     margin-top: auto; margin-bottom: auto;
 }
 
+.icon-display > label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5em;
+}
+
 .selected {
     display:inline-block;
     border: 1px solid #52B69A;
     border-radius: 5px;
-    padding-top: 0.5em;
+    padding: 0.8em;
 }
 
 @media (max-width: 400px) {
