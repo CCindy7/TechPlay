@@ -171,15 +171,16 @@ router.get("/logout", isLoggedIn, (req, res) => {
 
 router.get("/loggedin", (req, res) => {
   if (req.session.user) {
-    User.findOne({user: req.session.user})
-      .then(newUser => {
-        res.status(200).json(newUser);
+    User.findById(req.session.user._id)
+      .then(user => {
+        res.status(200).json(user);
       })
       .catch((err) => {
         return res.status(500).json({ message: err.message })
       })
-  } 
-  res.status(403).json({message: "Vous n'êtes pas connecté"})
+  } else {
+    res.status(403).json({ message: "Vous n'êtes pas connecté" })
+  }
 });
 
 module.exports = router;
