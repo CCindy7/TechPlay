@@ -7,7 +7,6 @@ import Example from "./components/questions/Example";
 import Login from './components/auth/Login';
 import {loggedin} from './components/auth/auth-service';
 import Profile from './components/Profile';
-import Navbar from './components/Navbar';
 import Edit from './components/Edit';
 import Choices from './components/questions/Choices';
 import Question from './components/questions/Question';

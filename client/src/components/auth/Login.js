@@ -81,7 +81,7 @@ class Login extends Component {
                 <span className="icon is-medium is-left">
                   <i className="fa-solid fa-lock"></i>
                 </span>
-              <button className="eye" onClick={this.handleVisibility}>{this.state.eyePswd}</button>
+              <button className="eye" type="button" onClick={this.handleVisibility}>{this.state.eyePswd}</button>
               </div>
               </label>
             </div>

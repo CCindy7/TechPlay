@@ -109,7 +109,7 @@ class Signup extends Component {
                 <span className="icon is-medium is-left">
                   <i className="fa-solid fa-lock"></i>
                 </span>
-                <button className="eye" onClick={this.handlePassword}>{this.state.eyePswd}</button>
+                <button className="eye" type="button" onClick={this.handlePassword}>{this.state.eyePswd}</button>
               </div>
               </label>
             </div>
@@ -121,7 +121,7 @@ class Signup extends Component {
                 <span className="icon is-medium is-left">
                   <i className="fa-solid fa-lock"></i>
                 </span>
-                <button className="eye" onClick={this.handleConfirmation}>{this.state.eyeConf}</button>
+                <button className="eye" type="button" onClick={this.handleConfirmation}>{this.state.eyeConf}</button>
               </div>
               </label>
             </div>
