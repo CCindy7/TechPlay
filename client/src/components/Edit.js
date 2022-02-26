@@ -71,13 +71,12 @@ class Edit extends Component {
             </div>
 
             <div className="profileButtons">
-                <button className="littleNext"
-                >
-                Mettre à jour</button>
+                <button className="littleNext">
+                Mettre à jour
+                </button>
              
               <div className="out">
-                <span 
-                onClick={this.logout}>Me déconnecter</span>
+                <span onClick={this.logout}>Me déconnecter</span>
               </div>
               <div className="out">
               <span onClick={this.deleteProfile}>Supprimer mon compte</span>

@@ -78,30 +78,30 @@
 }
 
 .outline-icon {
-    width: 6vmin;
-    height: 5vmin;
+    width: 5vmin;
+    height: 4vmin;
     margin-right: 0.3em;
     color: var(--lightblue);
     vertical-align: middle;
 }
 
 .emoji1 {
-    width: 6vmin;
-    height: 5vmin;
+    width: 5vmin;
+    height: 4vmin;
     color: var(--yellow);
     padding-right: 5px;
 }
 
 .emoji2 {
-    width: 6vmin;
-    height: 5vmin;
+    width: 5vmin;
+    height: 4vmin;
     color: var(--orange);
     padding-right: 5px;
 }
 
 .emoji3 {
-    width: 6vmin;
-    height: 5vmin;
+    width: 5vmin;
+    height: 4vmin;
     color: red;
     padding-right: 5px;
 }
@@ -133,6 +133,11 @@
     }
 
     .outline-icon {
+        width: 14vmin;
+        height: 9vmin;
+    }
+
+    .emoji1, .emoji2, .emoji3 {
         width: 14vmin;
         height: 9vmin;
     }

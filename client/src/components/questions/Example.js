@@ -58,43 +58,44 @@ class Example extends Component {
                     <h1>{this.state.title}</h1>
                 </div>
 
-                <h2>Catégorie et difficulté de la question : </h2>
-                <div className="question-choices">
-                    <label>
-                        <input type="radio" name="JS" className="icon-category"/>
-                        <SiJavascript className="outline-icon"/>
-                        JavaScript
-                    </label>
+                <div className="block-example">
 
-                    <label>
-                        <input type="radio" name="1" className="icon-difficulty" />
-                        <BsEmojiLaughingFill className="emoji1" />
-                        Facile
-                    </label>  
-                </div>
-                
-                <div className="propositions-container">
-                    <div className="proposition">
-                        {this.state.propositions && this.state.propositions.map((proposition, index) => {
-                            return (
-                                <button 
-                                className={`${this.state.userResponse !=='' && this.handleColors(index)}`} // style backgroundColor si userResponse n'est pas vide
-                                key={index}
-                                onClick={() => this.handleClick(index)}
-                                //désactiver boutons des propositions si réponse n'est pas vide // 1 seule réponse possible
-                                disabled={this.state.userResponse !== ''}
-                                >
-                                {proposition} 
-                                </button> 
-                            )
-                        })}
+                    <h2>Catégorie et difficulté de la question : </h2>
+                    <div className="question-choices">
+                        <label>
+                            <input type="radio" name="JS" className="icon-category"/>
+                            <SiJavascript className="outline-icon"/>
+                            JavaScript
+                        </label>
+
+                        <label>
+                            <input type="radio" name="1" className="icon-difficulty" />
+                            <BsEmojiLaughingFill className="emoji1" />
+                            Facile
+                        </label>  
+                    </div>
                     
-                    </div>  
-                </div>
-   
-                {(this.state.isClicked) && <button className="next" onClick={(event)=> this.handleNext(event)}>Question suivante</button>}
+                    <div className="propositions-container">
+                        <div className="proposition">
+                            {this.state.propositions && this.state.propositions.map((proposition, index) => {
+                                return (
+                                    <button 
+                                    className={`${this.state.userResponse !=='' && this.handleColors(index)}`} // style backgroundColor si userResponse n'est pas vide
+                                    key={index}
+                                    onClick={() => this.handleClick(index)}
+                                    //désactiver boutons des propositions si réponse n'est pas vide // 1 seule réponse possible
+                                    disabled={this.state.userResponse !== ''}
+                                    >
+                                    {proposition} 
+                                    </button> 
+                                )
+                            })}
+                        </div>  
+                    </div>
+    
+                    {(this.state.isClicked) && <button className="next" onClick={(event)=> this.handleNext(event)}>Question suivante</button>}
 
-                
+                </div>
             </div>
         )     
     }

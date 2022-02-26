@@ -5,6 +5,7 @@
     flex-direction: column;
     font-family: 'Balsamiq Sans', cursive;
     font-family: 'Nunito Sans', sans-serif;
+    gap: 6rem;
 }
 
 .block-title-profile {
@@ -45,9 +46,10 @@
     font-size: 14px;
     padding: 0.5em 1.4em;
     border-color: #3248DA;
+    border-style: none;
 }
 
-.out > button {
+.out > span {
     margin-top: 20px;
     border: none;
     background: none;
@@ -57,7 +59,7 @@
     text-decoration: underline;
 }
 
-.out > button:hover {
+.out > span:hover {
     color: black;
     cursor: pointer;
 }

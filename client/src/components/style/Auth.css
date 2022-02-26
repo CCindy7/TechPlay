@@ -5,6 +5,7 @@
     flex-direction: column;
     font-family: 'Balsamiq Sans', cursive;
     font-family: 'Nunito Sans', sans-serif;
+    gap: 0.3rem;
 }
 
 .block-title-auth {
@@ -31,17 +32,16 @@
 }
 
 .block-form {
-    margin-top: 40px;
-    margin-bottom: 20px;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .btn-auth {
     text-align: center;
-    margin-top: 1em;
 }
 
 .authLink {
-    margin-bottom: 90px;
+    font-size: 14px;
 }
 
 .foot {

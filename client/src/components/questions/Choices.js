@@ -66,7 +66,7 @@ class Choices extends Component {
   render() {
     return(
       <>
-        <Navbar user={this.state.user} />
+      <Navbar user={this.state.user} />
       
       <div className="choices">
         

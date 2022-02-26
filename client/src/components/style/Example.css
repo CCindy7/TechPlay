@@ -37,12 +37,21 @@
     text-align: center;
 }
 
+.block-example {
+    height: 28rem;
+    margin-top: auto; margin-bottom: auto;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
 .question-choices {
     display: flex;
-    margin-bottom: 20px;
+    justify-content: center;
+    margin-top: 0.5rem;
     margin-right: auto;
     margin-left:auto;
-    gap:30px;
+    gap: 1.5rem;
 }
 
 .question-choices > label {
@@ -50,6 +59,7 @@
     flex-direction: column;
     align-self: baseline;
     text-align: center;
+    color: dimgray;
 }
 
 .question-choices > label > svg  {
@@ -62,11 +72,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 3rem;
 }
 
 .proposition {
-    gap: 1.2rem;
-    width: 100%;
+    gap: 0.9rem;
+    width: 80%;
     flex-direction: column;
     display: flex;
 }
@@ -93,12 +104,12 @@
 }
 
 .next {
-    margin-top: 10px;
-    margin-bottom: 20px;
+    margin-top: 1.5rem;
     padding: 1em 1.6em;
     background-color: #3248DA;
     color: white;
     border-radius: 5px;
     font-size: 14px;
     border-color: #3248DA;
+    border-style: none;
 }

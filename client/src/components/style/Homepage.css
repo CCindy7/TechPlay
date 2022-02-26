@@ -6,6 +6,7 @@
     text-align: center;
     font-family: 'Balsamiq Sans', cursive;
     font-family: 'Nunito Sans', sans-serif;
+    gap: 4rem;
 }
 
 .block-title-homepage {
@@ -31,21 +32,27 @@
     display: flex;
 }
 
-.homepage > h3 {
+.block-homepage {
+    margin-top: auto; margin-bottom: auto;
+    flex-direction: column;
+    align-items: center;
+}
+
+.block-homepage > h3 {
     margin-left: auto;
     margin-right: auto;
     font-size: 1.4rem;
-    margin-bottom: 20px;
-    margin-top: 50px;
+    margin-bottom: 1.5rem;
+    margin-top: 3rem;
     font-weight: bold;
 }
 
-.homepage > p {
+.block-homepage > p {
     margin-left: auto;
     margin-right: auto;
     font-size: 1rem;
-    margin-bottom: 20px;
-    margin-top: 10px;
+    margin-bottom: 1.5rem;
+    margin-top: 0.5rem;
 }
 
 .btn {
@@ -56,7 +63,7 @@
     font-weight: bold;
     text-align: center;
     text-decoration: none;
-    margin-top: 15px;
+    margin-top: 1.2rem;
     width: 15%;
     max-width:50em;
     min-width: 15em;
@@ -69,12 +76,16 @@
     color: white;
 }
 
-.btn:nth-child(6) {
-    background-color:#F4DC2C;
-    border : 1px solid #F4DC2C;
+.btn:nth-child(5) {
+    background-color: #F4DC2C;
+    border: 1px solid #F4DC2C;
 }
 
-@media (max-height: 700px) {
+@media (max-height: 750px) {
+    .homepage {
+        gap: 0;
+    }
+
     .block-title-homepage {
         height: 15rem;
     }
