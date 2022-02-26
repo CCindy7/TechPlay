@@ -1,6 +1,7 @@
-.signup {
-    min-height: 100vh;
-    display:flex; align-items:center;
+.auth {
+    max-height: 100vh;
+    display:flex; 
+    align-items:center;
     flex-direction: column;
     font-family: 'Balsamiq Sans', cursive;
     font-family: 'Nunito Sans', sans-serif;
@@ -11,7 +12,7 @@
     width: 100%;
     min-width: 300px;
     max-width: 700px;
-    height: 180px;
+    height: 15rem;
     padding: 10px;
     background-color: var(--darkblue);
     border-bottom-left-radius: 40px; 
@@ -25,16 +26,39 @@
     font-size: 2.5rem;
 }
 
-.signup > div {
+.auth > div {
     display: flex;
 }
 
 .block-form {
-    margin-top: 7%;
-    margin-bottom: 7%;
+    margin-top: 40px;
+    margin-bottom: 20px;
 }
 
-.btn-signup {
+.btn-auth {
     text-align: center;
-    margin-top: 2em;
+    margin-top: 1em;
+}
+
+.authLink {
+    margin-bottom: 90px;
+}
+
+.foot {
+    position: fixed;
+    bottom:0;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    background-color: #F4DC2C;
+}
+
+.footerLink {
+    margin-right: auto;
+    margin-left: auto;
+    padding-top: 10px;  
+}
+
+.control {
+    display: flex;
 }

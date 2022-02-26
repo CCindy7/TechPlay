@@ -1,30 +1,27 @@
 import React from 'react';
 import './style/Navbar.css';
 import { RiAccountCircleFill } from 'react-icons/ri';
-import { RiQuestionAnswerFill } from 'react-icons/ri';
-import { IoHome } from 'react-icons/io5';
+// import {RiPlayCircleLine} from 'react-icons/ri';
+// import { FcFaq } from 'react-icons/fc';
+// import { RiQuestionAnswerFill } from 'react-icons/ri';
+import { GiCardRandom } from 'react-icons/gi';
 
 
 const Navbar = (props) => {
   return (
+    <div className='navHolder'>
     <nav className="navbar">
-      {props.user ? (
         <div className="navbar-element">
           <a className="navbar-icons" href="/questions">
-            <RiQuestionAnswerFill />
+            <GiCardRandom className='start'/>
+            {/* <RiPlayCircleLine className="start"/> */}
           </a>
           <a className="navbar-icons" href="/profile">
-            <RiAccountCircleFill />
+            <RiAccountCircleFill className="avatar"/>
           </a>
         </div>
-      ) : (
-        <div className="navbar-element">
-          <a className="navbar-icons" href="/">
-            <IoHome />
-          </a>
-        </div>
-      )}
     </nav>
+    </div>
   )
 }
 

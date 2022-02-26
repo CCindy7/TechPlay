@@ -1,47 +1,7 @@
-.right{
-    background-color: #32C835;
+.icons {
+    vertical-align: middle;
 }
 
-.wrong{
-    background-color: red;
-}
-
-.questionInput{
-    position: absolute;
-    opacity:0;
-    width:0;
-    height:0;
-}
-
-.question {
-    min-height: 100vh;
-    display:flex; align-items:center;
-    flex-direction: column;
-    font-family: 'Balsamiq Sans', cursive;
-    font-family: 'Nunito Sans', sans-serif;
-    gap: 5rem;
-}
-
-.question > div {
-    display: flex;
-    flex-direction: column;
-}
-
-.question-container {
-    align-items: center;
-}
-
-.propositions-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.choicesRemind {
-    margin-top: 5%;
-}
-
-.proposition {
-    flex-direction: column;
-    display: flex;
+.gap {
+    margin-right: 10px;
 }

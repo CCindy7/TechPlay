@@ -1,6 +1,7 @@
 .homepage {
-    min-height: 100vh;
-    display:flex; align-items:center;
+    max-height: 100vh;
+    display:flex; 
+    align-items:center;
     flex-direction: column;
     text-align: center;
     font-family: 'Balsamiq Sans', cursive;
@@ -12,7 +13,7 @@
     width: 100%;
     min-width: 300px;
     max-width: 700px;
-    height: 25rem;
+    height: 15rem;
     padding: 10px;
     background-color: #3248DA;
     border-bottom-left-radius: 40px; 
@@ -31,43 +32,46 @@
 }
 
 .homepage > h3 {
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: auto;
+    margin-right: auto;
     font-size: 1.4rem;
-    margin-bottom: 1%;
-    margin-top: 4%;
+    margin-bottom: 20px;
+    margin-top: 50px;
+    font-weight: bold;
 }
+
 .homepage > p {
-    margin-left: 10%;
-    margin-right: 10%;
-    font-size: 1.1rem;
-    margin-bottom: 1%;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    margin-top: 10px;
 }
 
 .btn {
     display:inline-block;
-    border: 1px solid grey;
-    padding:.85em 4em;
+    padding:.6em 4em;
+    border: 1px solid #3248DA;
     border-radius:30px;
     font-weight: bold;
     text-align: center;
     text-decoration: none;
-    margin-top: 1.2%;
+    margin-top: 15px;
     width: 15%;
     max-width:50em;
     min-width: 15em;
+    background: white ;
+    color: #3248DA;
 }
 
-.footer-homepage {
-    background-color: var(--yellow);
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    min-width: 300px;
-    max-width: 700px;
-    height: 70px;
-    border-top-left-radius: 40px; 
-    border-top-right-radius: 40px;
+.btn:hover {
+    background: #3248DA;
+    color: white;
+}
+
+.btn:nth-child(6) {
+    background-color:#F4DC2C;
+    border : 1px solid #F4DC2C;
 }
 
 @media (max-height: 700px) {

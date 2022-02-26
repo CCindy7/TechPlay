@@ -1,41 +1,104 @@
-.example {
-    min-height: 100vh;
-    display:flex; align-items:center;
+.question {
+    display: flex;
     flex-direction: column;
+    max-height: 100vh;
+    align-items:center;
     font-family: 'Balsamiq Sans', cursive;
     font-family: 'Nunito Sans', sans-serif;
-    gap: 5rem;
-    font-size: 1.1rem;
+    gap: 1.5rem;
+    font-size: 1rem;
 }
 
-.example > div {
-    display: flex;
-}
-
-.container-example {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    height: 60em;
-    gap: 3rem;
+.question h2 {
     text-align: center;
 }
 
+.block-title {
+    position: relative;
+    display: flex;
+    width: 100%;
+    min-width: 300px;
+    max-width: 700px;
+    height: 15rem;
+    padding: 10px;
+    background-color: var(--orange);
+    border-bottom-left-radius: 40px; 
+    border-bottom-right-radius: 40px;
+    margin-bottom : 20px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.block-title > h1 {
+    color: white;
+    font-weight: bold;
+    font-size: 2rem;
+    margin: auto;
+    text-align: center;
+}
+
+.question-choices {
+    display: flex;
+    margin-bottom: 20px;
+    margin-right: auto;
+    margin-left:auto;
+    gap:30px;
+}
+
+.question-choices > label {
+    display: flex;
+    flex-direction: column;
+    align-self: baseline;
+    text-align: center;
+}
+
+.question-choices > label > svg  {
+    margin-right: auto;
+    margin-left: auto;
+    min-height: 50px;
+}
+
+.propositions-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .proposition {
-    margin-top:5%;
     gap: 1.2rem;
+    width: 100%;
+    flex-direction: column;
+    display: flex;
 }
 
 .proposition > button {
     font-size: 1.1rem;
     padding: 0.5em 1.6em;
     border: 1px solid grey;
-    background: white;
     border-radius: 10px;
     color: #343A40;
+    transition: transform .2s;
 }
 
 .proposition > button:hover {
-    background: var(--yellow);
-    border: 0;
+    transform: scale(1.1);
+}
+
+.right{
+    background-color: #32C835;
+}
+
+.wrong{
+    background-color: red;
+}
+
+.next {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding: 1em 1.6em;
+    background-color: #3248DA;
+    color: white;
+    border-radius: 5px;
+    font-size: 14px;
+    border-color: #3248DA;
 }

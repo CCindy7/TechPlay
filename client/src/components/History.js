@@ -1,5 +1,6 @@
 import React, { Component }  from 'react';
 import { history } from './questions/question-service';
+import Navbar from './Navbar';
 import './style/History.css';
 
 class History extends Component {
@@ -56,12 +57,21 @@ class History extends Component {
         }
     
         return(
+            <>
+            <Navbar user={this.state.user} />
             <div className="history">
-                <div className="block-title-question">
+                <div className="block-title">
                     <h1>Mon historique</h1>
                 </div>
                 
-                <label> Classer par : 
+                <div className="sortAndSearch">
+                <form>
+                  <label>Rechercher par énoncé
+                  <input onChange={(event)=>{this.handleQuery(event)}} type="text" value={this.state.query}/>
+                  </label>
+                </form>
+
+                <label> Classer par
                     <select value={this.state.sortBy} name="sortBy" onChange={e=> this.setState({sortBy: e.target.value})}>
                         <option value=""></option>
                         <option value="order">Plus récent</option>
@@ -71,22 +81,17 @@ class History extends Component {
                         <option value="wrong_answer">Mauvaise réponse en 1er</option>
                     </select>
                 </label>
+                </div>
                 
-                <form>
-                  <label>Rechercher par titre de question : 
-                  <input onChange={(event)=>{this.handleQuery(event)}} type="text" value={this.state.query}/>
-                  </label>
-                </form>
-
-                <table>
+                <table className='table'>
                     <thead>
                         <tr>
                             <th>Enoncé</th>
                             <th>Catégorie</th>
                             <th>Difficulté</th>
-                            <th>Date</th>
                             <th>Bonne réponse</th>
                             <th>Solution</th>
+                            <th>Date</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -96,15 +101,16 @@ class History extends Component {
                                 <td>{question.question_id.title}</td>
                                 <td>{question.question_id.category}</td>
                                 <td>{(question.question_id.difficulty === 1) ? "Facile":''} {(question.question_id.difficulty === 2) ? "Intermédiaire":''} {(question.question_id.difficulty === 3) ? "Difficile":''}</td>
-                                <td> Le {new Date(`${question.createdAt}`).toLocaleDateString("fr-FR")} à {('0'+ new Date(`${question.createdAt}`).getHours()).slice(-2)}:{('0' + new Date(`${question.createdAt}`).getMinutes()).slice(-2)} </td>
                                 <td>{question.correct_answer === true ? "oui" : "non"} </td>
                                 <td>{question.question_id.propositions[question.question_id.solution]}</td>
+                                <td>{new Date(`${question.createdAt}`).toLocaleDateString("fr-FR")} à {('0'+ new Date(`${question.createdAt}`).getHours()).slice(-2)}:{('0' + new Date(`${question.createdAt}`).getMinutes()).slice(-2)} </td>
                             </tr>
                         )  
                     })}
                     </tbody>
                 </table>
             </div>
+            </>
         )
     }
 }

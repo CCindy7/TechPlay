@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import {history, question} from './question-service';
+import Navbar from '../Navbar';
+import '../style/Result.css'
 
 class Result extends Component {
     state={
@@ -9,7 +11,8 @@ class Result extends Component {
         difficulty:null,
         number:'Toutes les questions',
         questions: [],
-        question: {}
+        question: {}, 
+        // round:this.props.history.location.state.round
     }
 
     componentDidMount=()=>{
@@ -61,12 +64,15 @@ class Result extends Component {
     render(){
         const {difficulty} = this.state;
       return(
+          <>
+            <Navbar user={this.state.user} />
+          
           <div className="result">
-            <div className="block-title-question">
-                <h1>Mon résultat</h1>
+            <div className="block-title">
+                <h1>Résultats</h1>
             </div>
 
-            <div>
+            <div className="results">
               <h3>Nombre de questions</h3>
               <p>{this.state.nb_questions}</p>
 
@@ -74,9 +80,12 @@ class Result extends Component {
               <p>{this.state.nb_RightAnswers}</p>
             </div>
 
-            {(difficulty === 1 || difficulty ===2) ? <button onClick={this.levelUp}>Je passe au niveau supérieur</button>:<button onClick={this.levelUp}>Je choisis une autre catégorie</button>}
+            <div>
+                {(difficulty === 1 || difficulty ===2) ? <button className="littleNext" onClick={this.levelUp}>Je passe au niveau supérieur</button>:<button className="littleNext" onClick={this.levelUp}>Je choisis une autre catégorie</button>}
+            </div>
 
           </div>
+          </>
       )
     }
 }

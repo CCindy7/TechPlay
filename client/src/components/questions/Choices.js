@@ -8,13 +8,10 @@ import { SiCsswizardry } from 'react-icons/si';
 import { SiReact } from 'react-icons/si';
 import { BsEmojiLaughingFill } from 'react-icons/bs';
 import { BsEmojiDizzyFill } from 'react-icons/bs';
-import { BsEmojiSmileUpsideDownFill } from 'react-icons/bs';
-
-//OK //changement de state sur du onclick / pas de formulaire
-//OK //button  = appel à axios qui passe infos sous forme de data au composant qui est la page suivante / qui recupéra les infos
-//OK valeur par défaut //si 3 states ne sont pas remplis, empêcher de passer à la suivante (alternative:choix par défaut)
-//OK //3 fonctions différentes de onclick
-// TODO CSS // highlighter les options sélectionnées
+// import { BsEmojiSmileUpsideDownFill } from 'react-icons/bs';
+import { FaGrimace } from 'react-icons/fa';
+import uniqid from 'uniqid';
+import Navbar from '../Navbar';
 
 class Choices extends Component {
   state={
@@ -22,7 +19,8 @@ class Choices extends Component {
     difficulty:1, 
     number: 'Toutes les questions', 
     question:{},
-    errorMessage:''
+    errorMessage:'',
+    round:'',
   }
 
   chooseCat = (event) => {
@@ -50,12 +48,13 @@ class Choices extends Component {
     question(category, difficulty)
     .then(response => {
       this.setState({
-        question: response
+        question: response, 
+        round: uniqid()
       })
       this.props.history.push({
         pathname: '/question',
         search: `?category=${category}&difficulty=${difficulty}`,
-        state: {question: response, number: number}
+        state: {question: response, number: number, round:this.state.round}
       })
     })
     .catch(err => {
@@ -66,33 +65,42 @@ class Choices extends Component {
 
   render() {
     return(
+      <>
+        <Navbar user={this.state.user} />
+      
       <div className="choices">
         
-        <div className="block-title-question">
+        <div className="block-title-questions">
           <h1>Mes choix</h1>
         </div>
+
+        { this.state.errorMessage && (
+          <div className="error-message">
+            <p>{this.state.errorMessage}</p>
+          </div>
+          )}
 
         <div className="container-choices">
 
           <div className="category-box">
-            <h3>Je choisis ma catégorie de question(s) :</h3>
+            <h3><b>Je choisis ma catégorie de question(s) :</b></h3>
             <div>
-              <label className={(this.state.category === "HTML") && "selected"}>
+              <label className={(this.state.category === "HTML") ? "selected" :""}>
                 <input className="icon-category" type="radio" value="HTML" name="HTML" onClick={event => this.chooseCat(event)} defaultChecked={true}/>
                 <SiHtml5 className="outline-icon"/>
               </label>
               
-              <label className={(this.state.category === "JS") && "selected"}>
+              <label className={(this.state.category === "JS") ? "selected": ""}>
                 <input className="icon-category" type="radio" value="JS" name="JS" onClick={event => this.chooseCat(event)} />
                 <SiJavascript className="outline-icon"/>
               </label>
                           
-              <label className={(this.state.category === "CSS") && "selected"}>
+              <label className={(this.state.category === "CSS") ? "selected": ""}>
                 <input className="icon-category" type="radio" value="CSS" name="CSS" onClick={event => this.chooseCat(event)} />
                 <SiCsswizardry className="outline-icon"/>
               </label>
               
-              <label className={(this.state.category === "React") && "selected"}>
+              <label className={(this.state.category === "React") ? "selected":""}>
                 <input className="icon-category" type="radio" value="React" name="React" onClick={event => this.chooseCat(event)} />
                 <SiReact className="outline-icon"/>
               </label>
@@ -101,57 +109,54 @@ class Choices extends Component {
 
 
           <div className="number-box">
-            <h3>Je choisis mon nombre de question(s) :</h3>
-            <div className="control">
+            <h3><b>Je choisis mon nombre de question(s) :</b></h3>
+            <div className={(this.state.number === "Question unique") ? "selected" : ""}>
               <label>
-                <input className="input is-info" type="text" value="Question unique" name="Question unique" onClick={event => this.chooseNb(event)} readOnly />
+                <input className="questionNb" type="text" value="Question unique" name="Question unique" onClick={event => this.chooseNb(event)} readOnly />
               </label>
             </div>
-            <div className="control">
+            <div className={(this.state.number === "Toutes les questions") ? "selected" : ""}>
               <label>
-                <input className="input is-primary" type="text" value="Toutes les questions" name="Toutes les questions" onClick={event => this.chooseNb(event)} defaultChecked={true} readOnly />
+                <input className="questionNb" type="text" value="Toutes les questions" name="Toutes les questions" onClick={event => this.chooseNb(event)} defaultChecked={true} readOnly />
               </label>
             </div>
           </div>
 
 
           <div className="difficulty-box">            
-            <h3>Je choisis le niveau de difficulté :</h3>            
+            <h3><b>Je choisis le niveau de difficulté :</b></h3>            
             <div className="icon-display">
               
-              <label className={(this.state.difficulty === "1") && "selected"}>
+              <label className={(this.state.difficulty == 1) ? "selected": ""}>
                 <input className="icon-difficulty" type="radio" value="1" name="1" onClick={event => this.chooseDif(event)} defaultChecked={true}/>
                 <BsEmojiLaughingFill className="emoji1" />
                 Facile                    
               </label>
                             
-              <label className={(this.state.difficulty === "2") && "selected"}>
+              <label className={(this.state.difficulty == 2) ? "selected": ""}>
                 <input className="icon-difficulty" type="radio" value="2" name="2" onClick={event => this.chooseDif(event)} />              
-                <BsEmojiDizzyFill className="emoji2" />
+                <FaGrimace className="emoji2" />
                 Intermédiaire                            
               </label>        
            
-              <label className={(this.state.difficulty === "3") && "selected"}>
+              <label className={(this.state.difficulty == 3) ? "selected": ""}>
                 <input className="icon-difficulty" type="radio" value="3" name="3" onClick={event => this.chooseDif(event)} />                
-                <BsEmojiSmileUpsideDownFill className="emoji3" />
+                <BsEmojiDizzyFill className="emoji3" />
                 Difficile               
               </label>              
               
             </div>                  
           </div>
 
-          <div className="button-box">
-            <button className="button is-link" onClick={()=> this.handleSubmit()}>C'est parti !</button>
+          <div>
+            <button className="littleNext" onClick={()=> this.handleSubmit()}>C'est parti !</button>
           </div>
 
         </div>
-        { this.state.errorMessage && (
-          <div className="error-message">
-            <p>{this.state.errorMessage}</p>
-          </div>
-          )}
+        
 
       </div>
+      </>
     )
   }
 }

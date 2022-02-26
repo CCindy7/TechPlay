@@ -45,7 +45,6 @@ class App extends Component {
             <Route exact path="/" render={(props)=>(
               <Homepage user={this.state.user}/>
             )} />
-            <>
               <Route path="/example" render={(props)=>(
                 <Example history={props.history} />
               )} />
@@ -81,9 +80,6 @@ class App extends Component {
               <Route path="/history" render={(props)=>(
                 <History user={this.state.user} getUser={this.getUser} history={props.history}/>
               )} />
-
-              <Navbar user={this.state.user} />
-            </>
           </Switch> 
         </div>
       )}/>

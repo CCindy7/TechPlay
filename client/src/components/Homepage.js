@@ -14,8 +14,7 @@ class Homepage extends Component {
               <p>Créez votre compte et commencez à vous entraîner.</p>
               <Link className="btn" to="/signup">S'enregistrer</Link>
               <Link className="btn" to="/login">Se connecter</Link>
-              <Link className="btn" to="/example">Tester</Link>
-              <div className="footer-homepage"></div>
+              <Link className="btn" to="/example">Découvrir</Link>
             </div>
         )
     }

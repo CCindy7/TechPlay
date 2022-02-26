@@ -1,22 +1,27 @@
-.navbar-icons {
-    color: rgb(82, 80, 80);
+.navHolder {
+    background: none repeat scroll;
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+}
+
+.navbar {
+    background: repeat scroll;
+    background-color: #F4DC2C;
+    margin: auto;
+    width:100%;
+    max-width: 700px; 
+    min-width: 300px;
 }
 
 .navbar-element {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 4rem;
+    padding-top: 20px;
 }
 
-.navbar {
-    background-color: lightgray;
-    position: fixed;
-    bottom: 0;
-    display: flex;
-    justify-content: space-evenly;
-    width: 100%;
-    height: 50px;
+.navbar-icons {
+    color: #3248DA;
+    margin: auto;
 }
 
 @media (max-height: 700px) {

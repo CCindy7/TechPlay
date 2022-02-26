@@ -1,8 +1,12 @@
 import React, { Component }  from 'react';
 import {signup} from './auth-service';
 import {Link} from 'react-router-dom';
-import '../style/Signup.css';
+import '../style/Auth.css';
 import 'bulma/css/bulma.css';
+import { IoHome } from 'react-icons/io5';
+import { AiOutlineEyeInvisible } from 'react-icons/ai';
+import { AiOutlineEye } from 'react-icons/ai';
+
 
 class Signup extends Component {
   state = {
@@ -10,6 +14,10 @@ class Signup extends Component {
     email:"",
     password:"",
     confirmation:"",
+    showPswd: false,
+    eyePswd:<AiOutlineEyeInvisible/>,
+    eyeConf: <AiOutlineEyeInvisible/>,
+    showConf: false,
     errorMessage:""
   }
 
@@ -22,6 +30,10 @@ class Signup extends Component {
           email:"",
           password:"",
           confirmation:"",
+          showPswd:false,
+          showConf: false,
+          eyePswd:<AiOutlineEyeInvisible/>,
+          eyeConf: <AiOutlineEyeInvisible/>,
           errorMessage:''
         })
         this.props.getUser(response);
@@ -37,12 +49,32 @@ class Signup extends Component {
     this.setState({[name]: value});
   }
 
+  handlePassword = (event) => {
+    this.setState({
+      eyePswd: this.state.showPswd ?  <AiOutlineEyeInvisible/> :<AiOutlineEye/>,
+      showPswd: !this.state.showPswd
+    })
+  }
+
+  handleConfirmation = (event) => {
+    this.setState({
+      eyeConf: this.state.showConf ? <AiOutlineEyeInvisible/>: <AiOutlineEye/>,
+      showConf: !this.state.showConf
+    })
+  }
+
   render() {
     return(
-      <div className="signup">
+      <div className="auth">
         <div className="block-title-auth">
           <h1>S'enregistrer</h1>
         </div>
+
+        { this.state.errorMessage && (
+          <div className="error-message">
+            <p>{this.state.errorMessage}</p>
+          </div>
+        )}
 
         <div className="block-form">
           <form onSubmit={this.handleSubmit}>
@@ -71,10 +103,13 @@ class Signup extends Component {
             <div className="field">
               <label className="label">Mot de passe
               <div className="control has-icons-left has-icons-right">
-                <input className="input" type="password" name="password" value={this.state.password} onChange={event => this.handleChange(event)} />
+                <input className="input" type={this.state.showPswd ? "text": "password"} name="password" value={this.state.password} onChange={event => this.handleChange(event)} >
+                </input>
+                
                 <span className="icon is-medium is-left">
                   <i className="fa-solid fa-lock"></i>
                 </span>
+                <button className="eye" onClick={this.handlePassword}>{this.state.eyePswd}</button>
               </div>
               </label>
             </div>
@@ -82,26 +117,29 @@ class Signup extends Component {
             <div className="field">
               <label className="label">Confirmez votre mot de passe
               <div className="control has-icons-left has-icons-right">
-                <input className="input" type="password" name="confirmation" value={this.state.confirmation} onChange={event => this.handleChange(event)} />
+                <input className="input" type={this.state.showConf ? "text": "password"} name="confirmation" value={this.state.confirmation} onChange={event => this.handleChange(event)} />
                 <span className="icon is-medium is-left">
                   <i className="fa-solid fa-lock"></i>
                 </span>
+                <button className="eye" onClick={this.handleConfirmation}>{this.state.eyeConf}</button>
               </div>
               </label>
             </div>
 
-            <div className="btn-signup">
-              <button className="button is-link">Créer mon compte</button>
+            <div className="btn-auth">
+              <button className="next">Créer mon compte</button>
             </div>
 
           </form> 
         </div>
-        <Link to="/login">J'ai déjà un compte</Link>
-        { this.state.errorMessage && (
-          <div className="error-message">
-            <p>{this.state.errorMessage}</p>
-          </div>
-        )}
+        <Link className="authLink" to="/login">J'ai déjà un compte</Link>
+
+        <div className="foot">
+          <a className="footerLink" href="/">
+            <IoHome/>
+          </a>
+        </div> 
+        
       </div>
     )
   }

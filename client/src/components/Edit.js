@@ -2,7 +2,8 @@ import React, { Component }  from 'react';
 import {edit, logout, deleteProfile} from './auth/auth-service';
 import {Redirect} from 'react-router-dom';
 import './style/Edit.css';
-import 'bulma/css/bulma.css';
+import Navbar from './Navbar';
+// import 'bulma/css/bulma.css';
 
 class Edit extends Component {
   state = {
@@ -48,6 +49,9 @@ class Edit extends Component {
     if(this.props.user === false) return <Redirect to="/"/>
 
     return(
+      <>
+        <Navbar user={this.state.user} />
+      
       <div className="edit-profile">
         <div className="block-title-profile">
           <h1>Mon compte</h1>
@@ -66,18 +70,23 @@ class Edit extends Component {
               </label>
             </div>
 
-            <div className="field">
-              <div className="control">
-                <button className="button is-link">Mettre à jour</button>
+            <div className="profileButtons">
+                <button className="littleNext"
+                >
+                Mettre à jour</button>
+             
+              <div className="out">
+                <button 
+                onClick={this.logout}>Me déconnecter</button>
               </div>
-              <div className="control">
-                <button className="button is-link is-warning" onClick={this.logout}>Me déconnecter</button>
-              </div>
+              <div className="out">
               <button onClick={this.deleteProfile}>Supprimer mon compte</button>
+              </div>
             </div>
           </form>
         </div>
       </div>
+      </>
     )
   }
 }

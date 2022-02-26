@@ -1,6 +1,7 @@
 .profile {
-    min-height: 100vh;
-    display:flex; align-items:center;
+    max-height: 100vh;
+    display:flex; 
+    align-items:center;
     flex-direction: column;
     font-family: 'Balsamiq Sans', cursive;
     font-family: 'Nunito Sans', sans-serif;
@@ -12,7 +13,7 @@
     width: 100%;
     min-width: 300px;
     max-width: 700px;
-    height: 180px;
+    height: 15rem;
     padding: 10px;
     background-color: var(--darkblue);
     border-bottom-left-radius: 40px; 
@@ -23,7 +24,7 @@
     color: white;
     margin: auto;
     font-weight: bold;
-    font-size: 2.5rem;
+    font-size: 2rem;
 }
 
 .profile > div {
@@ -35,7 +36,8 @@
     flex-direction: column;
     height: 30rem;
     width: 20rem;
-    margin-top: auto; margin-bottom: auto
+    margin-top: auto; 
+    margin-bottom: auto
 }
 
 .profile-box1 {
@@ -44,7 +46,7 @@
 
 .profile-box2 {
     flex-grow: 1;
-    flex-basis: 50%;
+    flex-basis: auto;
     flex-direction: column;
     text-align: center;
 }
@@ -59,24 +61,13 @@
 .outline-icon-profile {
     width: 8vmin;
     height: 6vmin;
-    margin-right: auto; margin-left: auto;
-    margin-top: 5%;
+    margin-right: auto; 
+    margin-left: auto;
+    margin-top: 10px;
     text-align: center;
-    margin-bottom: 7%;
+    margin-bottom: 20px;
     display: flex;
 }
-
-{/*.container-profile-links {
-    display:inline-block;
-    border-radius:10px;
-    text-align: center;
-    margin-top: 1.2%;
-    width:fit-content;
-    padding: 0.5em 0.85em;
-    background-color: var(--orange);
-    color:white;
-    font-weight: 600;
-}*/}
 
 @media (max-width: 400px) {
     .block-title-profile > h1 {

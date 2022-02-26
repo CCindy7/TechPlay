@@ -1,14 +1,14 @@
 import React, { Component }  from 'react';
 import '../style/Example.css';
 import { SiJavascript } from 'react-icons/si';
-import { FaUserNinja } from 'react-icons/fa';
+import { BsEmojiLaughingFill } from 'react-icons/bs';
 
 class Example extends Component {
     state={
-        title:'Quel est le résultat de 7+1+"3" ?',
+        title:'Quel est le résultat de 2+2+\'2\' ?',
         category:'JS',
         difficulty:'1',
-        propositions:['11', 'undefined', '83'],
+        propositions:['6', 'undefined', '42'],
         userResponse: '',
         solution: 2,
         correct_answer: false,
@@ -53,30 +53,27 @@ class Example extends Component {
        
     render(){
         return(
-            <div className="example">
-                <div className="block-title-question">
-                    <h1>Exemple</h1>
+            <div className="question">
+                <div className="block-title">
+                    <h1>{this.state.title}</h1>
                 </div>
 
-                <div className="container-example">
-
-                <div>
-                    <h2>Ici vous retrouverez la catégorie de la question et son niveau de difficulté :</h2>
+                <h2>Catégorie et difficulté de la question : </h2>
+                <div className="question-choices">
                     <label>
-                        <input type="radio" name="JS" className="questionInput"/>
+                        <input type="radio" name="JS" className="icon-category"/>
                         <SiJavascript className="outline-icon"/>
+                        JavaScript
                     </label>
 
                     <label>
-                        <input type="radio" name="1" className="questionInput" />
-                        <FaUserNinja className="ninja1" />
-                    </label>
-
-                    
+                        <input type="radio" name="1" className="icon-difficulty" />
+                        <BsEmojiLaughingFill className="emoji1" />
+                        Facile
+                    </label>  
                 </div>
-
+                
                 <div className="propositions-container">
-                    <h3>{this.state.title}</h3>
                     <div className="proposition">
                         {this.state.propositions && this.state.propositions.map((proposition, index) => {
                             return (
@@ -95,9 +92,9 @@ class Example extends Component {
                     </div>  
                 </div>
    
-                {(this.state.isClicked) ? <button onClick={(event)=> this.handleNext(event)}>Question suivante</button>: ''}
+                {(this.state.isClicked) && <button className="next" onClick={(event)=> this.handleNext(event)}>Question suivante</button>}
 
-                </div>
+                
             </div>
         )     
     }

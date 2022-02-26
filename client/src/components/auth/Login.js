@@ -1,13 +1,19 @@
 import React, { Component }  from 'react';
 import {login} from './auth-service';
 import {Link} from 'react-router-dom';
-import '../style/Login.css';
+import '../style/Auth.css';
 import 'bulma/css/bulma.css';
+import { IoHome } from 'react-icons/io5';
+import { AiOutlineEyeInvisible } from 'react-icons/ai';
+import { AiOutlineEye } from 'react-icons/ai';
+
 
 class Login extends Component {
   state = {
     email:"",
     password:"",
+    showPswd: false,
+    eyePswd:<AiOutlineEyeInvisible/>,
     errorMessage:''
   }
 
@@ -18,6 +24,8 @@ class Login extends Component {
         this.setState({ // remet à zéro le formulaire
           email:"",
           password:"",
+          showPswd: false,
+          eyePswd:<AiOutlineEyeInvisible/>,
           errorMessage:''
         })
         this.props.getUser(response);
@@ -33,12 +41,25 @@ class Login extends Component {
     this.setState({[name]: value});
   }
 
+  handleVisibility = (event) => {
+    this.setState({
+      eyePswd: this.state.showPswd ? <AiOutlineEyeInvisible/> : <AiOutlineEye/>,
+      showPswd: !this.state.showPswd
+    })
+  }
+
   render() {
     return(
-      <div className="login">
+      <div className="auth">
         <div className="block-title-auth">
           <h1>Se connecter</h1>
         </div>
+
+        { this.state.errorMessage && (
+          <div className="error-message">
+            <p>{this.state.errorMessage}</p>
+          </div>
+          )}
 
         <div className="block-form">
           <form onSubmit={this.handleSubmit}>
@@ -56,27 +77,30 @@ class Login extends Component {
             <div className="field">
               <label className="label">Mot de passe
               <div className="control has-icons-left has-icons-right">
-                <input className="input" type="password" name="password" value={this.state.password} onChange={event => this.handleChange(event)} />
+                <input className="input" type={this.state.showPswd ? "text": "password"} name="password" value={this.state.password} onChange={event => this.handleChange(event)} />
                 <span className="icon is-medium is-left">
                   <i className="fa-solid fa-lock"></i>
                 </span>
+              <button className="eye" onClick={this.handleVisibility}>{this.state.eyePswd}</button>
               </div>
               </label>
             </div>
             
-            <div className="btn-login">
-              <button className="button is-link">Me connecter</button>
+            <div className="btn-auth">
+              <button className="next">Me connecter</button>
             </div>
             
           </form>
         </div>
 
-        <Link to="/signup">Pas encore de compte ?</Link>
-        { this.state.errorMessage && (
-          <div className="error-message">
-            <p>{this.state.errorMessage}</p>
-          </div>
-          )}
+        <Link className="authLink" to="/signup">Pas encore de compte ?</Link>
+
+        <div className="foot">
+          <a className="footerLink" href="/">
+            <IoHome className='home'/>
+          </a>
+        </div> 
+        
       </div>
     )
   }

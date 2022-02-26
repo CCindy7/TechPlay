@@ -1,6 +1,5 @@
 import React, { Component }  from 'react';
 import { question, solution} from './question-service';
-import '../style/Question.css';
 import { SiHtml5 } from 'react-icons/si';
 import { SiJavascript } from 'react-icons/si';
 import { SiCsswizardry } from 'react-icons/si';
@@ -8,6 +7,7 @@ import { SiReact } from 'react-icons/si';
 import { BsEmojiLaughingFill } from 'react-icons/bs';
 import { BsEmojiDizzyFill } from 'react-icons/bs';
 import { BsEmojiSmileUpsideDownFill } from 'react-icons/bs';
+import "../style/Question.css";
 
 class Question extends Component {
     state={
@@ -18,6 +18,7 @@ class Question extends Component {
         number: this.props.history.location.state.number,
         isClicked: false,
         nb_questions: 0,
+        // round: this.props.history.location.state.round
     }
 
     componentDidMount= () => {
@@ -67,7 +68,10 @@ class Question extends Component {
     handleNext = () => {    
         //gestion de la dernière question : si n° Q° = nb total Q° et après la réponse => résultats
         if(this.state.number === 'Toutes les questions' && this.state.nb_questions === this.props.history.location.state.question.total && this.state.isClicked) {
-            return this.props.history.push("/result")
+            return this.props.history.push({
+                pathname: "/result",
+                // state:{round: this.state.round}
+            })
         }
 
         // Q° suivante
@@ -86,7 +90,10 @@ class Question extends Component {
             
     // arrête l'entraînement => résultats
     handleQuit = () => {
-        this.props.history.push('/result')
+        this.props.history.push({
+            pathname: "/result",
+            // state:{round: this.state.round}
+        })
     }
 
     render(){
@@ -98,49 +105,49 @@ class Question extends Component {
         //Récupération des icônes Category et Difficulty
         let catIcon;
         if (category === "HTML") {
-            catIcon = <SiHtml5 />
+            catIcon = <SiHtml5 className="outline-icon icons"/>
         } else if (category === "JS") {
-            catIcon = <SiJavascript />
+            catIcon = <SiJavascript className="outline-icon icons"/>
         } else if (category === "CSS") {
-            catIcon = <SiCsswizardry />
-        } else { catIcon = <SiReact /> }
+            catIcon = <SiCsswizardry className="outline-icon icons" />
+        } else { 
+            catIcon = <SiReact className="outline-icon icons"/> 
+        }
 
         let diffIcon;
         if (difficulty === 1) {
-            diffIcon = <BsEmojiLaughingFill />
+            diffIcon = <BsEmojiLaughingFill className="emoji1 icons"/>
         } else if (difficulty === 2) {
-            diffIcon = <BsEmojiDizzyFill />
-        } else { diffIcon = <BsEmojiSmileUpsideDownFill />
+            diffIcon = <BsEmojiDizzyFill className="emoji2 icons"/>
+        } else { 
+            diffIcon = <BsEmojiSmileUpsideDownFill className="emoji3 icons"/>
         };
     
         return(
             
             <div className="question">
-                <div className="block-title-question">
-                    <h1>{number}</h1>
+                <div className="block-title">
+                    <h1>{title}</h1>
                 </div>
 
+                {/* <h2>Mes choix :</h2> */}
                 <div className="question-container">
-                    <div className="choicesRemind">
-                        <h2>Mes choix :</h2>
-                        <label>
-                            <input type="radio" name={category} className="questionInput"/>
-                            {catIcon}
-                        </label>
+                    <label>
+                        <input type="radio" name={category} className="icon-category"/>
+                        {catIcon}
+                    </label>
 
-                        <label>
-                            <input type="radio" name={difficulty} className="questionInput" />
-                            {diffIcon}
-                        </label>
-                    </div>
+                    <label>
+                        <input type="radio" name={difficulty} className="icon-difficulty" />
+                        {diffIcon}
+                    </label>
                 </div>
 
                 <div className="propositions-container">
-                    <h3>{title}</h3>
                     <div className="proposition">
                         {propositions && propositions.map((proposition, index) => {
                             return (
-                                <button id="btn-prop"
+                                <button
                                 className={`${this.state.userResponse !=='' && this.handleColors(index)}`} // style backgroundColor si userResponse n'est pas vide
                                 key={index}
                                 onClick={() => this.handleClick(index)}
@@ -153,10 +160,10 @@ class Question extends Component {
                         })}
                     </div>  
                 </div>
-                <div className="button-box">
-                    {(number === 'Question unique' && isClicked) ? <button className="button is-link" onClick={(event)=> this.handleNext(event)}>Répondre à plus de questions</button>: ''}
-                    {(number === 'Toutes les questions' && isClicked) ? <button className="button is-link" onClick={(event)=> this.handleNext(event)}>Suivant</button>: ''}
-                    {(number === 'Toutes les questions'&& isClicked) ? <button className="button is-danger" onClick={(event)=> this.handleQuit(event)}>Stop</button> : ''}
+                <div>
+                    {(number === 'Question unique' && isClicked) ? <button className="littleNext" onClick={(event)=> this.handleNext(event)}>Répondre à plus de questions</button>: ''}
+                    {(number === 'Toutes les questions' && isClicked) ? <button className="littleNext gap" onClick={(event)=> this.handleNext(event)}>Suite</button>: ''}
+                    {(number === 'Toutes les questions'&& isClicked) ? <button className="littleNext gap" onClick={(event)=> this.handleQuit(event)}>Stop</button> : ''}
                 </div>
             </div>
         )
