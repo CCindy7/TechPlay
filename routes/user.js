@@ -27,7 +27,10 @@ router.get("/user", isLoggedIn, (req, res) => {
 // ##     ## ##        ##     ## ##     ##    ##    ##          ##     ## ##    ## ##       ##    ##  ##   ### ##     ## ##     ## ##       
 //  #######  ##        ########  ##     ##    ##    ########     #######   ######  ######## ##     ## ##    ## ##     ## ##     ## ######## 
 
-router.put("/edit/:id", isLoggedIn, (req, res) => {
+router.put("/edit/:id", (req, res) => {
+  //Check if user is logged in
+  if (!req.session.user) return res.status(403).json ({ errorMessage : "Vous devez être connecté pour récupérer votre profil."});
+
   if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
     res.status(400).json({ message: 'Specified id is not valid' });
     return;

@@ -10,10 +10,6 @@ const saltRounds = 10;
 // Require the User model in order to interact with the database
 const User = require("../models/User.model");
 
-// Require necessary (isLoggedOut and isLiggedIn) middleware in order to control access to specific routes
-const isLoggedOut = require("../middleware/isLoggedOut");
-const isLoggedIn = require("../middleware/isLoggedIn");
-
 
 // ######  ####  ######   ##    ## ##     ## ########  
 // ##    ##  ##  ##    ##  ###   ## ##     ## ##     ## 
@@ -23,7 +19,7 @@ const isLoggedIn = require("../middleware/isLoggedIn");
 // ##    ##  ##  ##    ##  ##   ### ##     ## ##        
 //  ######  ####  ######   ##    ##  #######  ##        
 
-router.post("/signup", isLoggedOut, (req, res) => {
+router.post("/signup", (req, res) => {
   const { username, email, password, confirmation } = req.body;
 
   // Validation de tous les champs
@@ -100,7 +96,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
 // ##       ##     ## ##    ##   ##  ##   ### 
 // ########  #######   ######   #### ##    ## 
 
-router.post("/login", isLoggedOut, (req, res, next) => {
+router.post("/login", (req, res, next) => {
   const { email, password } = req.body;
 
   // Validation de tous les champs
@@ -151,7 +147,7 @@ router.post("/login", isLoggedOut, (req, res, next) => {
 // ##       ##     ## ##    ##  ##     ## ##     ##    ##    
 // ########  #######   ######    #######   #######     ##    
 
-router.get("/logout", isLoggedIn, (req, res) => {
+router.get("/logout", (req, res) => {
   req.session.destroy((err) => {
     if (err) {
       return res.status(500).json({ message: err.message });
