@@ -65,7 +65,7 @@ class Signup extends Component {
 
   render() {
     return(
-      <div className="auth">
+      <div className="auth auth-signup">
         <div className="block-title-auth">
           <h1>S'enregistrer</h1>
         </div>
@@ -80,7 +80,7 @@ class Signup extends Component {
           <form onSubmit={this.handleSubmit}>
             <div className="field">
               <label className="label">Nom d'utilisateur
-              <div className="control has-icons-left has-icons-right">
+              <div className="control has-icons-left">
                 <input className="input" type="text" name="username" value={this.state.username} onChange={event => this.handleChange(event)}/>
                 <span className="icon is-medium is-left">
                   <i className="fa-solid fa-user"></i>
@@ -91,7 +91,7 @@ class Signup extends Component {
 
             <div className="field">
               <label className="label">Email
-              <div className="control has-icons-left has-icons-right">
+              <div className="control has-icons-left">
                 <input className="input" type="text" name="email" value={this.state.email} onChange={event => this.handleChange(event)}/>
                 <span className="icon is-medium is-left">
                   <i className="fa-solid fa-envelope"></i>
@@ -102,10 +102,8 @@ class Signup extends Component {
 
             <div className="field">
               <label className="label">Mot de passe
-              <div className="control has-icons-left has-icons-right">
-                <input className="input" type={this.state.showPswd ? "text": "password"} name="password" value={this.state.password} onChange={event => this.handleChange(event)} >
-                </input>
-                
+              <div className="control has-icons-left">
+                <input className="input" style={{position: "absolute"}} type={this.state.showPswd ? "text": "password"} name="password" value={this.state.password} onChange={event => this.handleChange(event)} />
                 <span className="icon is-medium is-left">
                   <i className="fa-solid fa-lock"></i>
                 </span>
@@ -116,8 +114,8 @@ class Signup extends Component {
 
             <div className="field">
               <label className="label">Confirmez votre mot de passe
-              <div className="control has-icons-left has-icons-right">
-                <input className="input" type={this.state.showConf ? "text": "password"} name="confirmation" value={this.state.confirmation} onChange={event => this.handleChange(event)} />
+              <div className="control has-icons-left">
+                <input className="input" style={{position: "absolute"}} type={this.state.showConf ? "text": "password"} name="confirmation" value={this.state.confirmation} onChange={event => this.handleChange(event)} />
                 <span className="icon is-medium is-left">
                   <i className="fa-solid fa-lock"></i>
                 </span>
@@ -130,9 +128,11 @@ class Signup extends Component {
               <button className="next">Créer mon compte</button>
             </div>
 
-          </form> 
+          </form>
+
+          <Link className="authLink" to="/login">J'ai déjà un compte</Link>
+          
         </div>
-        <Link className="authLink" to="/login">J'ai déjà un compte</Link>
 
         <div className="foot">
           <a className="footerLink" href="/">

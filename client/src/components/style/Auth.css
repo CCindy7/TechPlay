@@ -32,8 +32,25 @@
 }
 
 .block-form {
-    margin-top: auto;
-    margin-bottom: auto;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.input {
+    position: absolute;
+}
+
+.eye {
+    position:relative;
+    z-index: 1;
+    display: flex;
+    height: 40px;
+    margin: 0 0 0 auto;
+    padding-right: 10px;
+    align-items: center;
+    background: transparent;
+    color: darkgray;
+    border: none;
 }
 
 .btn-auth {
@@ -42,6 +59,8 @@
 
 .authLink {
     font-size: 14px;
+    text-align: center;
+    margin-top: 0.8rem;
 }
 
 .foot {
@@ -61,4 +80,19 @@
 
 .control {
     display: flex;
+}
+
+{/*Changes on Login page*/}
+.auth-login {
+    gap: 4.5rem;
+}
+
+{/*Changes on Signup page*/}
+.auth-signup {
+    gap: 2rem;
+}
+
+{/*Changes on edit page*/}
+.auth-edit {
+    gap: 6rem;
 }

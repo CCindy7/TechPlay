@@ -52,8 +52,8 @@ class Edit extends Component {
       <>
         <Navbar user={this.state.user} />
       
-      <div className="edit-profile">
-        <div className="block-title-profile">
+      <div className="auth auth-edit">
+        <div className="block-title-auth">
           <h1>Mon compte</h1>
         </div>
 
@@ -61,7 +61,7 @@ class Edit extends Component {
           <form onSubmit={this.handleSubmit}>
             <div className="field">
               <label className="label">Modifier mon nom d'utilisateur :
-              <div className="control has-icons-left has-icons-right">
+              <div className="control has-icons-left">
                 <input className="input" type="text" name="username" value={this.state.username} onChange={event => this.handleChange(event)} />
                 <span className="icon is-medium is-left">
                   <i className="fa-solid fa-user"></i>

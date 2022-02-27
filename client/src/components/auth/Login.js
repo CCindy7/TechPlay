@@ -50,7 +50,7 @@ class Login extends Component {
 
   render() {
     return(
-      <div className="auth">
+      <div className="auth auth-login">
         <div className="block-title-auth">
           <h1>Se connecter</h1>
         </div>
@@ -65,7 +65,7 @@ class Login extends Component {
           <form onSubmit={this.handleSubmit}>
             <div className="field">
               <label className="label">Email
-              <div className="control has-icons-left has-icons-right">
+              <div className="control has-icons-left">
                 <input className="input" type="text" name="email" value={this.state.email} onChange={event => this.handleChange(event)} />
                 <span className="icon is-medium is-left">
                   <i className="fa-solid fa-envelope"></i>
@@ -76,12 +76,12 @@ class Login extends Component {
 
             <div className="field">
               <label className="label">Mot de passe
-              <div className="control has-icons-left has-icons-right">
-                <input className="input" type={this.state.showPswd ? "text": "password"} name="password" value={this.state.password} onChange={event => this.handleChange(event)} />
+              <div className="control has-icons-left">
+                <input className="input" style={{position: "absolute"}} type={this.state.showPswd ? "text": "password"} name="password" value={this.state.password} onChange={event => this.handleChange(event)} />
                 <span className="icon is-medium is-left">
                   <i className="fa-solid fa-lock"></i>
                 </span>
-              <button className="eye" type="button" onClick={this.handleVisibility}>{this.state.eyePswd}</button>
+                <button className="eye" type="button" onClick={this.handleVisibility}>{this.state.eyePswd}</button>
               </div>
               </label>
             </div>
@@ -91,9 +91,10 @@ class Login extends Component {
             </div>
             
           </form>
-        </div>
 
-        <Link className="authLink" to="/signup">Pas encore de compte ?</Link>
+          <Link className="authLink" to="/signup">Pas encore de compte ?</Link>
+
+        </div>
 
         <div className="foot">
           <a className="footerLink" href="/">
