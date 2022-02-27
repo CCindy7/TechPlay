@@ -120,6 +120,7 @@ class Signup extends Component {
                   <i className="fa-solid fa-lock"></i>
                 </span>
                 <button className="eye" type="button" onClick={this.handleConfirmation}>{this.state.eyeConf}</button>
+                
               </div>
               </label>
             </div>

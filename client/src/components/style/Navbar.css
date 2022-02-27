@@ -5,27 +5,19 @@
     width: 100%;
 }
 
-.navbar {
+.nav {
     background: repeat scroll;
     background-color: #F4DC2C;
     margin: auto;
     width:100%;
     max-width: 700px; 
     min-width: 300px;
-}
-
-.navbar-element {
     display: flex;
-    padding-top: 20px;
 }
 
-.navbar-icons {
+.navLink {
     color: #3248DA;
     margin: auto;
-}
-
-@media (max-height: 700px) {
-    .navbar {
-        height: 30px;
-    }
+    height: 2em;
+    padding-top: 5px;
 }

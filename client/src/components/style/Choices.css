@@ -81,21 +81,21 @@
     width: 5vmin;
     height: 4vmin;
     margin-right: 0.3em;
-    color: var(--lightblue);
+    color: #72DDF7;
     vertical-align: middle;
 }
 
 .emoji1 {
     width: 5vmin;
     height: 4vmin;
-    color: var(--yellow);
+    color: #F4DC2C;
     padding-right: 5px;
 }
 
 .emoji2 {
     width: 5vmin;
     height: 4vmin;
-    color: var(--orange);
+    color: orange;
     padding-right: 5px;
 }
 

@@ -1,5 +1,6 @@
 import React, { Component }  from 'react';
 import { question, solution} from './question-service';
+import { Redirect } from 'react-router-dom';
 import { SiHtml5 } from 'react-icons/si';
 import { SiJavascript } from 'react-icons/si';
 import { SiCsswizardry } from 'react-icons/si';
@@ -18,7 +19,7 @@ class Question extends Component {
         number: this.props.history.location.state.number,
         isClicked: false,
         nb_questions: 0,
-        // round: this.props.history.location.state.round
+        round: this.props.history.location.state.round
     }
 
     componentDidMount= () => {
@@ -41,8 +42,9 @@ class Question extends Component {
         this.setState(
             {userResponse: index},() => {
                 //compare réponse et solution et crée Answer en DB
-                solution(this.state.question._id, this.state.userResponse)
-                .then(data => {this.setState({
+                solution(this.state.question._id, this.state.userResponse, this.state.round)
+                .then(data => {
+                    this.setState({
                     correct_answer: data.correct_answer,
                     solution: data.solution,
                     isClicked:true,
@@ -65,12 +67,14 @@ class Question extends Component {
     }
 
     // passage à la question suivante
-    handleNext = () => {    
+    handleNext = () => {  
+        const round = this.state.round  
         //gestion de la dernière question : si n° Q° = nb total Q° et après la réponse => résultats
         if(this.state.number === 'Toutes les questions' && this.state.nb_questions === this.props.history.location.state.question.total && this.state.isClicked) {
             return this.props.history.push({
-                pathname: "/result",
-                // state:{round: this.state.round}
+                pathname: "/results",
+                search: `?round=${round}`,
+                state: {round:this.state.round}
             })
         }
 
@@ -90,13 +94,17 @@ class Question extends Component {
             
     // arrête l'entraînement => résultats
     handleQuit = () => {
+        const round = this.state.round 
         this.props.history.push({
-            pathname: "/result",
-            // state:{round: this.state.round}
+            pathname: "/results",
+            search: `?round=${round}`,
+            state:{round: this.state.round}
         })
     }
 
     render(){
+        if(this.props.user === false) return <Redirect to="/"/>
+
         const question = this.state.question;
         const number = this.state.number;
         const {category, difficulty, title, propositions} = question;

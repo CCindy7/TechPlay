@@ -6,6 +6,9 @@ const answerSchema = new Schema(
     question_id: { type: Schema.Types.ObjectId, ref: 'Question'},
     correct_answer: {
       type: Boolean,
+    },
+    round: {
+      type: Schema.Types.Mixed
     }
   },
   {

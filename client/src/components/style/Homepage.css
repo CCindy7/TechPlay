@@ -55,7 +55,8 @@
     margin-top: 0.5rem;
 }
 
-.btn {
+.btn:nth-child(3),
+.btn:nth-child(4) {
     display:inline-block;
     padding:.6em 4em;
     border: 1px solid #3248DA;
@@ -67,18 +68,34 @@
     width: 15%;
     max-width:50em;
     min-width: 15em;
-    background: white ;
-    color: #3248DA;
+    background: linear-gradient(to left, white 50%, #3248DA 50% ) right ;
+    background-size: 200% 101%;
+    transition: .5s ease-out;
 }
 
-.btn:hover {
-    background: #3248DA;
+.btn:nth-child(3):hover,
+.btn:nth-child(4):hover {
     color: white;
+    background-position: left
 }
 
 .btn:nth-child(5) {
+    display:inline-block;
+    padding:.6em 4em;
     background-color: #F4DC2C;
     border: 1px solid #F4DC2C;
+    border-radius:30px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 1.2rem;
+    width: 15%;
+    max-width:50em;
+    min-width: 15em;
+}
+
+.btn:nth-child(5):hover {
+    color: white;
 }
 
 @media (max-height: 750px) {

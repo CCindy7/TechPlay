@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {history, question} from './question-service';
+import {results, question} from './question-service';
+import { Redirect } from 'react-router-dom';
 import Navbar from '../Navbar';
 import '../style/Result.css'
 
@@ -12,7 +13,7 @@ class Result extends Component {
         number:'Toutes les questions',
         questions: [],
         question: {}, 
-        // round:this.props.history.location.state.round
+        round: this.props.history.location.state.round
     }
 
     componentDidMount=()=>{
@@ -20,7 +21,7 @@ class Result extends Component {
     }
 
     getResults = () => {
-        history()
+        results(this.state.round)
             .then(data => {
                 //obtenir toutes les correct_answers
                 const answers = [];
@@ -47,12 +48,12 @@ class Result extends Component {
                 .then(response => {
                 this.setState({
                     question: response,
-                    difficulty : this.state.difficulty+1
+                    difficulty : this.state.difficulty+1,
                 })
                 this.props.history.push({
                 pathname: '/question',
                 search: `?category=${this.state.category}&difficulty=${this.state.difficulty}`,
-                state: {question: response, number: this.state.number},
+                state: {question: response, number: this.state.number, round: this.state.round},
                 })
             })
             .catch(err => this.setState({question: null}))
@@ -62,8 +63,10 @@ class Result extends Component {
     }
 
     render(){
+        if(this.props.user === false) return <Redirect to="/"/>
+
         const {difficulty} = this.state;
-      return(
+        return(
           <>
             <Navbar user={this.state.user} />
           

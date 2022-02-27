@@ -8,6 +8,15 @@
     /* gap: 0.1rem; */
     font-size: 1rem;
 }
+.null {
+    position: fixed;
+    top:50%
+}
+
+.null > h2 {
+    text-align: center;
+    font-weight: bold;
+}
 
 .sortAndSearch {
     display: flex;
