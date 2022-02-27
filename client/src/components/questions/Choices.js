@@ -1,5 +1,6 @@
 import React, { Component }  from 'react';
 import { question} from './question-service';
+import { Redirect } from 'react-router-dom';
 import '../style/Choices.css'
 import 'bulma/css/bulma.css';
 import { SiHtml5 } from 'react-icons/si';
@@ -58,12 +59,13 @@ class Choices extends Component {
       })
     })
     .catch(err => {
-      console.log("err", err)
       this.setState({errorMessage: err.response.data.message})
     })
   }
 
   render() {
+    if(this.props.user === false) return <Redirect to="/"/>
+
     return(
       <>
       <Navbar user={this.state.user} />

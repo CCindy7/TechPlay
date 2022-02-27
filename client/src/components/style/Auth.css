@@ -62,3 +62,14 @@
 .control {
     display: flex;
 }
+
+.eye {
+    border: none;
+    background: none;
+    position: absolute;
+    right:0;
+    width: 3em;
+    height: 2.8em;
+    font-size: 1em;
+    color:  #363636
+}

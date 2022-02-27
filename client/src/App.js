@@ -72,7 +72,7 @@ class App extends Component {
                 <Question user={this.state.user} getUser={this.getUser} history={props.history} />
               )} />
 
-              <Route path="/result" render={(props)=>(
+              <Route path="/results" render={(props)=>(
                 <Result user={this.state.user} getUser={this.getUser} history={props.history}/>
               )} />
 

@@ -1,5 +1,6 @@
 import React, { Component }  from 'react';
-import { history } from './questions/question-service';
+import { questionsHistory } from './questions/question-service';
+import { Redirect } from 'react-router-dom';
 import Navbar from './Navbar';
 import './style/History.css';
 
@@ -15,8 +16,9 @@ class History extends Component {
     }
 
     getHistory = () => {
-        history()
+        questionsHistory()
             .then(data => {
+                console.log('data', data)
                 this.setState({
                 questions: data
                 })
@@ -31,6 +33,8 @@ class History extends Component {
     }
 
     render() {
+        if(this.props.user === false) return <Redirect to="/"/>
+
         let questionsCopy = [...this.state.questions];
         const {query} = this.state;
 
@@ -63,7 +67,9 @@ class History extends Component {
                 <div className="block-title">
                     <h1>Mon historique</h1>
                 </div>
-                
+
+                {questionsCopy.length !== 0 ? (
+                    <>
                 <div className="sortAndSearch">
                 <form>
                   <label>Rechercher par énoncé
@@ -109,6 +115,13 @@ class History extends Component {
                     })}
                     </tbody>
                 </table>
+                </>
+                ) : (
+                    <div className='null'> 
+                        <h2>C'est bien vide ici !</h2> 
+                        <h2>Il est grand temps de commencer à jouer !</h2>
+                    </div>
+                )}
             </div>
             </>
         )

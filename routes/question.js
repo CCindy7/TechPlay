@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const mongoose = require("mongoose");
 const Question = require("../models/Question.model");
-const isLoggedIn = require("../middleware/isLoggedIn");
 const Answer = require("../models/Answer.model");
 
 //  #######  ##     ## ########  ######  ######## ####  #######  ##    ## 
@@ -12,7 +11,10 @@ const Answer = require("../models/Answer.model");
 // ##    ##  ##     ## ##       ##    ##    ##     ##  ##     ## ##   ### 
 //  ##### ##  #######  ########  ######     ##    ####  #######  ##    ## 
 
-router.get("/question", isLoggedIn, (req, res) => {
+router.get("/question", (req, res) => {
+  //Check if user is logged in
+  if (!req.session.user) return res.status(403).json ({ errorMessage : "Connectez-vous pour commencer à jouer."});
+
   const cat = req.query.category 
   const dif = req.query.difficulty 
   
@@ -35,7 +37,7 @@ router.get("/question", isLoggedIn, (req, res) => {
           })
 
           if (!newQuestions.length) {
-            res.status(500).json({message: "Vous avez répondu à toutes les questions."})
+            res.status(500).json({message: "Vous avez répondu à toutes les questions de cette catégorie et de cette difficulté."})
           }
 
           //en tirer une au hasard
@@ -54,7 +56,10 @@ router.get("/question", isLoggedIn, (req, res) => {
 // ##     ## ##    ## ##       ##    ##       ##    ##    ##     ## ##   ### ##    ## ##  ##  ## ##       ##    ##  
 //  #######   ######  ######## ##     ##       ######     ##     ## ##    ##  ######   ###  ###  ######## ##     ## 
 
-router.post("/solution/:question_id", isLoggedIn, (req, res) => {
+router.post("/solution/:question_id", (req, res) => {
+  //Check if user is logged in
+  if (!req.session.user) return res.status(403).json ({ errorMessage : "Connectez-vous pour répondre aux questions."});
+
   const {userResponse} = req.body
   
   // retrouve la question qui correspond au :question_id
@@ -64,16 +69,37 @@ router.post("/solution/:question_id", isLoggedIn, (req, res) => {
       
       if (questionFromDb.solution === userResponse) {
         correct_answer = true;
-        Answer.create({user_id: req.session.user._id, question_id: req.params.question_id, correct_answer : correct_answer, solution: questionFromDb.solution})
-          .then(answer => res.status(201).json({answer, solution:questionFromDb.solution}))
+        Answer.create({user_id: req.session.user._id, round:req.body.correct_answer, question_id: req.params.question_id, correct_answer : correct_answer, solution: questionFromDb.solution})
+          .then(answer => res.status(201).json({answer, solution:questionFromDb.solution, round: req.query.round}))
           .catch(error => {res.status(500).json({message: error.message})})
       } else {
         correct_answer = false;
-        Answer.create({user_id: req.session.user._id, question_id: req.params.question_id, correct_answer : correct_answer, solution:questionFromDb.solution})
-          .then(answer =>res.status(201).json({answer, solution:questionFromDb.solution}))
+        Answer.create({user_id: req.session.user._id, round:req.body.correct_answer, question_id: req.params.question_id, correct_answer : correct_answer, solution:questionFromDb.solution})
+          .then(answer =>res.status(201).json({answer, solution:questionFromDb.solution , round: req.query.round}))
           .catch(error => {res.json({message: error.message})})
       }        
     }).catch(error => {res.json(error)})  
+})
+
+// ########  ########  ######  ##     ## ##       ########  ######  
+// ##     ## ##       ##    ## ##     ## ##          ##    ##    ## 
+// ##     ## ##       ##       ##     ## ##          ##    ##       
+// ########  ######    ######  ##     ## ##          ##     ######  
+// ##   ##   ##             ## ##     ## ##          ##          ## 
+// ##    ##  ##       ##    ## ##     ## ##          ##    ##    ## 
+// ##     ## ########  ######   #######  ########    ##     ######  
+
+router.get("/results", (req, res) => {
+  //Check if user is logged in
+  if (!req.session.user) return res.status(403).json ({ errorMessage : "Connectez-vous pour accéder à vos résultats."});
+
+  const round = req.query.round 
+  Answer.find({user_id : req.session.user._id, round: round})
+    .populate('question_id')
+    .then(results => {
+      res.status(200).json(results);
+    })
+    .catch(error => {res.json(error)})
 })
 
 // #######  ##     ## ########  ######  ######## ####  #######  ##    ##  ######  ####  ######     ##     ## ####  ######  ########  #######  ########  ##    ## 
@@ -84,7 +110,10 @@ router.post("/solution/:question_id", isLoggedIn, (req, res) => {
 // ##    ##  ##     ## ##       ##    ##    ##     ##  ##     ## ##   ### ##    ##      ##    ##    ##     ##  ##  ##    ##    ##    ##     ## ##    ##     ##    
 //  ##### ##  #######  ########  ######     ##    ####  #######  ##    ##  ######        ######     ##     ## ####  ######     ##     #######  ##     ##    ##    
 
-router.get("/history", isLoggedIn, (req, res) => {
+router.get("/history", (req, res) => {
+  //Check if user is logged in
+  if (!req.session.user) return res.status(403).json ({ errorMessage : "Connectez-vous pour accéder à votre historique."});
+
   Answer.find({user_id : req.session.user._id})
     .populate('question_id')
     .then(history => {

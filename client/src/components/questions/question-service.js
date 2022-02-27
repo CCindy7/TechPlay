@@ -18,8 +18,14 @@ function solution(questionId, userResponse, correct_answer){
 }
 export {solution}
 
-function history(){
+function results(round){
+    return service.get(`/results?round=${round}`)
+      .then(response => response.data)
+}
+export {results}
+
+function questionsHistory(){
     return service.get(`/history`)
       .then(response => response.data)
 }
-export {history}
+export {questionsHistory}
