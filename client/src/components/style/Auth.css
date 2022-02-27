@@ -32,9 +32,14 @@
 }
 
 .block-form {
-    margin-top: auto;
-    margin-bottom: auto;
+    flex-direction: column;
+    justify-content: center;
 }
+
+.input {
+    position: absolute;
+}
+
 
 .btn-auth {
     text-align: center;
@@ -42,6 +47,8 @@
 
 .authLink {
     font-size: 14px;
+    text-align: center;
+    margin-top: 0.8rem;
 }
 
 .foot {
@@ -61,6 +68,21 @@
 
 .control {
     display: flex;
+}
+
+{/*Changes on Login page*/}
+.auth-login {
+    gap: 4.5rem;
+}
+
+{/*Changes on Signup page*/}
+.auth-signup {
+    gap: 2rem;
+}
+
+{/*Changes on edit page*/}
+.auth-edit {
+    gap: 6rem;
 }
 
 .eye {
