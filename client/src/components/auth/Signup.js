@@ -103,7 +103,7 @@ class Signup extends Component {
             <div className="field">
               <label className="label">Mot de passe
               <div className="control has-icons-left">
-                <input className="input" style={{position: "absolute"}} type={this.state.showPswd ? "text": "password"} name="password" value={this.state.password} onChange={event => this.handleChange(event)} />
+                <input className="input" type={this.state.showPswd ? "text": "password"} name="password" value={this.state.password} onChange={event => this.handleChange(event)} />
                 <span className="icon is-medium is-left">
                   <i className="fa-solid fa-lock"></i>
                 </span>
@@ -115,7 +115,7 @@ class Signup extends Component {
             <div className="field">
               <label className="label">Confirmez votre mot de passe
               <div className="control has-icons-left">
-                <input className="input" style={{position: "absolute"}} type={this.state.showConf ? "text": "password"} name="confirmation" value={this.state.confirmation} onChange={event => this.handleChange(event)} />
+                <input className="input" type={this.state.showConf ? "text": "password"} name="confirmation" value={this.state.confirmation} onChange={event => this.handleChange(event)} />
                 <span className="icon is-medium is-left">
                   <i className="fa-solid fa-lock"></i>
                 </span>
