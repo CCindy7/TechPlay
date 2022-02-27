@@ -7,7 +7,9 @@
     font-family: 'Nunito Sans', sans-serif;
     /* gap: 0.1rem; */
     font-size: 1rem;
+    margin-bottom: 17rem;
 }
+
 .null {
     position: fixed;
     top:50%
