@@ -11,11 +11,11 @@ const Navbar = (props) => {
   return (
     <div className='navHolder'>
     <nav className="nav">
-          <a className="navLink" href="/questions">
+          <a className="navLink1" href="/questions">
             {/* <GiCardRandom /> */}
             <RiPlayCircleLine />
           </a>
-          <a className="navLink" href="/profile">
+          <a className="navLink2" href="/profile">
             <RiAccountCircleFill />
           </a>
     </nav>

@@ -10,14 +10,21 @@
     background-color: #F4DC2C;
     margin: auto;
     width:100%;
-    max-width: 700px; 
-    min-width: 300px;
     display: flex;
 }
 
-.navLink {
+.navLink1 {
     color: #3248DA;
-    margin: auto;
-    height: 2em;
-    padding-top: 5px;
+    margin-left: auto;
+    padding-right: 3rem;
+    height: 2.2em;
+    padding-top: 7px;
+}
+
+.navLink2 {
+    color: #3248DA;
+    margin-right: auto;
+    padding-left: 3rem;
+    height: 2.2em;
+    padding-top: 7px;
 }

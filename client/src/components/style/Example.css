@@ -77,7 +77,7 @@
 
 .proposition {
     gap: 0.9rem;
-    width: 80%;
+    object-fit: contain;
     flex-direction: column;
     display: flex;
 }
@@ -112,4 +112,10 @@
     font-size: 14px;
     border-color: #3248DA;
     border-style: none;
+}
+
+@media (max-width:850px) {
+    .block-title > h1 {
+        font-size: 1.5rem;
+    }
 }

@@ -138,7 +138,7 @@ class Question extends Component {
                     <h1>{title}</h1>
                 </div>
 
-                {/* <h2>Mes choix :</h2> */}
+                <h2>Mes choix :</h2>
                 <div className="question-container">
                     <label>
                         <input type="radio" name={category} className="icon-category"/>
