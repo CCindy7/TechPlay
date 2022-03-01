@@ -18,7 +18,6 @@ class Homepage extends Component {
                     <Link className="btn" to="/example">Découvrir</Link>
                 </div>
               
-                <div className="overlay"></div>
             </div>
         )
     }
