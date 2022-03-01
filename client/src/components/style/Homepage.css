@@ -98,6 +98,30 @@
     color: white;
 }
 
+{/*}.overlay {
+    margin:0;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    background-color: #3248DA;
+    animation: moveUp 2s ease-in-out both;
+}
+
+@keyframes moveUp {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+}
+    100% {
+        transform: translateY(-1000px);
+        opacity: 0;
+    }
+}*/}
+
 @media (max-height: 750px) {
     .homepage {
         gap: 0;
