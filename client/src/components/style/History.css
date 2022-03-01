@@ -9,17 +9,14 @@
     font-size: 1rem;
 }
 
-.history > .block-title {
-    height:7rem;
-}
-
-.history > div {
-    display: flex;
-}
+{/*#blockTitle .completed {
+    height: 7rem;
+}*/}
 
 .null {
+    display: block;
     position: fixed;
-    top:50%
+    top: 55%;
 }
 
 .null > h2 {
@@ -48,6 +45,11 @@
     font-weight: bold;
 } 
 
+.table-container {
+    display: flex;
+    justify-content: center;
+}
+
 .table {
     border: 2px solid #3248DA;
     width: 40%;
@@ -72,16 +74,44 @@
     background-color:#fcfbf7;
 }
 
-@media screen and (max-width: 550px) {
-    .table  {
-      width: 40%;
-      margin-left: auto;
-      margin-right: auto;
-      margin-bottom: 20px;
-      font-size: 10px;
+@media (max-width: 550px) {
+    .sortAndSearch {
+        max-width: 95vw;
+        align-items: center;
+        text-align: center;
     }
+
+    .history form {
+        text-align: center;
+    }
+
+    .history select {
+        margin-left: 15px;
+    }
+    
+    .history  input {
+        margin-left: 0;
+    }
+
+    .table-container {
+        overflow: scroll;
+        max-width: 95vw;
+        justify-content: flex-start;
+    }
+
+    .table  {
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 20px;
+        font-size: 10px;
+    }
+
     .table > thead> tr> th, 
     .table > tbody> tr> td {
-      padding: 10px 5px;
+        padding: 10px 5px;
+    }
+
+    .block-title > .completed {
+        height: 7rem;
     }
 }

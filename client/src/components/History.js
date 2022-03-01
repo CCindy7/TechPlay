@@ -22,6 +22,7 @@ class History extends Component {
                 this.setState({
                 questions: data
                 })
+                {/*document.getElementById("blockTitle").className = (this.questions ? "completed" : "null")*/}
             })
             .catch(err => this.setState({questions:[]})) 
     }
@@ -59,70 +60,75 @@ class History extends Component {
         if(query){
             questionsCopy = questionsCopy.filter(item => item.question_id.title.toLowerCase().includes(query.toLowerCase()));
         }
+
+        //Conditional className
+        
     
         return(
             <>
-            <Navbar user={this.state.user} />
-            <div className="history">
-                <div className="block-title">
-                    <h1>Mon historique</h1>
-                </div>
-
-                {questionsCopy.length !== 0 ? (
-                    <>
-                <div className="sortAndSearch">
-                <form>
-                  <label>Rechercher par énoncé
-                  <input onChange={(event)=>{this.handleQuery(event)}} type="text" value={this.state.query}/>
-                  </label>
-                </form>
-
-                <label> Classer par
-                    <select value={this.state.sortBy} name="sortBy" onChange={e=> this.setState({sortBy: e.target.value})}>
-                        <option value=""></option>
-                        <option value="order">Plus récent</option>
-                        <option value="category">Catégorie</option>
-                        <option value="ThreeToOne">Difficulté décroissante</option>
-                        <option value="right_answer">Bonne réponse en 1er</option>
-                        <option value="wrong_answer">Mauvaise réponse en 1er</option>
-                    </select>
-                </label>
-                </div>
-                
-                <table className='table'>
-                    <thead>
-                        <tr>
-                            <th>Enoncé</th>
-                            <th>Catégorie</th>
-                            <th>Difficulté</th>
-                            <th>Bonne réponse</th>
-                            <th>Solution</th>
-                            <th>Date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {questionsCopy.map(question => {
-                        return (
-                            <tr key={question._id}>
-                                <td>{question.question_id.title}</td>
-                                <td>{question.question_id.category}</td>
-                                <td>{(question.question_id.difficulty === 1) ? "Facile":''} {(question.question_id.difficulty === 2) ? "Intermédiaire":''} {(question.question_id.difficulty === 3) ? "Difficile":''}</td>
-                                <td>{question.correct_answer === true ? "oui" : "non"} </td>
-                                <td>{question.question_id.propositions[question.question_id.solution]}</td>
-                                <td>{new Date(`${question.createdAt}`).toLocaleDateString("fr-FR")} à {('0'+ new Date(`${question.createdAt}`).getHours()).slice(-2)}:{('0' + new Date(`${question.createdAt}`).getMinutes()).slice(-2)} </td>
-                            </tr>
-                        )  
-                    })}
-                    </tbody>
-                </table>
-                </>
-                ) : (
-                    <div className='null'> 
-                        <h2>C'est bien vide ici !</h2> 
-                        <h2>Il est grand temps de commencer à jouer !</h2>
+                <Navbar user={this.state.user} />
+                <div className="history">
+                    <div id="blockTitle" className="block-title">
+                        <h1>Mon historique</h1>
                     </div>
-                )}
-            </div>
+
+                    {questionsCopy.length !== 0 ? (
+                        <>
+                            <div className="sortAndSearch">
+                                <form>
+                                    <label>Rechercher par énoncé
+                                    <input onChange={(event)=>{this.handleQuery(event)}} type="text" value={this.state.query}/>
+                                    </label>
+                                </form>
+
+                                <label> Classer par
+                                    <select value={this.state.sortBy} name="sortBy" onChange={e=> this.setState({sortBy: e.target.value})}>
+                                        <option value=""></option>
+                                        <option value="order">Plus récent</option>
+                                        <option value="category">Catégorie</option>
+                                        <option value="ThreeToOne">Difficulté décroissante</option>
+                                        <option value="right_answer">Bonne réponse en 1er</option>
+                                        <option value="wrong_answer">Mauvaise réponse en 1er</option>
+                                    </select>
+                                </label>
+                            </div>
+                    
+                            <div className="table-container">
+                                <table className='table'>
+                                    <thead>
+                                        <tr>
+                                            <th>Enoncé</th>
+                                            <th>Catégorie</th>
+                                            <th>Difficulté</th>
+                                            <th>Bonne réponse</th>
+                                            <th>Solution</th>
+                                            <th>Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {questionsCopy.map(question => {
+                                        return (
+                                            <tr key={question._id}>
+                                                <td>{question.question_id.title}</td>
+                                                <td>{question.question_id.category}</td>
+                                                <td>{(question.question_id.difficulty === 1) ? "Facile":''} {(question.question_id.difficulty === 2) ? "Intermédiaire":''} {(question.question_id.difficulty === 3) ? "Difficile":''}</td>
+                                                <td>{question.correct_answer === true ? "oui" : "non"} </td>
+                                                <td>{question.question_id.propositions[question.question_id.solution]}</td>
+                                                <td>{new Date(`${question.createdAt}`).toLocaleDateString("fr-FR")} à {('0'+ new Date(`${question.createdAt}`).getHours()).slice(-2)}:{('0' + new Date(`${question.createdAt}`).getMinutes()).slice(-2)} </td>
+                                            </tr>
+                                        )  
+                                    })}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </>
+                    ) : (
+                        <div className='null'> 
+                            <h2>C'est bien vide ici !</h2> 
+                            <h2>Il est grand temps de commencer à jouer !</h2>
+                        </div>
+                    )}
+                </div>
             </>
         )
     }
