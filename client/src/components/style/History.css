@@ -6,7 +6,7 @@
     font-family: 'Balsamiq Sans', cursive;
     font-family: 'Nunito Sans', sans-serif;
     /* gap: 0.1rem; */
-    font-size: 1rem;
+    font-size: 1rem;  
 }
 
 {/*#blockTitle .completed {
@@ -48,6 +48,8 @@
 .table-container {
     display: flex;
     justify-content: center;
+    overflow: scroll;
+    margin-bottom: 5rem;
 }
 
 .table {

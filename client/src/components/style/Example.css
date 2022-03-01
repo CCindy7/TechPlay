@@ -69,6 +69,7 @@
 }
 
 .propositions-container {
+    width: 600px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -117,5 +118,11 @@
 @media (max-width:850px) {
     .block-title > h1 {
         font-size: 1.5rem;
+    }
+}
+
+@media (min-width:851px) {
+    .propositions-container {
+        max-width: 600px;
     }
 }
