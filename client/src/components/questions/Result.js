@@ -84,7 +84,7 @@ class Result extends Component {
             </div>
 
             <div>
-                {(difficulty === 1 || difficulty ===2) ? <button className="littleNext" onClick={this.levelUp}>Je passe au niveau supérieur</button>:<button className="littleNext" onClick={this.levelUp}>Je choisis une autre catégorie</button>}
+                {(difficulty === 1 || difficulty ===2) ? <button className="littleNext" onClick={this.levelUp}>Je passe à la difficulté supérieure</button>:<button className="littleNext" onClick={this.levelUp}>Je choisis une autre catégorie</button>}
             </div>
 
           </div>
