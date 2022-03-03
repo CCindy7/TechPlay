@@ -36,15 +36,15 @@ router.get("/question", (req, res) => {
               return res.status(200).json({newQuestion, index, total: newQuestions.length});
             })
           
-          // if (!newQuestions.length) {
-          //   return res.status(500).json({message: "Vous avez répondu à toutes les questions de cette catégorie et de cette difficulté."})
-          // }
+          if (!newQuestions.length) {
+            return res.status(500).json({message: "Vous avez répondu à toutes les questions de cette catégorie et de cette difficulté."})
+          }
 
           //en tirer une au hasard
           // const rand = Math.floor(Math.random() * newQuestions.length)
           // return res.status(200).json(newQuestions[rand]);
         })
-        .catch()
+        .catch(error => {return res.json({message: error.message})})
     })
     .catch(error => {return res.json({message: error.message})}) 
 })

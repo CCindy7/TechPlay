@@ -10,7 +10,7 @@ class Edit extends Component {
     username:'',
   }
 
-  getUsername() {
+  getUsername = () => {
     this.setState({username: this.props.user.username})
   }
 

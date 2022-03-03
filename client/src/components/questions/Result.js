@@ -13,15 +13,20 @@ class Result extends Component {
         number:'Toutes les questions',
         questions: [],
         question: {}, 
-        round: this.props.history.location.state.round
+        round: ''
     }
 
-    componentDidMount=()=>{
+    componentDidMount = () => {
+        this.getRound();
         this.getResults()
     }
 
+    getRound = () => {
+        this.setState({round: this.props.history.location.state.round})
+    }
+
     getResults = () => {
-        results(this.state.round)
+        results(`${this.props.history.location.state.round}`)
             .then(data => {
                 //obtenir toutes les correct_answers
                 const answers = [];

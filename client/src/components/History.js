@@ -22,7 +22,6 @@ class History extends Component {
                 this.setState({
                 questions: data
                 })
-                {/*document.getElementById("blockTitle").className = (this.questions ? "completed" : "null")*/}
             })
             .catch(err => this.setState({questions:[]})) 
     }

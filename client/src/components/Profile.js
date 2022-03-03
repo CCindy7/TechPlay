@@ -16,7 +16,15 @@ import { FcRatings } from 'react-icons/fc';
 
 class Profile extends Component {
     state={
-        username: this.props.user.username
+        username: ''
+    }
+
+    componentDidMount = () => {
+        this.getUsername();
+    }
+
+    getUsername = () => {
+        this.setState({username: this.props.user.username})
     }
 
     render() {

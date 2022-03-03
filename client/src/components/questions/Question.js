@@ -87,12 +87,15 @@ class Question extends Component {
         const round = this.state.round  
         //gestion de la dernière question : si n° Q° = nb total Q° et après la réponse => résultats
         if(this.state.number === 'Toutes les questions' && this.state.nb_questions === this.props.history.location.state.question.total && this.state.isClicked) {
-            localStorage.clear();
-            return this.props.history.push({
+            this.props.history.push({
                 pathname: "/results",
                 search: `?round=${round}`,
                 state: {round:this.state.round}
+            }, ()=>{
+                console.log(this.state.round)
             })
+            localStorage.clear();
+            return;
         }
 
         // Q° suivante
