@@ -7,7 +7,22 @@ import Navbar from './Navbar';
 
 class Edit extends Component {
   state = {
-    username: this.props.user.username,
+    username:'',
+  }
+
+  getUsername() {
+    this.setState({username: this.props.user.username})
+  }
+
+  componentDidMount(){
+    this.getUsername();
+  }
+
+  // pour garder username au refresh de la page
+  componentDidUpdate(prevProps){
+    if (this.props.user._id !== prevProps.user._id) {
+      this.setState({username: this.props.user.username})
+    } 
   }
 
   logout = (event) => {
@@ -62,7 +77,7 @@ class Edit extends Component {
             <div className="field">
               <label className="label">Modifier mon nom d'utilisateur :
               <div className="control has-icons-left">
-                <input className="input" type="text" name="username" value={this.state.username} onChange={event => this.handleChange(event)} />
+                <input className="input" type="text" name="username" value={this.state.username || ""} onChange={event => this.handleChange(event)} />
                 <span className="icon is-medium is-left">
                   <i className="fa-solid fa-user"></i>
                 </span>
