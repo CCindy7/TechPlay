@@ -9,7 +9,6 @@ import { SiCsswizardry } from 'react-icons/si';
 import { SiReact } from 'react-icons/si';
 import { BsEmojiLaughingFill } from 'react-icons/bs';
 import { BsEmojiDizzyFill } from 'react-icons/bs';
-// import { BsEmojiSmileUpsideDownFill } from 'react-icons/bs';
 import { FaGrimace } from 'react-icons/fa';
 import uniqid from 'uniqid';
 import Navbar from '../Navbar';

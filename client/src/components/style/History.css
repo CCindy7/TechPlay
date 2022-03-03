@@ -5,13 +5,8 @@
     flex-direction: column;
     font-family: 'Balsamiq Sans', cursive;
     font-family: 'Nunito Sans', sans-serif;
-    /* gap: 0.1rem; */
     font-size: 1rem;  
 }
-
-{/*#blockTitle .completed {
-    height: 7rem;
-}*/}
 
 .null {
     display: block;

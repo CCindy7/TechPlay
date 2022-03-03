@@ -69,7 +69,7 @@
 }
 
 .propositions-container {
-    width: 600px;
+    max-width: 85vw;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -121,8 +121,23 @@
     }
 }
 
-@media (min-width:851px) {
-    .propositions-container {
-        max-width: 600px;
+@media (max-width:400px) {
+    .block-title > h1 {
+        font-size: 1.2rem;
+        padding:5px;
+    }
+    .proposition > button {
+        font-size: 0.9rem;
+        max-width: 85vw;
+        -webkit-hyphens: auto;
+        -moz-hyphens: auto;
+        -ms-hyphens: auto;
+        hyphens: auto;
+        overflow-wrap: break-word;
+    }
+}
+@media (min-width: 401px) and (max-width:850px) {
+    .block-title > h1 {
+        font-size: 1.5rem;
     }
 }
