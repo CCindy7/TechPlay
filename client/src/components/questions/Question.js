@@ -16,14 +16,24 @@ class Question extends Component {
         userResponse: '',
         solution: '',
         correct_answer: false,
-        number: this.props.history.location.state.number,
+        number: '',
         isClicked: false,
-        nb_questions: 0,
-        round: this.props.history.location.state.round
+        nb_questions: JSON.parse(localStorage.getItem('nb_questions')) || 0,
+        round: ''
     }
 
     componentDidMount= () => {
+        this.getNumber();
+        this.getRound();
         this.getQuestion();
+    }
+
+    getNumber = () => {
+        this.setState({number: this.props.history.location.state.number})
+    }
+
+    getRound = () => {
+        this.setState({round: this.props.history.location.state.round})
     }
 
     getQuestion = () => {
@@ -49,6 +59,8 @@ class Question extends Component {
                     solution: data.solution,
                     isClicked:true,
                     nb_questions: this.state.nb_questions +1
+                }, () => {
+                    localStorage.setItem('nb_questions', JSON.stringify(this.state.nb_questions))
                 })}) 
                 .catch(err => this.setState({correct_answer: false, solution:''})) 
             }) 
@@ -75,6 +87,7 @@ class Question extends Component {
         const round = this.state.round  
         //gestion de la dernière question : si n° Q° = nb total Q° et après la réponse => résultats
         if(this.state.number === 'Toutes les questions' && this.state.nb_questions === this.props.history.location.state.question.total && this.state.isClicked) {
+            localStorage.clear();
             return this.props.history.push({
                 pathname: "/results",
                 search: `?round=${round}`,
@@ -91,6 +104,7 @@ class Question extends Component {
                 isClicked:false
             })
         } else {
+            localStorage.clear();
             // si Q° unique, pas de Q° suivante, mais retour aux choix
             this.props.history.push('/questions')
         }
@@ -98,6 +112,7 @@ class Question extends Component {
             
     // arrête l'entraînement => résultats
     handleQuit = () => {
+        localStorage.clear();
         const round = this.state.round 
         this.props.history.push({
             pathname: "/results",
