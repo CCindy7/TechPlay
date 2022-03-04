@@ -32,21 +32,21 @@ router.get("/question", (req, res) => {
       //2_trouver les q° qui ne sont pas parmi cette liste
       Question.find({_id:{ $nin: questionsIds}, category: cat, difficulty: dif},{solution:0})
         .then(newQuestions => {
-            newQuestions.map((newQuestion, index) => {
-              return res.status(200).json({newQuestion, index, total: newQuestions.length});
-            })
+          let newQuestion;
+          let index;
+          for (let j=0; j<newQuestions.length; j++) {
+            newQuestion = newQuestions[j];
+            index = j
+            return res.status(200).json({newQuestion, index, total: newQuestions.length})
+          }
           
-          // if (!newQuestions.length) {
-          //   return res.status(500).json({message: "Vous avez répondu à toutes les questions de cette catégorie et de cette difficulté."})
-          // }
-
-          //en tirer une au hasard
-          // const rand = Math.floor(Math.random() * newQuestions.length)
-          // return res.status(200).json(newQuestions[rand]);
+          if (!newQuestions.length) {
+            return res.status(500).json({message: "Vous avez répondu à toutes les questions de cette catégorie et de cette difficulté."})
+          }
         })
-        .catch(error => {return res.json({message: error.message})})
+        .catch(error => {res.json(error)})
     })
-    .catch(error => {return res.json({message: error.message})}) 
+    .catch(error => {res.json(error)}) 
 })
 
 // ##     ##  ######  ######## ########  ####  ######        ###    ##    ##  ######  ##      ## ######## ########  
