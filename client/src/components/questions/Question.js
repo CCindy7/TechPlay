@@ -58,14 +58,16 @@ class Question extends Component {
                     correct_answer: data.correct_answer,
                     solution: data.solution,
                     isClicked:true,
-                    nb_questions: this.state.nb_questions +1
-                }, () => {
-                    localStorage.setItem('nb_questions', JSON.stringify(this.state.nb_questions))
-                })}) 
+                    // nb_questions: this.state.nb_questions +1
+                }
+                // , () => {
+                //     localStorage.setItem('nb_questions', JSON.stringify(this.state.nb_questions))
+                // }
+                )}) 
                 .catch(err => this.setState({correct_answer: false, solution:''})) 
             }) 
     }
-
+    
     // gestion du background color en fonction de la réponse de 'user'
     handleColors = (index) => {
         //si la réponse de 'user' est incorrect : wrong : background color red
@@ -86,13 +88,11 @@ class Question extends Component {
         console.log('this.state.isClicked', this.state.isClicked)
         const round = this.state.round  
         //gestion de la dernière question : si n° Q° = nb total Q° et après la réponse => résultats
-        if(this.state.number === 'Toutes les questions' && this.state.nb_questions === this.props.history.location.state.question.total && this.state.isClicked) {
+        if(this.state.number === 'Toutes les questions' && this.state.nb_questions +1 === this.props.history.location.state.question.total && this.state.isClicked) {
             this.props.history.push({
                 pathname: "/results",
                 search: `?round=${round}`,
                 state: {round:this.state.round}
-            }, ()=>{
-                console.log(this.state.round)
             })
             localStorage.clear();
             return;
@@ -104,7 +104,10 @@ class Question extends Component {
             // réinitialiser userResponse à vide pour update le disabled, et isClicked pour que les boutons apparaissent après le click
             this.setState({
                 userResponse:'',
-                isClicked:false
+                isClicked:false,
+                nb_questions: this.state.nb_questions +1
+            }, () => {
+                localStorage.setItem('nb_questions', JSON.stringify(this.state.nb_questions))
             })
         } else {
             localStorage.clear();
@@ -172,6 +175,13 @@ class Question extends Component {
                         {diffIcon}
                     </label>
                 </div>
+
+                <>
+                    {this.state.number === 'Toutes les questions' ? 
+                    <h3>Question n°{this.state.nb_questions +1} sur {this.props.history.location.state.question.total}</h3> :""
+                    }
+                </>
+                
 
                 <div className="propositions-container">
                     <div className="proposition">
