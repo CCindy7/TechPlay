@@ -57,12 +57,9 @@ class History extends Component {
 
         //Recherche par titre de question
         if(query){
-            questionsCopy = questionsCopy.filter(item => item.question_id.title.toLowerCase().includes(query.toLowerCase()));
-        }
+            questionsCopy = questionsCopy.filter(item =>  item.question_id.title.toLowerCase().includes(query.toLowerCase()));
+        } 
 
-        //Conditional className
-        
-    
         return(
             <>
                 <Navbar user={this.state.user} />
@@ -71,7 +68,7 @@ class History extends Component {
                         <h1>Mon historique</h1>
                     </div>
 
-                    {questionsCopy.length !== 0 ? (
+                    {this.state.questions.length !== 0  ? (
                         <>
                             <div className="sortAndSearch">
                                 <form>
