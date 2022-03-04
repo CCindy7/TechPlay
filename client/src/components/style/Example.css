@@ -32,7 +32,8 @@
 .block-title > h1 {
     color: white;
     font-weight: bold;
-    font-size: 2rem;
+    font-size: 1.8rem;
+    padding: 5px;
     margin: auto;
     text-align: center;
 }
@@ -69,11 +70,13 @@
 }
 
 .propositions-container {
-    max-width: 40vw;
+    max-width: 70vw;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 3rem;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .proposition {
@@ -125,6 +128,13 @@
         font-size: 1.2rem;
         padding:5px;
     }
+
+    .proposition {
+        max-width: 200px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
     .proposition > button {
         font-size: 0.9rem;
         max-width: 85vw;
