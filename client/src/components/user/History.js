@@ -1,8 +1,8 @@
 import React, { Component }  from 'react';
-import { questionsHistory } from './questions/question-service';
+import { questionsHistory } from '../questions/question-service';
 import { Redirect } from 'react-router-dom';
-import Navbar from './Navbar';
-import './style/History.css';
+import Navbar from '../Navbar';
+import '../style/History.css';
 
 class History extends Component {
     state={
@@ -18,7 +18,6 @@ class History extends Component {
     getHistory = () => {
         questionsHistory()
             .then(data => {
-                console.log('data', data)
                 this.setState({
                 questions: data
                 })

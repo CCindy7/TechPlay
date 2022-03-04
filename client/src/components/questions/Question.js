@@ -77,10 +77,6 @@ class Question extends Component {
 
     // passage à la question suivante
     handleNext = () => {  
-        console.log('this.state.number', this.state.number)
-        console.log('this.state.nb_questions', this.state.nb_questions)
-        console.log('this.props.history.location.state.question.total', this.props.history.location.state.question.total)
-        console.log('this.state.isClicked', this.state.isClicked)
         const round = this.state.round  
         //gestion de la dernière question : si n° Q°+1 = nb total Q° et après la réponse => résultats
         if(this.state.number === 'Toutes les questions' && this.state.nb_questions +1 === this.props.history.location.state.question.total && this.state.isClicked) {
@@ -171,13 +167,11 @@ class Question extends Component {
                     </label>
                 </div>
 
-                <>
-                    {this.state.number === 'Toutes les questions' ? 
-                    <h3>Question n°{this.state.nb_questions +1} sur {this.props.history.location.state.question.total}</h3> :""
-                    }
-                </>
+                {this.state.number === 'Toutes les questions' ? 
+                <h3>Question n°{this.state.nb_questions +1} sur {this.props.history.location.state.question.total}</h3> :""
+                }
                 
-
+                
                 <div className="propositions-container">
                     <div className="proposition">
                         {propositions && propositions.map((proposition, index) => {

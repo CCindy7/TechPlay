@@ -1,9 +1,9 @@
 import React, { Component }  from 'react';
-import {edit, logout, deleteProfile} from './auth/auth-service';
+import {edit, deleteProfile} from './user-service';
+import {logout} from '../auth/auth-service'
 import {Redirect} from 'react-router-dom';
-import './style/Edit.css';
-import Navbar from './Navbar';
-// import 'bulma/css/bulma.css';
+import Navbar from '../Navbar';
+import '../style/Edit.css';
 
 class Edit extends Component {
   state = {

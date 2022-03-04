@@ -66,17 +66,17 @@
     display: flex;
 }
 
-{/*Changes on Login page*/}
+/* Changes on Login page */
 .auth-login {
     gap: 4.5rem;
 }
 
-{/*Changes on Signup page*/}
+/*Changes on Signup page*/
 .auth-signup {
     gap: 2rem;
 }
 
-{/*Changes on edit page*/}
+/*Changes on edit page*/
 .auth-edit {
     gap: 6rem;
 }

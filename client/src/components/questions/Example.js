@@ -1,7 +1,7 @@
 import React, { Component }  from 'react';
-import '../style/Example.css';
 import { SiJavascript } from 'react-icons/si';
 import { BsEmojiLaughingFill } from 'react-icons/bs';
+import '../style/Example.css';
 
 class Example extends Component {
     state={

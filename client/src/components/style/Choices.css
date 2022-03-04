@@ -186,10 +186,6 @@
 }
 
 @media (min-height: 1300px) {
-    .choices {
-        /* gap: 8rem; */
-    }
-
     .container-choices {
         height: 65em;
     }

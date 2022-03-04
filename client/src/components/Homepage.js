@@ -1,6 +1,6 @@
 import React, { Component }  from 'react';
-import './style/Homepage.css';
 import { Link } from 'react-router-dom';
+import './style/Homepage.css';
 
 class Homepage extends Component {
     render() {

@@ -1,11 +1,11 @@
 import React, { Component }  from 'react';
 import {login} from './auth-service';
 import {Link} from 'react-router-dom';
-import '../style/Auth.css';
-import 'bulma/css/bulma.css';
 import { IoHome } from 'react-icons/io5';
 import { AiOutlineEyeInvisible } from 'react-icons/ai';
 import { AiOutlineEye } from 'react-icons/ai';
+import '../style/Auth.css';
+import 'bulma/css/bulma.css';
 
 
 class Login extends Component {

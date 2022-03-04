@@ -6,12 +6,12 @@ import Signup from './components/auth/Signup';
 import Example from "./components/questions/Example";
 import Login from './components/auth/Login';
 import {loggedin} from './components/auth/auth-service';
-import Profile from './components/Profile';
-import Edit from './components/Edit';
+import Profile from './components/user/Profile';
+import Edit from './components/user/Edit';
 import Choices from './components/questions/Choices';
 import Question from './components/questions/Question';
 import Result from './components/questions/Result';
-import History from './components/History';
+import History from './components/user/History';
 
 class App extends Component {
   // state loggedInUser sans valeur au départ
