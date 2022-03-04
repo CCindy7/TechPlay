@@ -41,7 +41,7 @@ router.get("/question", (req, res) => {
           }
           
           if (!newQuestions.length) {
-            return res.status(500).json({message: "Vous avez répondu à toutes les questions de cette catégorie et de cette difficulté."})
+            return res.status(200).json({message: "Vous avez répondu à toutes les questions de cette catégorie et de cette difficulté."})
           }
         })
         .catch(error => {res.json(error)})
