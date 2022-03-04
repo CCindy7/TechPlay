@@ -58,13 +58,8 @@ class Question extends Component {
                     correct_answer: data.correct_answer,
                     solution: data.solution,
                     isClicked:true,
-                    // nb_questions: this.state.nb_questions +1
-                }
-                // , () => {
-                //     localStorage.setItem('nb_questions', JSON.stringify(this.state.nb_questions))
-                // }
-                )}) 
-                .catch(err => this.setState({correct_answer: false, solution:''})) 
+                })}) 
+                .catch(err => this.setState({correct_answer: false, solution:'', isClicked: false})) 
             }) 
     }
     
@@ -87,7 +82,7 @@ class Question extends Component {
         console.log('this.props.history.location.state.question.total', this.props.history.location.state.question.total)
         console.log('this.state.isClicked', this.state.isClicked)
         const round = this.state.round  
-        //gestion de la dernière question : si n° Q° = nb total Q° et après la réponse => résultats
+        //gestion de la dernière question : si n° Q°+1 = nb total Q° et après la réponse => résultats
         if(this.state.number === 'Toutes les questions' && this.state.nb_questions +1 === this.props.history.location.state.question.total && this.state.isClicked) {
             this.props.history.push({
                 pathname: "/results",

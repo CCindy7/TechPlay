@@ -42,6 +42,7 @@ class Choices extends Component {
   }
 
   handleSubmit = () => {
+    localStorage.clear();
     const category= this.state.category;
     const difficulty= this.state.difficulty;
     const number = this.state.number;
