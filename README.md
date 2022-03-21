@@ -22,31 +22,31 @@ HTML, JS, CSS, MongoDB, Express, React, Node, Bulma
 <a href="https://tech-play.herokuapp.com/">Click to play</a>
 
 ## Homepage (web)
-![Homepage](https://user-images.githubusercontent.com/87827626/159188862-14922d2e-1720-4a6c-87e3-74300a6867d5.png)
+![Homepage](https://user-images.githubusercontent.com/87827626/159377511-5c1269ec-53f3-4dce-a652-6103248e0f77.png)
 
 ## Example (web)
-![Example](https://user-images.githubusercontent.com/87827626/159188866-5c43e3fe-b04b-4290-ba0e-1aaa36c7f020.png)
+![Example](https://user-images.githubusercontent.com/87827626/159377542-51c37fdc-ff1b-4487-b0a9-36074bbe33fd.png)
 
 ## Sign up (mobile)
-<img src="https://user-images.githubusercontent.com/87827626/159188872-1d63877d-9e9a-46e7-b340-ddf4b73ca8f0.png" height="500">
+<img src="https://user-images.githubusercontent.com/87827626/159377580-bd05aff3-f5c9-4037-88dc-bbf94a30b19c.png" height="500">
 
 ## Profile (mobile)
-<img src="https://user-images.githubusercontent.com/87827626/159188959-cc7a4545-40fe-4235-af9a-4a3ec3bdbaa0.png" height="500">
+<img src="https://user-images.githubusercontent.com/87827626/159377740-aace8ab4-31c4-4a54-a5fd-6e51a3659ec7.png" height="500">
 
 ## Account (mobile)
-<img src="https://user-images.githubusercontent.com/87827626/159189005-690be628-4f94-4efa-bde8-0521c264e73e.png" height="500">
+<img src="https://user-images.githubusercontent.com/87827626/159377824-0b587c13-2fff-4185-94a8-7b46cf3e80d9.png" height="500">
 
 ## Choices (mobile)
-<img src="https://user-images.githubusercontent.com/87827626/159189040-f36d05f9-9e3b-428f-afc5-ebbcd976b7e8.png" height="500">
+<img src="https://user-images.githubusercontent.com/87827626/159377920-02a67392-8920-40bc-bcca-b5ce819fff72.png" height="500">
 
 ## Right answer (mobile)
-<img src="https://user-images.githubusercontent.com/87827626/159189082-952b1ef3-e67f-4ddc-9369-547452573e05.png" height="500">
+<img src="https://user-images.githubusercontent.com/87827626/159378013-b599ec6a-b7c2-4a5f-bb16-9046d34ad6da.png" height="500">
 
 ## Wrong answer (mobile)
-<img src="https://user-images.githubusercontent.com/87827626/159189119-493f1f43-da45-40b8-8e68-a114abf8f204.png" height="500">
+<img src="https://user-images.githubusercontent.com/87827626/159378090-2ea9c5ad-b175-4b8c-8011-ecbe709f4d4f.png" height="500">
 
 ## Results (mobile)
-<img src="https://user-images.githubusercontent.com/87827626/159189179-786437b6-2c94-42f4-a0f2-4ac1df84b973.png" height="500">
+<img src="https://user-images.githubusercontent.com/87827626/159378445-85ddbec8-622c-4552-b32a-c273468f14d9.png" height="500">
 
-## History (mobile)
-<img src="https://user-images.githubusercontent.com/87827626/159189247-78e702ff-2cfc-41d2-b35b-d0e4340c64b5.png" height="500">
+## History (tablet)
+<img src="https://user-images.githubusercontent.com/87827626/159379079-a477f82f-b37b-436b-9830-8bc985a25688.png" height="500">
