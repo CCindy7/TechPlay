@@ -28,25 +28,25 @@ HTML, JS, CSS, MongoDB, Express, React, Node, Bulma
 ![Example](https://user-images.githubusercontent.com/87827626/159188866-5c43e3fe-b04b-4290-ba0e-1aaa36c7f020.png)
 
 ## Sign up (mobile)
-![Mobile sign up](https://user-images.githubusercontent.com/87827626/159188872-1d63877d-9e9a-46e7-b340-ddf4b73ca8f0.png)
+<img src="https://user-images.githubusercontent.com/87827626/159188872-1d63877d-9e9a-46e7-b340-ddf4b73ca8f0.png" height="500">
 
 ## Profile (mobile)
-![Mobile profile](https://user-images.githubusercontent.com/87827626/159188959-cc7a4545-40fe-4235-af9a-4a3ec3bdbaa0.png)
+<img src="https://user-images.githubusercontent.com/87827626/159188959-cc7a4545-40fe-4235-af9a-4a3ec3bdbaa0.png" height="500">
 
 ## Account (mobile)
-![Mobile account](https://user-images.githubusercontent.com/87827626/159189005-690be628-4f94-4efa-bde8-0521c264e73e.png)
+<img src="https://user-images.githubusercontent.com/87827626/159189005-690be628-4f94-4efa-bde8-0521c264e73e.png" height="500">
 
 ## Choices (mobile)
-![Mobile choices](https://user-images.githubusercontent.com/87827626/159189040-f36d05f9-9e3b-428f-afc5-ebbcd976b7e8.png)
+<img src="https://user-images.githubusercontent.com/87827626/159189040-f36d05f9-9e3b-428f-afc5-ebbcd976b7e8.png" height="500">
 
 ## Right answer (mobile)
-![Mobile right answer](https://user-images.githubusercontent.com/87827626/159189082-952b1ef3-e67f-4ddc-9369-547452573e05.png)
+<img src="https://user-images.githubusercontent.com/87827626/159189082-952b1ef3-e67f-4ddc-9369-547452573e05.png" height="500">
 
 ## Wrong answer (mobile)
-![Mobile wrong answer](https://user-images.githubusercontent.com/87827626/159189119-493f1f43-da45-40b8-8e68-a114abf8f204.png)
+<img src="https://user-images.githubusercontent.com/87827626/159189119-493f1f43-da45-40b8-8e68-a114abf8f204.png" height="500">
 
 ## Results (mobile)
-![Mobile result](https://user-images.githubusercontent.com/87827626/159189179-786437b6-2c94-42f4-a0f2-4ac1df84b973.png)
+<img src="https://user-images.githubusercontent.com/87827626/159189179-786437b6-2c94-42f4-a0f2-4ac1df84b973.png" height="500">
 
 ## History (mobile)
-![Mobile history](https://user-images.githubusercontent.com/87827626/159189247-78e702ff-2cfc-41d2-b35b-d0e4340c64b5.png)
+<img src="https://user-images.githubusercontent.com/87827626/159189247-78e702ff-2cfc-41d2-b35b-d0e4340c64b5.png" height="500">
