@@ -19,7 +19,7 @@ HTML, JS, CSS, MongoDB, Express, React, Node, Bulma
 * All the answered questions are found in the History. Logged in user can search a question by its title, or sort all the questions by date, category, difficulty, right answer found first or bad answer first.
 
 ## Give it a try
-<a href="https://tech-play.herokuapp.com/">Click to answer the questions</a>
+<a href="https://tech-play.herokuapp.com/">Click to play</a>
 
 ## Homepage (web)
 ![Homepage](https://user-images.githubusercontent.com/87827626/159188862-14922d2e-1720-4a6c-87e3-74300a6867d5.png)
